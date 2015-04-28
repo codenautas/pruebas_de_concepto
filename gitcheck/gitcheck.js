@@ -14,30 +14,33 @@ gitcheck.check=function check(path) {
     if(!base.isDirectory()) {
         throw new Error("wrong input:'"+path+"' is not a directory");
     }
-    var rv={};
+    var rv = new Promise(function(resolve, reject) {
+        this.rv={};
+        resolve(0);
+    });
+    return rv.then(function() {
         try {
             var gd = fs.statSync(path+"/.git");
-            rv.git = gd.isDirectory();
+            this.rv.git = gd.isDirectory();
         }
         catch(e) {
-            rv.git = false;
+            this.rv.git = false;
         }
-        //console.log("'"+path+"' "+(rv.git ? "ES git" : "NO es git"));
-        if(rv.git) {
+        if(this.rv.git) {
             var Git = new gitcmd(path);
             return Git.status().then(function(res) {
                 return Git.pull("--dry-run").then(function(res) {
-                    console.log("git pull on '", path, "': ", res, "\n---\n"); 
-                    return rv;
-            }).fail(function(err) {
-                console.error(err);
-                return rv;
-            })
+                    resolve(0);
+                })
             });
         }
         else {
-            return rv;
+            resolve(0);
         }
+    }).fail(function(err) {
+        console.error(err);
+        reject(1); 
+    });
 }
 
 module.exports = gitcheck;
