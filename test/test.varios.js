@@ -15,15 +15,10 @@ describe('rutas', function(){
             expect(err.message).to.match(/null file/);
             done();
         });
-        rutas.realPath("wrongfile.nonexistent").then(function(rv){
-            //console.log("rv", rv);
-            done("Must return a reject promise, because file is invalid");
+        rutas.realPath("c:\\dir1\\file1").then(function(rv){
+            expect(rv).to.eql("c:\\dir1");
         }).catch(function(err){
-            //console.log("err", err);
-            expect(err).to.be.a(Error);
-            console.log("err.message", err.message, "\nmatches: ", err.message.match(/is not a file/) ? "yes" : "no");
-            expect(err.message).to.match(/is not a file/);
-            done();
+            done(err);
         });
     });
 });
