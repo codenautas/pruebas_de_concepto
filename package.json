@@ -17,9 +17,13 @@
     "node": ">= 0.8.0"
   },
   "scripts": {
-    "test": "mocha --reporter spec --bail --check-leaks test/"
+    "test": "mocha --reporter spec --bail --check-leaks test/",
+    "startsp": "node subproc/parent.js"
   },
   "author": "Diego Efe",
   "license": "MIT",
-  "repository": "codenautas/pruebas_de_concepto"
+  "repository": "codenautas/pruebas_de_concepto",
+  "config": {
+    "gitDir": "c:/archivos de programa/git"
+  }
 }
