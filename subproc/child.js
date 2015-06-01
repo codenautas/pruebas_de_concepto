@@ -21,7 +21,7 @@ process.on("disconnect", function() {
 
 process.on("exit", function() {
     console.log('Child '+yo+': EXIT caught: ', process.pid)
-    process.exit(0);
+   // process.exit(0);
 });
 
 function to() {

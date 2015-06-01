@@ -11,7 +11,8 @@
     "mocha": "~2.2.4",
     "expect.js": ">=0.3.1",
     "commander": ">=2.8.0",
-    "git-command-line": ">=0.1.5"
+    "git-command-line": ">=0.1.5",
+    "express": ">=4.12.3"
   },
   "engines": {
     "node": ">= 0.8.0"

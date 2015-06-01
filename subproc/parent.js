@@ -2,7 +2,8 @@ var fork = require("child_process").fork;
 var forkedchild = fork(__dirname + "/child.js", ["FORKED"]);
 
 var spawn = require("child_process").spawn
-var hijo=require('path').normalize(__dirname + "/child.js");
+// var hijo=require('path').normalize(__dirname + "/child.js");
+var hijo=require('path').normalize(__dirname + "/child_server.js");
 
  var fs = require('fs')
  var out = fs.openSync('./out.log', 'a'),
