@@ -1,39 +1,20 @@
-
 var fork = require("child_process").fork;
-var forkedchild = fork(__dirname + "/child.js");
+var forkedchild = fork(__dirname + "/child.js", ["FORKED"]);
 
-/*
 var spawn = require("child_process").spawn
-    
 var hijo=require('path').normalize(__dirname + "/child.js");
-var childspawned = spawn('node', [hijo]); // { detached: true }
 
-var hijophp=require('path').normalize(__dirname + "/tarea.php");
-var childphp = spawn('php', [hijophp]); // { detached: true }
+ var fs = require('fs')
+ var out = fs.openSync('./out.log', 'a'),
+     err = fs.openSync('./out.log', 'a');
 
-function setfds(_child) {
-    _child.stdout.on('data', function (data) {
-      console.log('stdout: ' + data);
-    });
-
-    _child.stderr.on('data', function (data) {
-      console.log('stderr: ' + data);
-    });
-
-    _child.on('close', function (code) {
-      console.log('_child process exited with code ' + code);
-    });
-}    
-
-setfds(childspawned);
-setfds(childphp);
-*/
-//child.disconnect();
-//child.unref();
+ var childspawned = spawn('node', [hijo, 'SPAWNED'], {
+   detached: true,
+   stdio: [ 'ignore', out, err ]
+ });
 
 process.on("SIGINT", function() {
     console.log("PARENT sigint caught: ", process.pid);
-    //child.disconnect();
     process.exit(0);
 });
 
