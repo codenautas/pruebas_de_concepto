@@ -2,13 +2,14 @@
 var fork = require("child_process").fork;
 var forkedchild = fork(__dirname + "/child.js");
 
+/*
 var spawn = require("child_process").spawn
     
 var hijo=require('path').normalize(__dirname + "/child.js");
-var childspawned = spawn('node', [hijo]/*, { detached: true }*/);
+var childspawned = spawn('node', [hijo]); // { detached: true }
 
 var hijophp=require('path').normalize(__dirname + "/tarea.php");
-var childphp = spawn('php', [hijophp]/*, { detached: true }*/);
+var childphp = spawn('php', [hijophp]); // { detached: true }
 
 function setfds(_child) {
     _child.stdout.on('data', function (data) {
@@ -26,6 +27,7 @@ function setfds(_child) {
 
 setfds(childspawned);
 setfds(childphp);
+*/
 //child.disconnect();
 //child.unref();
 
