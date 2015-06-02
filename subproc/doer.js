@@ -39,8 +39,10 @@ var doer = exports = module.exports = function doer(opts){
                     err = fs.openSync(doer_out, 'a');
 
                 var spawn=require("child_process").spawn;
+                var nenv = process.env;
+                nenv["DOER_SCRIPT"]=opts.scriptName;
                 var restarter = spawn('node', [require('path').normalize(__dirname + "/restarter.js")],
-                                    { env:{DOER_SCRIPT:opts.scriptName}, detached: true, stdio: [ 'ignore', out, err ] });
+                                              { env: nenv, detached: true, stdio: [ 'ignore', out, err ] });
                 console.log('do-er (PID:%d): starts restarter (PID:%d)', pid, restarter.pid);
                 res.send('<html><head>'+
                          '<meta http-equiv="refresh" content="2; url=/" /><head>'+
