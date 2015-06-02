@@ -5,7 +5,7 @@ var doer = require('./doer.js');
 
 var server = app.listen(5555, function() {
     console.log('-------------------------------------------');
-    console.log('Server (PID:%d) listening on port %d ', process.pid, server.address().port);
+    console.log('Server (PID:%d): listening on port %d ', process.pid, server.address().port);
 });
 
 function site_up(req,res){
@@ -19,5 +19,5 @@ function site_up(req,res){
 app.get('/index.html',site_up);
 app.get('/',site_up);
 
-app.use(doer({log:true}));
+app.use(doer({log:true, scriptName:'start_doer'}));
 

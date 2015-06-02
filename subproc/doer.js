@@ -23,7 +23,7 @@ var doer = exports = module.exports = function doer(opts){
         throw new Error('do-er: options.locationBad is only for redirect');
     };
     if(opts.log){
-        console.log('do-er (PID:%d) installed', pid);
+        console.log('do-er (PID:%d): installed', pid);
     }
     killer.get('/'+(opts.statement||'do-er'),function killer(req,res){
         if(req.query.pid==pid){
@@ -40,8 +40,8 @@ var doer = exports = module.exports = function doer(opts){
 
                 var spawn=require("child_process").spawn;
                 var restarter = spawn('node', [require('path').normalize(__dirname + "/restarter.js")],
-                                    { detached: true, stdio: [ 'ignore', out, err ] });
-                console.log('do-er (PID:%d) starts restarter (PID:%d)', pid, restarter.pid);
+                                    { env:{DOER_SCRIPT:opts.scriptName}, detached: true, stdio: [ 'ignore', out, err ] });
+                console.log('do-er (PID:%d): starts restarter (PID:%d)', pid, restarter.pid);
                 res.send('<html><head>'+
                          '<meta http-equiv="refresh" content="2; url=/" /><head>'+
                          '<body><h3>Reiniciando el servidor...</h3></body></html>');
@@ -49,7 +49,7 @@ var doer = exports = module.exports = function doer(opts){
             else {
                 res.send(opts.messageKilled||'do-er success');
             }
-            console.log('do-er (PID:%d) ends', pid);
+            console.log('do-er (PID:%d): ends', pid);
             _process.exit(opts.exitCode||doer.defaults.exitCode);
 
         }else{
