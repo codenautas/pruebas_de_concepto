@@ -1,4 +1,4 @@
-﻿require('./logstamper.js');
+require('./logstamper.js');
 var express = require('express');
 var app = express();
 var doer = require('./doer.js');

@@ -7,7 +7,7 @@
     "fs-extra": "^0.18.3",
     "fs-promise": "^0.3.1",
     "expect-called": ">=0.3.2",
-    "auto-deploy": ">=0.0.2"
+    "auto-deploy": ">=0.0.3"
   },
   "devDependencies": {
     "mocha": "~2.2.4",
@@ -25,7 +25,8 @@
     "startsp": "node subproc/parent.js",
     "startABC": "node subproc/server.js",
     "start_doer": "node subproc/server.js",
-    "start_ad": "node subproc/adserver.js"
+    "start_ad": "node subproc/adserver.js",
+    "start_god": "node subproc/runner.js"
   },
   "author": "Diego Efe",
   "license": "MIT",
