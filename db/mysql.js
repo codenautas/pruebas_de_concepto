@@ -4,16 +4,19 @@ var winOS = Path.sep==='\\';
 
 var mysql = require('mysql');
 
-var connection = mysql.createConnection({
+var params = {
   host       : 'localhost',
   user       : 'node',
   password   : 'edon',
   database   : 'nodepru'
-});
- 
+};
 if(! winOS) {
-    connection['socketPath']= '/var/run/mysql/mysql.sock';
+    params['socketPath']= '/var/run/mysql/mysql.sock';
 }
+
+var connection = mysql.createConnection(params);
+ 
+
 connection.connect();
  
 connection.query('SELECT 1 + 1 AS solution', function(err, rows, fields) {

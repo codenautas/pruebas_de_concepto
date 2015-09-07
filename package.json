@@ -7,7 +7,9 @@
     "fs-extra": "^0.18.3",
     "fs-promise": "^0.3.1",
     "expect-called": ">=0.3.2",
-    "auto-deploy": ">=0.0.3"
+    "auto-deploy": ">=0.0.3",
+    
+    "best-promise": "0.2.3"
   },
   "devDependencies": {
     "mocha": "~2.2.4",
