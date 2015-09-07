@@ -1,15 +1,19 @@
 "use strict";
+var Path = require('path');
+var winOS = Path.sep==='\\';
 
-var mysql      = require('mysql');
+var mysql = require('mysql');
 
 var connection = mysql.createConnection({
   host       : 'localhost',
   user       : 'node',
   password   : 'edon',
-  database   : 'nodepru',
-  socketPath : '/var/run/mysql/mysql.sock'
+  database   : 'nodepru'
 });
  
+if(! winOS) {
+    connection['socketPath']= '/var/run/mysql/mysql.sock';
+}
 connection.connect();
  
 connection.query('SELECT 1 + 1 AS solution', function(err, rows, fields) {
