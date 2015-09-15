@@ -19,10 +19,21 @@ db.serialize(function() {
   }
   stmt.finalize();
 
-  db.each("SELECT rowid AS id, info FROM lorem", function(err, row) {
-      console.log(row.id + ": " + row.info);
-  });
-
+  // db.each("SELECT rowid AS id, info FROM lorem", function(err, row) {
+      // console.log(row.id + ": " + row.info);
+  // });
+  
+  var st2 = db.prepare("select info from lorem");
+  st2.get(function(err, rows) {
+      console.log("err", err);
+      console.log("rows", rows);
+  })
+   st2.get(function(err, rows) {
+      console.log("err", err);
+      console.log("rows", rows);
+  })
+  st2.finalize();
+  
 });
 
 db.close();
