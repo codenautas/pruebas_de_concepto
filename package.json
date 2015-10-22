@@ -19,7 +19,9 @@
     "express": ">=4.12.3",
     "console-stamp": ">=0.1.6",
     "sqlite3": "^3.0.10",
-    "mysql": "^2.9.0"
+    "mysql": "^2.9.0",
+    "text-to-svg": "2.2.1",
+    "svg-builder": "0.0.4"
   },
   "engines": {
     "node": ">= 0.8.0"
