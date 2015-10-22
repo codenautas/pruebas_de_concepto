@@ -1,6 +1,8 @@
 "use strict";
 
+var net = require('net');
 var http = require('http');
+require('colors');
 
 var conf = {
     listen:12344,
@@ -9,7 +11,7 @@ var conf = {
 
 var options = {
     port: conf.forward,
-    hostname: 'localhost',
+    hostname: '127.0.0.1',
     method: 'GET',
     path: '/unlogged/Oxygen480-actions-key-enter.svg.png',
     headers:{
@@ -24,28 +26,33 @@ var options = {
 
 // http://localhost:12348/unlogged/Oxygen480-actions-key-enter.svg.png
 
-console.log('pre-request');
-var req = http.request(options);
+console.log('pre-connect');
+var conRemote = net.connect(conf.forward,'localhost');
 
-req.on('connect',function(inn){
-    console.log('connected');
-    inn.on('data',function(data){
-        console.log(data);
-    });
+conRemote.on('connect',function(){
+    console.log('connected'.green);
+    conRemote.write("GET /index.html HTTP/1.1\n");
+    conRemote.write("Host: localhost:12348\n");
+    conRemote.write("\n");
+    conRemote.end();
+    console.log('sendend'.green);
 });
 
-req.on('error',function(err){
-    console.log('error');
-    console.error(err);
+conRemote.on('data',function(data){
+    console.log(('data:\n'+data.toString()).cyan);
 });
 
-req.write("");
-req.end();
+conRemote.on('error',function(err){
+    console.log('error'.red);
+    console.error(err.toString().red);
+});
+
+// conRemote.write("");
 
 var server = http.createServer();
 
 server.listen(conf.listen)
 
 server.on('listening', function(){
-    console.log('server started at',conf.listen);
+    console.log(('server started at '+conf.listen).green);
 });
