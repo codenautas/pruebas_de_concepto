@@ -1,0 +1,43 @@
+{
+  "name": "interceptor",
+  "description": "that",
+  "version": "0.0.1",
+  "author": "Codenautas <codenautas@googlegroups.com>",
+  "license": "MIT",
+  "repository": "codenautas/pruebas_de_concepto/interceptor",
+  "main": "interceptor.js",
+  "contributors": [
+    {
+      "name": "Emilio Platzer",
+      "email": "emilioplatzer@gmail.com"
+    }
+  ],
+  "dependencies": {
+    "express": "4.13.3",
+
+    "promise-plus": "0.0.6"
+  },
+  "devDependencies": {
+  },
+  "engines": {
+    "node": ">= 4.0.0"
+  },
+  "scripts": {
+    "test": "mocha --reporter spec --bail --check-leaks test/",
+    "test-ci": "istanbul cover node_modules/mocha/bin/_mocha --report lcovonly -- --reporter spec --check-leaks test/",
+    "test-cov": "istanbul cover node_modules/mocha/bin/_mocha -- --reporter dot --check-leaks test/",
+    "start": "node interceptor.js"
+  },
+  "jshintConfig": {
+    "asi": false,
+    "curly": true,
+    "forin": true
+  },
+  "qa-control": {
+    "package-version": "0.0.1",
+    "run-in": "server",
+    "type": "app",
+    "stage": "designing",
+    "coverage": 100
+  }
+}
