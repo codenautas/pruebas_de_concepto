@@ -1,0 +1,33 @@
+<h1>eventos</h1>
+<div id=grupo>
+<label for=uno >uno : </label><input id=uno  value=uno ><br>
+<label for=dos >dos : </label><input id=dos  value=dos ><br>
+</div>
+<label for=tres>tres: </label><input id=tres value=tres><br>
+<pre id=msg>
+
+</pre>
+
+<script>
+window.addEventListener('load',function(){
+    "use strict";
+    msg.textContent+="start\n";
+    function show(message, event){
+        var o = event.target
+        msg.textContent+=message+" ("+event.type+") "+o+": "+o.tagName+" "+o.id+" = "+o.value+"\n";
+    }
+    document.addEventListener('click',function(event){
+        show('click', event);
+    })
+    grupo.addEventListener('focusout',function(event){
+        show('focusout', event);
+    });
+    grupo.addEventListener('blur',function(event){
+        show('blur', event);
+    },true);
+    msg.textContent+="ready\n";
+});
+
+
+
+</script>
