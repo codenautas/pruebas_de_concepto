@@ -1,0 +1,45 @@
+<h1>eventos-simulados-click</h1>
+<div id=grupo>
+<label for=uno >el ckeckbox: </label><input type=checkbox id=uno checked><br>
+</div>
+<pre id=msg>
+
+</pre>
+
+<script>
+
+function sendEventClick(elemento){
+    elemento.click();
+/* en los 4 navegadores (Chrome, Firefox, Safari, IE11) se ve:
+start
+click (undefined) (click) [object HTMLInputElement]: INPUT uno = ,false
+click (BODY) (click) [object HTMLInputElement]: INPUT uno = ,false
+click (grupo) (click) [object HTMLInputElement]: INPUT uno = ,false
+click (uno) (click) [object HTMLInputElement]: INPUT uno = ,false
+ready
+*/
+}
+
+window.addEventListener('load',function(){
+    "use strict";
+    msg.textContent+="start\n";
+    function showOnEvent(element, eventName){
+        function show(message, event){
+            var o = event.target
+            msg.textContent+=message+" ("+event.type+") "+o+": "+o.tagName+" "+o.id+" = "+o.value+","+o.checked+"\n";
+        }
+        element.addEventListener(eventName,function(event){
+            show(eventName+' ('+(element.id||element.tagName)+')', event);
+        },true)
+    }
+    showOnEvent(document     ,'click');
+    showOnEvent(document.body,'click');
+    showOnEvent(grupo        ,'click');
+    showOnEvent(uno          ,'click');
+    sendEventClick(uno);
+    msg.textContent+="ready\n";
+});
+
+
+
+</script>
