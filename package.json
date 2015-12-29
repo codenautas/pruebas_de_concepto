@@ -36,7 +36,8 @@
     "start_ad": "node subproc/adserver.js",
     "start_god": "node subproc/runner.js",
     "ipj": "cd initpackagejson && node ipj.js",
-    "pz": "cd initpackagejson && node pz.js"
+    "pz": "cd initpackagejson && node pz.js",
+    "iprom": "cd initpackagejson && node withpromises.js"
   },
   "author": "Diego Efe",
   "license": "MIT",
