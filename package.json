@@ -22,7 +22,8 @@
     "mysql": "^2.9.0",
     "text-to-svg": "2.2.1",
     "svg-builder": "0.0.4",
-    "init-package-json": "1.9.1"
+    "init-package-json": "1.9.1",
+    "promzard": "0.3.0"
   },
   "engines": {
     "node": ">= 0.8.0"
@@ -34,7 +35,8 @@
     "start_doer": "node subproc/server.js",
     "start_ad": "node subproc/adserver.js",
     "start_god": "node subproc/runner.js",
-    "ipj": "cd initpackagejson && node ipj.js"
+    "ipj": "cd initpackagejson && node ipj.js",
+    "pz": "cd initpackagejson && node pz.js"
   },
   "author": "Diego Efe",
   "license": "MIT",
