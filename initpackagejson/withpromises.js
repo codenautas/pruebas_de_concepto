@@ -21,16 +21,21 @@ function pz(inputFile, optionalContextAdditions) {
     });
 };
 
-var initFile = path.resolve(process.env.HOME || process.env.HOMEPATH, '.npm-init');
-var dir = process.cwd();
+// var initFile = path.resolve(process.env.HOME || process.env.HOMEPATH, '.npm-init');
+var initFile = 'input.js';
 
-ipj(dir, initFile, {}).then(function(data) {
+var dir = process.cwd();
+var qac = { "package" : { "qa-control": {
+    "package-version": "0.0.2",
+    "run-in": "server",
+    "test-appveyor": true,
+    "type": "app",
+    "stage": "designing",
+    "coverage": 70
+} } } ;
+
+ipj(dir, initFile, qac).then(function(data) {
     console.log("init", data);
-    return pz('input.js', null);
-}).then(function(res) {
-    console.log(res.greeting);
-    console.log("Version seleccionada: ", res['qa-control-version']);
-    //console.log("pz", res);
 }).catch(function(e) {
     console.log("Error", e);
 });

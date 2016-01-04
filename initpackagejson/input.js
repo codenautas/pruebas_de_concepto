@@ -1,20 +1,21 @@
+var Path = require('path');
+
 module.exports = {
-  "greeting": prompt("A quién debo saludar?", process.env.USERNAME || process.env.USER, function (who) {
-    return "Hola "+who+"!";
+  "name": prompt('Nombre del proyecto', Path.basename(Path.dirname(__filename)), function(name) {
+        return name;
   }),
-  "filename": __filename,
-  "qa-control-version": prompt("Versión de qa-control a utilizar?", "0.0.4", function (ver) {
-        return ver;
+  "version": prompt('Versión del proyecto', "0.0.1", function(appver) {
+        return appver;
+  }),
+  "qa-control-version": prompt("Versión de qa-control a utilizar?", "0.1.4", function (ver) {
+
+  return { "qa-control": {
+            "package-version": ver,
+            "run-in": "server",
+            "test-appveyor": true,
+            "type": "app",
+            "stage": "designing",
+            "coverage": 70
+        }}; 
   })
 }
-
-/*
-"qa-control": {
-    "package-version": "0.0.2",
-    "run-in": "server",
-    "test-appveyor": true,
-    "type": "app",
-    "stage": "designing",
-    "coverage": 70
-  }: 
-*/

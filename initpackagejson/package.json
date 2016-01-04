@@ -1,6 +1,6 @@
 {
   "name": "initpackagejson",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "main": "ipj.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -15,5 +15,17 @@
   "keywords": [
     "init",
     "package"
-  ]
+  ],
+  "greeting": "Hola diego!",
+  "filename": "D:\\cnautas\\poc\\initpackagejson\\input.js",
+  "qa-control-version": {
+    "qa-control": {
+      "package-version": "0.1.4",
+      "run-in": "server",
+      "test-appveyor": true,
+      "type": "app",
+      "stage": "designing",
+      "coverage": 70
+    }
+  }
 }
