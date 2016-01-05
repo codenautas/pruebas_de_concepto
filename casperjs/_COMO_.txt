@@ -1,0 +1,6 @@
+- npm install -g phantomjs
+- instalar python y ponerlo en el path
+- npm install -g casperjs
+- abrir consola en este directorio
+- correr setCastper.bat
+- correr runTest.bat
