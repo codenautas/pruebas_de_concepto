@@ -19,6 +19,8 @@
     "express": ">=4.12.3",
     "console-stamp": ">=0.1.6",
     "sqlite3": "^3.0.10",
+    "moment": "2.11.1",
+    "moment-timezone": "0.5.0",
     "mysql": "^2.9.0",
     "text-to-svg": "2.2.1",
     "svg-builder": "0.0.4",
