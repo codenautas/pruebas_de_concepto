@@ -1,7 +1,8 @@
 "use strict";
 
 var moment=require('moment');
-var momentTZ=require('moment-timezone');
+
+console.log("-------------------------- moment");
 
 moment.locale('es');
 
@@ -38,3 +39,59 @@ for(var m in ms) { console.log(ms[m]); }
 
 var momEN = moment().locale('en');
 console.log("En ingles: ", momEN.format('LL'));
+
+if(true) {
+    console.log("-------------------------- moment-timezone");
+    var momentTZ=require('moment-timezone');
+
+    var arr = [2013, 5, 1];
+    var str = "2013-12-01";
+    var obj = { year : 2013, month : 5, day : 1 };
+
+    var zone = "America/Buenos_Aires",
+        zone2 = "America/New_York";
+
+    var timestamp = 1403454068850,
+        date = new Date(timestamp);
+        
+    var mtzs = [
+        momentTZ.tz(arr, zone), // 2013-06-01T00:00:00-07:00
+        momentTZ.tz(str, zone), // 2013-12-01T00:00:00-08:00
+        momentTZ.tz(obj, zone), // 2013-06-01T00:00:00-07:00
+
+        momentTZ.tz(arr, zone2),    // 2013-06-01T00:00:00-04:00
+        momentTZ.tz(str, zone2),    // 2013-12-01T00:00:00-05:00
+        momentTZ.tz(obj, zone2),    // 2013-06-01T00:00:00-04:00
+
+
+        momentTZ.tz('2013-06-01T00:00:00',       zone), // 2013-06-01T00:00:00-07:00
+        momentTZ.tz('2013-06-01T00:00:00-04:00', zone), // 2013-05-31T21:00:00-07:00
+        momentTZ.tz('2013-06-01T00:00:00+00:00', zone), // 2013-05-31T17:00:00-07:00
+
+
+        momentTZ.tz(timestamp, zone), // 2014-06-22T09:21:08-07:00
+        momentTZ(timestamp).tz(zone), // 2014-06-22T09:21:08-07:00
+
+        momentTZ.tz(date, zone),      // 2014-06-22T09:21:08-07:00
+        momentTZ(date).tz(zone),      // 2014-06-22T09:21:08-07:00
+
+        // ambiguities
+        momentTZ.tz("2012-03-11 01:59:59", zone2), // 2012-03-11T01:59:59-05:00
+        momentTZ.tz("2012-03-11 02:00:00", zone2), // 2012-03-11T01:00:00-05:00
+        momentTZ.tz("2012-03-11 02:59:59", zone2), // 2012-03-11T01:59:59-05:00
+        momentTZ.tz("2012-03-11 03:00:00", zone2), // 2012-03-11T03:00:00-04:00
+
+        momentTZ.tz("2012-11-04 00:59:59", zone2), // 2012-11-04T00:59:59-04:00
+        momentTZ.tz("2012-11-04 01:00:00", zone2), // 2012-11-04T01:00:00-04:00
+        momentTZ.tz("2012-11-04 01:59:59", zone2), // 2012-11-04T01:59:59-04:00
+        momentTZ.tz("2012-11-04 02:00:00", zone2), // 2012-11-04T02:00:00-05:00
+
+    ];
+
+    for(var m in mtzs) {
+        var mom = mtzs[m];
+        console.log(mom.format('ll'), mom.zoneAbbr());
+    }
+
+    console.log("Guessing: ", momentTZ.tz.guess())    
+}
