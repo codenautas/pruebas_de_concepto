@@ -25,7 +25,8 @@
     "text-to-svg": "2.2.1",
     "svg-builder": "0.0.4",
     "init-package-json": "1.9.1",
-    "promzard": "0.3.0"
+    "promzard": "0.3.0",
+    "parse5": "2.1.2"
   },
   "engines": {
     "node": ">= 0.8.0"
