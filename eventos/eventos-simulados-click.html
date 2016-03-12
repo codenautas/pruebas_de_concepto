@@ -25,8 +25,8 @@ window.addEventListener('load',function(){
     msg.textContent+="start\n";
     function showOnEvent(element, eventName){
         function show(message, event){
-            var o = event.target
-            msg.textContent+=message+" ("+event.type+") "+o+": "+o.tagName+" "+o.id+" = "+o.value+","+o.checked+"\n";
+            var o = event.target;
+            msg.textContent+=message+" ("+event.type+") "+o+": "+o.tagName+" "+o.id+" = "+o.value+","+o.checked+' ---- '+event.key+':'+event.code+"\n";
         }
         element.addEventListener(eventName,function(event){
             show(eventName+' ('+(element.id||element.tagName)+')', event);
@@ -36,6 +36,10 @@ window.addEventListener('load',function(){
     showOnEvent(document.body,'click');
     showOnEvent(grupo        ,'click');
     showOnEvent(uno          ,'click');
+    showOnEvent(document     ,'keypress');
+    showOnEvent(document.body,'keypress');
+    showOnEvent(grupo        ,'keypress');
+    showOnEvent(uno          ,'keypress');
     sendEventClick(uno);
     msg.textContent+="ready\n";
 });
