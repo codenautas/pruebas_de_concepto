@@ -6,10 +6,10 @@ var tab=3;
 function printNode(node) {
     //console.log("IDENT", ident);
     var margen = Array(ident).join(' ');
-    console.log(margen+"Node: ", node.nodeName);
+    console.log(margen, node.nodeName);
     for(var attrName in node.attrs) {
         var attr = node.attrs[attrName];
-        console.log(margen+"   Atribute", attr);
+        console.log(margen+"   ",attrName, attr);
     }
     for(var childName in node.childNodes) {
         var child = node.childNodes[childName];
