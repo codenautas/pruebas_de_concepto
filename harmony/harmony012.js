@@ -15,3 +15,12 @@
 	var lista = [1,2];
 	console.log(lista.map(x => 2*x));
 })();
+
+class Uno{
+	show(){
+		console.log('class anda');
+	}
+}
+
+var uno = new Uno();
+uno.show();

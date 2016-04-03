@@ -1,0 +1,20 @@
+<pre id=msg>
+Date test:
+</pre>
+<script>
+var d={};
+
+function mostrar(x){
+    msg.textContent+='\n'+x+':';
+    msg.textContent+=eval(x);
+    msg.textContent+=" - "+typeof eval(x);
+}
+
+mostrar('d.ahora = new Date()');
+mostrar('d.indep = new Date(1916,7-1,9)');
+mostrar('d.utc = new Date("1916-07-09")');
+mostrar('d.utc = new Date("1916-07-09 00:00:00-0300")');
+mostrar('d.fly = new (Function.prototype.bind.apply(Date, [null,1916,7-1,9]))');
+mostrar('"----"');
+mostrar('d.ahora.getTimezoneOffset()');
+</script>
