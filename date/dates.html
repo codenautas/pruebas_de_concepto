@@ -15,6 +15,11 @@ mostrar('d.indep = new Date(1916,7-1,9)');
 mostrar('d.utc = new Date("1916-07-09")');
 mostrar('d.utc = new Date("1916-07-09 00:00:00-0300")');
 mostrar('d.fly = new (Function.prototype.bind.apply(Date, [null,1916,7-1,9]))');
+mostrar('d.utc == d.indep');
+mostrar('d.utc == d.fly');
+mostrar('d.utc - d.fly');
+mostrar('d.ahora - d.indep');
 mostrar('"----"');
 mostrar('d.ahora.getTimezoneOffset()');
+mostrar('d.ahora.toISOString()');
 </script>
