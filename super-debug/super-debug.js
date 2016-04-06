@@ -4,6 +4,15 @@ if(typeof window == "undefined"){
     var fs = require('fs');
 }
 
+function extractExpressions(expresion){
+    return [
+        "x + '+ 1 || '+ y + '> 9'",
+        "(x + 1) + ' || '+ y + '> 9'",
+        "(x + 1) + ' || '+ (y > 9)",
+        "(x + 1) || (y > 9)"
+    ]
+}
+
 function superassert(expression){
     var stack=new Error().stack;
     console.log('RESULT', expression);
@@ -19,19 +28,24 @@ function superassert(expression){
     }
     var lines = fuente.split(/\n\r?/);
     var line = lines[matches[2]-1].substr(matches[3]-1);
-    console.log("lin-1",lines[matches[2]-1]);
-    console.log("linea",lines[matches[2]]);
-    console.log("lin+1",lines[matches[2]+1]);
-    console.log("linea",line);
-    return "console.log(`"+line+"`)";
+    console.log("expect fail",fileName+':'+matches[2]);
+    console.log(line);
+    return extractExpressions(line).map(function(expresionsToEval){
+        return "console.log("+expresionsToEval+")";
+    }).join(',');
 }
+
+var y = 9;
 
 function ejemplo1(){
 var x = "vacío";
-eval(superassert("esto" == x));
-
-return "si!"
+eval(superassert(x + 1 && y > 9));
+return false
 }
 
-eval(superassert(ejemplo1()));
+var x = -1;
+
+ejemplo1();
+
+eval(superassert(x + 1 || y > 9 ));
 
