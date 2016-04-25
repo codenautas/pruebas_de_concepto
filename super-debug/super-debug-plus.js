@@ -14,6 +14,7 @@ function extractExpressions(expresion){
 }
 
 function superassert(expression){
+    eval("console.log('*************',y,y>9)");
     eval(function(stack){
         console.log('RESULT', expression);
         var linea=stack.split(/\n\r?/)[2];
@@ -36,17 +37,20 @@ function superassert(expression){
     }(new Error().stack));
 }
 
-var y = 9;
+function otra(){
+    var y = 9;
 
-function ejemplo1(){
-var x = "vacío";
-superassert(x + 1 && y > 9);
-return false
-}
+    function ejemplo1(){
+        var x = "vacío";
+        superassert(x + 1 && y > 9);
+        return false
+    }
 
-var x = -1;
+    var x = -1;
 
-ejemplo1();
+    ejemplo1();
 
-superassert(x + 1 || y > 9 );
+    superassert(x + 1 || y > 9 );
+};
 
+otra();

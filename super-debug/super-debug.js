@@ -35,17 +35,21 @@ function superassert(expression){
     }).join(',');
 }
 
-var y = 9;
+function otra(){
+    var y = 9;
+    
+    function ejemplo1(){
+        var x = "vacío";
+        eval(superassert(x + 1 && y > 9));
+        return false
+    }
+    
+    var x = -1;
+    
+    ejemplo1();
+    
+    eval(superassert(x + 1 || y > 9 ));
+    
+};
 
-function ejemplo1(){
-var x = "vacío";
-eval(superassert(x + 1 && y > 9));
-return false
-}
-
-var x = -1;
-
-ejemplo1();
-
-eval(superassert(x + 1 || y > 9 ));
-
+otra();
