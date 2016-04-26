@@ -22,3 +22,8 @@ pruMD.probar({parse : function(content) { return converter.makeHtml(content); },
               name : function() { return 'showdown'; }}).then(function(out) { console.log(out); });
 
 ```
+<h4>Y una tabla</h4>
+| h1    |    h2   |      h3 |
+|:------|:-------:|--------:|
+| 100   | [a][1]  | ![b][2] |
+| *foo* | **bar** | ~~baz~~ |

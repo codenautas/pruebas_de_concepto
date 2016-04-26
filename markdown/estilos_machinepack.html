@@ -20,3 +20,8 @@ var extHL = function () {
 pruMD.probar({parse : function(content) { return converter.makeHtml(content); },
               name : function() { return &#39;showdown&#39;; }}).then(function(out) { console.log(out); });
 </code></pre>
+<p><h4>Y una tabla</h4>
+| h1    |    h2   |      h3 |
+|:------|:-------:|--------:|
+| 100   | [a][1]  | ![b][2] |
+| <em>foo</em> | <strong>bar</strong> | <del>baz</del> |</p>

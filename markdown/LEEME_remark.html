@@ -32,7 +32,16 @@ var assert = require('self-exlain').assert;
 <p>var alpha = 10;
 var betha = 7;</p>
 <p>eval(assert(alpha / 2 &gt; betha -1));</p>
-<pre><code>&lt;!--lang:es--&gt;
+<pre><code>tabla 1    | min | max | return
+-----------|-----|-----|--------------
+execute    |  -  |  -  | result.rowCount
+fetchAll   |  0  | inf | result.rows, result.rowCount
+fetchUniqueValue | 1 | 1 | result.value
+fetchUniqueRow | 1 | 1 | result.row
+fetchOneRowIfExists | 0 | 1 | result.row, result.rowCount
+
+
+&lt;!--lang:es--&gt;
 Ejecuta la expresi&oacute;n como si fuera un &#x60;assert&#x60;, y si la expresi&oacute;n eval&uacute;a a &#x60;false&#x60; se genera
 **mucha m&aacute;s informaci&oacute;n por la consola** 
 (adem&aacute;s de lanzar la excepci&oacute;n correspondiente)

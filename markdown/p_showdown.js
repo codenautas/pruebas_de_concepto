@@ -123,7 +123,12 @@ showdown.extension('codehighlight', function() {
   ];
 });
 
-var converter = new showdown.Converter({ extensions: ['codehighlight'] });
-
+var opts = {
+    extensions: ['codehighlight'],
+    tables:true,
+    tablesHeaderId: true,
+};
+var converter = new showdown.Converter(opts);
+//console.log("converter.options", converter.getOptions());
 pruMD.probar({parse : function(content) { return converter.makeHtml(content); },
               name : function() { return 'showdown'; }}).then(function(out) { console.log(out); });

@@ -33,6 +33,48 @@ var betha = 7;
 
 eval(assert(alpha / 2 &gt; betha -1));
 </code></pre>
+<table>
+<thead>
+<tr>
+<th>tabla 1</th>
+<th>min</th>
+<th>max</th>
+<th>return</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>execute</td>
+<td>-</td>
+<td>-</td>
+<td>result.rowCount</td>
+</tr>
+<tr>
+<td>fetchAll</td>
+<td>0</td>
+<td>inf</td>
+<td>result.rows, result.rowCount</td>
+</tr>
+<tr>
+<td>fetchUniqueValue</td>
+<td>1</td>
+<td>1</td>
+<td>result.value</td>
+</tr>
+<tr>
+<td>fetchUniqueRow</td>
+<td>1</td>
+<td>1</td>
+<td>result.row</td>
+</tr>
+<tr>
+<td>fetchOneRowIfExists</td>
+<td>0</td>
+<td>1</td>
+<td>result.row, result.rowCount</td>
+</tr>
+</tbody>
+</table>
 <!--lang:es-->
 <p>Ejecuta la expresión como si fuera un <code>assert</code>, y si la expresión evalúa a <code>false</code> se genera
 <strong>mucha más información por la consola</strong> 
