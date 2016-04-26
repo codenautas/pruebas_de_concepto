@@ -2,7 +2,6 @@
 
 var Promises = require('best-promise');
 var fs = require('fs-promise');
-var Path = require('path');
 
 var pruMD = {}
 

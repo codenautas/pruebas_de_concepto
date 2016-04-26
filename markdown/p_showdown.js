@@ -1,6 +1,5 @@
 "use strict";
-
-var pruMD = require('./pruMD.js');
+var pruMD = require('./pru-md.js');
 
 var showdown  = require('showdown'),
     converter = new showdown.Converter();
