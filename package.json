@@ -27,7 +27,8 @@
     "init-package-json": "1.9.1",
     "promzard": "0.3.0",
     "parse5": "2.1.2",
-    "htmlparser2": "3.9.0"
+    "htmlparser2": "3.9.0",
+    "remarkable": "~1.6.2"
   },
   "engines": {
     "node": ">= 0.8.0"
