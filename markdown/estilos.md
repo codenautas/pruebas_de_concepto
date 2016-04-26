@@ -1,8 +1,6 @@
-<head>
 <link href="markdown.css" media="all" rel="stylesheet" />
 <link href="markdown2.css" media="all" rel="stylesheet" />
 <link href="github.css" media="all" rel="stylesheet" />
-</head>
 
 ```javascript
 "use strict";

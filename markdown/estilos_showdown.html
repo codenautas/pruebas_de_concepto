@@ -1,10 +1,8 @@
-&lt;p&gt;&lt;head&gt;
-&lt;link href=<span class="hljs-string">"markdown.css"</span> media=<span class="hljs-string">"all"</span> rel=<span class="hljs-string">"stylesheet"</span> /&gt;
-&lt;link href=<span class="hljs-string">"markdown2.css"</span> media=<span class="hljs-string">"all"</span> rel=<span class="hljs-string">"stylesheet"</span> /&gt;
-&lt;link href=<span class="hljs-string">"github.css"</span> media=<span class="hljs-string">"all"</span> rel=<span class="hljs-string">"stylesheet"</span> /&gt;
-&lt;<span class="hljs-regexp">/head&gt;&lt;/</span>p&gt;
+<p><link href="markdown.css" media="all" rel="stylesheet" />
+<link href="markdown2.css" media="all" rel="stylesheet" />
+<link href="github.css" media="all" rel="stylesheet" /></p>
 
-&lt;pre&gt;&lt;code <span class="hljs-keyword">class</span>=<span class="hljs-string">"javascript language-javascript"</span>&gt;<span class="hljs-string">"use strict"</span>;
+<pre><code class="javascript language-javascript"><span class="hljs-meta">"use strict"</span>;
 <span class="hljs-keyword">var</span> pruMD = <span class="hljs-built_in">require</span>(<span class="hljs-string">'./pru-md.js'</span>);
 <span class="hljs-keyword">var</span> hljs       = <span class="hljs-built_in">require</span>(<span class="hljs-string">'highlight.js'</span>); <span class="hljs-comment">// https://highlightjs.org/ </span>
 <span class="hljs-keyword">var</span> showdown  = <span class="hljs-built_in">require</span>(<span class="hljs-string">'showdown'</span>);
@@ -12,7 +10,7 @@
 
 <span class="hljs-keyword">var</span> extHL = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>{
   <span class="hljs-keyword">var</span> myext1 = {
-    <span class="hljs-keyword">type</span>: <span class="hljs-string">'output'</span>,
+    type: <span class="hljs-string">'output'</span>,
     regex: <span class="hljs-regexp">/markdown/g</span>,
     replace: <span class="hljs-string">'showdown'</span>
   };
@@ -21,4 +19,4 @@
 
 pruMD.probar({parse : <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">content</span>) </span>{ <span class="hljs-keyword">return</span> converter.makeHtml(content); },
               name : <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{ <span class="hljs-keyword">return</span> <span class="hljs-string">'showdown'</span>; }}).then(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">out</span>) </span>{ <span class="hljs-built_in">console</span>.log(out); });
-&lt;<span class="hljs-regexp">/code&gt;&lt;/</span>pre&gt;
+</code></pre>
