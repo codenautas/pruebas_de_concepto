@@ -127,7 +127,19 @@ var opts = {
     extensions: ['codehighlight'],
     tables:true,
     tablesHeaderId: true,
+    omitExtraWLInCodeBlocks: true,
+    noHeaderId: true,
+    prefixHeaderId: true,
+    headerLevelStart: true,
+    parseImgDimensions: true,
+    simplifiedAutoLink: true,
+    literalMidWordUnderscores: true,
+    strikethrough: true,
+    ghCodeBlocks: true,
+    tasklists: true,
+    smoothLivePreview: true
 };
+  
 var converter = new showdown.Converter(opts);
 //console.log("converter.options", converter.getOptions());
 pruMD.probar({parse : function(content) { return converter.makeHtml(content); },

@@ -18,8 +18,7 @@
 }
 
 pruMD.probar({parse : <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">content</span>) </span>{ <span class="hljs-keyword">return</span> converter.makeHtml(content); },
-              name : <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{ <span class="hljs-keyword">return</span> <span class="hljs-string">'showdown'</span>; }}).then(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">out</span>) </span>{ <span class="hljs-built_in">console</span>.log(out); });
-</code></pre>
+              name : <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{ <span class="hljs-keyword">return</span> <span class="hljs-string">'showdown'</span>; }}).then(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">out</span>) </span>{ <span class="hljs-built_in">console</span>.log(out); });</code></pre>
 
 <h4>Y una tabla</h4>
 
@@ -42,7 +41,7 @@ pruMD.probar({parse : <span class="hljs-function"><span class="hljs-keyword">fun
 <tr>
 <td style="text-align:left;"><em>foo</em></td>
 <td style="text-align:center;"><strong>bar</strong></td>
-<td style="text-align:right;">~~baz~~</td>
+<td style="text-align:right;"><del>baz</del></td>
 </tr>
 
 </tbody>
