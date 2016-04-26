@@ -30,7 +30,8 @@
     "htmlparser2": "3.9.0",
     "remarkable": "~1.6.2",
     "showdown": "~1.3.0",
-    "child-process-promise": "1.1.0"
+    "child-process-promise": "1.1.0",
+    "machinepack-markdown": "2.0.0"
   },
   "engines": {
     "node": ">= 0.8.0"

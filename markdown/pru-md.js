@@ -10,7 +10,9 @@ function pruFile(fileName, parser) {
     var outFile = fileName+'_'+parser.name()+'.html';
     return fs.readFile(inFile,'utf8').then(function(content) {
         //console.log(content);
-        return fs.writeFile(outFile, parser.parse(content));
+        var parsed = parser.parse(content);
+        //console.log("parsed", parsed);
+        return fs.writeFile(outFile, parsed);
     }).catch(function(err) {
         return "Error generando '"+outFile+"': "+err;
     }).then(function() {
@@ -20,7 +22,7 @@ function pruFile(fileName, parser) {
 };
 
 pruMD.probar = function probar(parser) {
-    var files = ['./README', './bug'];
+    var files = ['./LEEME', './bug'];
     return Promises.all(files.map(function(file) {
         return pruFile(file, parser);
     })).then(function(out) {
