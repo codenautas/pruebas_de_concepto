@@ -42,6 +42,15 @@ var betha = 7;
 eval(assert(alpha / 2 > betha -1));
 ```
 
+tabla 1    | min | max | return
+-----------|-----|-----|--------------
+execute    |  -  |  -  | result.rowCount
+fetchAll   |  0  | inf | result.rows, result.rowCount
+fetchUniqueValue | 1 | 1 | result.value
+fetchUniqueRow | 1 | 1 | result.row
+fetchOneRowIfExists | 0 | 1 | result.row, result.rowCount
+
+
 <!--lang:es-->
 Ejecuta la expresión como si fuera un `assert`, y si la expresión evalúa a `false` se genera
 **mucha más información por la consola** 

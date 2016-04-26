@@ -1,3 +1,378 @@
+<!--multilang v0 es:LEEME.md en:README.md -->
+
+<h1 id="selfexplained">self-explained</h1>
+
+<p>self explained tools - starting with "assert"</p>
+
+<!--lang:es-->
+
+<h1 id="instalacin">Instalación</h1>
+
+<!--lang:en--]
+# Install
+[!--lang:*-->
+
+<pre><code class="sh language-sh"><span class="hljs-variable">$ </span>npm install <span class="hljs-keyword">self</span>-explained
+</code></pre>
+
+<!-- cucardas -->
+
+<p><img src="https://img.shields.io/badge/stability-designing-red.svg" alt="designing" />
+<a href="https://npmjs.org/package/self-explain"><img src="https://img.shields.io/npm/v/self-explain.svg" alt="npm-version" /></a>
+<a href="https://npmjs.org/package/self-explain"><img src="https://img.shields.io/npm/dm/self-explain.svg" alt="downloads" /></a>
+<a href="https://travis-ci.org/codenautas/self-explain"><img src="https://img.shields.io/travis/codenautas/self-explain/master.svg" alt="build" /></a>
+<a href="https://coveralls.io/r/codenautas/self-explain"><img src="https://img.shields.io/coveralls/codenautas/self-explain/master.svg" alt="coverage" /></a>
+<a href="https://codeclimate.com/github/codenautas/self-explain"><img src="https://img.shields.io/codeclimate/github/codenautas/self-explain.svg" alt="climate" /></a>
+<a href="https://david-dm.org/codenautas/self-explain"><img src="https://img.shields.io/david/codenautas/self-explain.svg" alt="dependencies" /></a>
+<a href="http://codenautas.com/github/codenautas/self-explain"><img src="http://codenautas.com/github/codenautas/self-explain.svg" alt="qa-control" /></a></p>
+
+<!--multilang buttons-->
+
+<p>idioma: <img src="https://raw.githubusercontent.com/codenautas/multilang/master/img/lang-es.png" alt="castellano" />
+también disponible en:
+<a href="README.md"><img src="https://raw.githubusercontent.com/codenautas/multilang/master/img/lang-en.png" alt="inglés" /></a></p>
+
+<!--lang:es-->
+
+<h2 id="uso">Uso</h2>
+
+<!--lang:en--]
+## Use
+[!--lang:*-->
+
+<pre><code class="js language-js"><span class="hljs-keyword">var</span> <span class="hljs-keyword">assert</span> = require('self-exlain').<span class="hljs-keyword">assert</span>;
+
+<span class="hljs-keyword">var</span> <span class="hljs-keyword">alpha</span> = 10;
+<span class="hljs-keyword">var</span> betha = 7;
+
+eval(<span class="hljs-keyword">assert</span>(<span class="hljs-keyword">alpha</span> / 2 &gt; betha -1));
+</code></pre>
+
+<p>tabla 1    | min | max | return
+-----------|-----|-----|--------------
+execute    |  -  |  -  | result.rowCount
+fetchAll   |  0  | inf | result.rows, result.rowCount
+fetchUniqueValue | 1 | 1 | result.value
+fetchUniqueRow | 1 | 1 | result.row
+fetchOneRowIfExists | 0 | 1 | result.row, result.rowCount</p>
+
+<!--lang:es-->
+
+<p>Ejecuta la expresión como si fuera un <code>assert</code>, y si la expresión evalúa a <code>false</code> se genera
+<strong>mucha más información por la consola</strong> 
+(además de lanzar la excepción correspondiente)</p>
+
+<!--lang:en--]
+It controls the expression like `assert` does. 
+If the expression evaluates to `false` it will show 
+**much more info in the console** 
+(also throws the Exception)
+[!--lang:*-->
+
+<pre><code class="txt language-txt"><span class="hljs-built_in">ASSERT</span> FAILED
+alpha / <span class="hljs-number">2</span> &gt; betha <span class="hljs-number">-1</span>
+<span class="hljs-number">10</span> / <span class="hljs-number">2</span> &gt; <span class="hljs-number">7</span> - <span class="hljs-number">1</span>
+<span class="hljs-number">5</span> &gt; <span class="hljs-number">6</span>
+<span class="hljs-literal">false</span> 
+</code></pre>
+
+<!--lang:es-->
+
+<h2 id="licencia">Licencia</h2>
+
+<!--lang:en--]
+## License
+[!--lang:*-->
+
+<p><a href="LICENSE">MIT</a></p>
+
+<!--multilang v0 es:LEEME.md en:README.md -->
+
+<h1 id="pgpromisestrict">pg-promise-strict</h1>
+
+<!--lang:es-->
+
+<p><strong>postgresql</strong> con <strong>promesas</strong> en el sentido estricto</p>
+
+<!--lang:en--]
+postgresql with strict interpretation of promises
+
+[!--lang:*-->
+
+<!-- cucardas -->
+
+<p><img src="https://img.shields.io/badge/stability-extending-orange.svg" alt="extending" />
+<a href="https://npmjs.org/package/pg-promise-strict"><img src="https://img.shields.io/npm/v/pg-promise-strict.svg" alt="npm-version" /></a>
+<a href="https://npmjs.org/package/pg-promise-strict"><img src="https://img.shields.io/npm/dm/pg-promise-strict.svg" alt="downloads" /></a>
+<a href="https://travis-ci.org/codenautas/pg-promise-strict"><img src="https://img.shields.io/travis/codenautas/pg-promise-strict/master.svg" alt="linux" /></a>
+<a href="https://ci.appveyor.com/project/codenautas/pg-promise-strict"><img src="https://ci.appveyor.com/api/projects/status/github/codenautas/pg-promise-strict?svg=true" alt="windows" /></a>
+<a href="https://coveralls.io/r/codenautas/pg-promise-strict"><img src="https://img.shields.io/coveralls/codenautas/pg-promise-strict/master.svg" alt="coverage" /></a>
+<a href="https://codeclimate.com/github/codenautas/pg-promise-strict"><img src="https://img.shields.io/codeclimate/github/codenautas/pg-promise-strict.svg" alt="climate" /></a>
+<a href="https://david-dm.org/codenautas/pg-promise-strict"><img src="https://img.shields.io/david/codenautas/pg-promise-strict.svg" alt="dependencies" /></a>
+<a href="http://codenautas.com/github/codenautas/pg-promise-strict"><img src="http://codenautas.com/github/codenautas/pg-promise-strict.svg" alt="qa-control" /></a></p>
+
+<!--multilang buttons-->
+
+<p>idioma: <img src="https://raw.githubusercontent.com/codenautas/multilang/master/img/lang-es.png" alt="castellano" />
+también disponible en:
+<a href="README.md"><img src="https://raw.githubusercontent.com/codenautas/multilang/master/img/lang-en.png" alt="inglés" /></a></p>
+
+<!--lang:es-->
+
+<h1 id="caractersticas">Características</h1>
+
+<p>pg-strict-promise implementa una versión con Promise/A+ en el sentido estricto de la librería PG.</p>
+
+<ul>
+<li>Tiene las mismas funciones que PG, con los mismos nombres, los mismos parámetros y que devuelven lo mismo, reemplazando los <em>callbacks</em> con promesas.</li>
+
+<li>Con pruebas que cubren el 100% del código en dos grupos: un grupo de pruebas que usa una base de datos real (postgresl 9.3) y otro que testea solo las llamadas (adaptaciones) que se hacen sobre PG. Ambos grupos de pruebas cubren el 100% del código. Así obtenemos una <strong>cobertura de 2 × 100%</strong>.</li>
+
+<li>No se reimplementa nada de lo que PG ya implementa</li>
+
+<li>Algunos <a href="docs/agregados.md">agregados</a> mínimos para mayor comodidad</li>
+</ul>
+
+<!--lang:en--]
+
+# Features
+
+PG Promise/A+ in the strict way:
+ * The same functions, with the same name and same retunrs that in PG, but without callbacks
+ * covers 100% by test in two groups: test with real database (postgresql 9.3) and test with mock functions. Each group covers 100% the code. It means that we have **2 × 100% of coverage**.
+ * No reimplement nothing that PG does
+ * Some minimal [additions](docs/additions.md) for comfort
+
+<!--lang:es-->
+
+<h1 id="instalacin-1">Instalación</h1>
+
+<!--lang:en--]
+
+# Install
+
+[!--lang:*-->
+
+<pre><code class="sh language-sh">$ npm <span class="hljs-keyword">install</span> pg-promise-<span class="hljs-keyword">strict</span>
+</code></pre>
+
+<!--lang:es-->
+
+<h1 id="ejemplodeuso">Ejemplo de uso</h1>
+
+<!--lang:en--]
+
+# Use example
+
+[!--lang:*-->
+
+<pre><code class="js  language-js "><span class="hljs-keyword">var</span> pg = <span class="hljs-built_in">require</span>(<span class="hljs-string">'pg-promise-strict'</span>);
+
+pg.easy = <span class="hljs-literal">true</span>;
+
+<span class="hljs-keyword">var</span> conOpts = {
+    user: <span class="hljs-string">'test_user'</span>,
+    password: <span class="hljs-string">'test_pass'</span>,
+    database: <span class="hljs-string">'test_db'</span>,
+    host: <span class="hljs-string">'localhost'</span>,
+    port: <span class="hljs-number">5432</span>
+};
+
+pg.connect(conOpts).then(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">client</span>)</span>{
+    <span class="hljs-keyword">return</span> client.query(<span class="hljs-string">'select * from table'</span>);
+}).then(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">result</span>)</span>{
+    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">var</span> i=<span class="hljs-number">0</span>; i&lt;result.rowCount; i++){
+        <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'row'</span>,i,result.row[i]);
+    }
+}).catch(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">err</span>)</span>{
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'ERROR'</span>,err);
+});
+</code></pre>
+
+<!--lang:es-->
+
+<h2 id="ejemplosdepg">Ejemplos de PG</h2>
+
+<p>El primer ejemplo. Trae todas las filas de una consulta a la vez. Ejemplo basado en <a href="https://www.npmjs.com/package/pg#client-pooling">PG</a></p>
+
+<!--lang:en--]
+
+## Examples of PG
+
+The first easy example. One simple query that returns all rows. Example based in [PG](https://www.npmjs.com/package/pg#client-pooling)
+
+[!--lang:*-->
+
+<pre><code class="js language-js">var pg = <span class="hljs-built_in">require</span>(<span class="hljs-string">'pg-promise-strict'</span>);
+
+pg.easy = <span class="hljs-keyword">true</span>;
+
+var conString = <span class="hljs-string">"postgres://username:password@localhost/database"</span>;
+
+pg.connect(conString).<span class="hljs-keyword">then</span>(<span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(client)</span></span>{
+    <span class="hljs-keyword">return</span> client.query(<span class="hljs-string">'SELECT $1::int AS number'</span>, [<span class="hljs-string">'1'</span>]);
+}).<span class="hljs-keyword">then</span>(<span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(result)</span></span>){
+    console.log(result.rows[<span class="hljs-number">0</span>].number);
+}).catch(err){
+    <span class="hljs-keyword">return</span> console.<span class="hljs-built_in">error</span>(<span class="hljs-string">'error fetching client from pool or running query'</span>, err);
+}).<span class="hljs-keyword">then</span>(<span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span></span>{    
+    client.done(); // original done <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">of</span> <span class="hljs-title">callback</span> <span class="hljs-title">of</span> <span class="hljs-title">PG.connect</span>
+})</span>;
+</code></pre>
+
+<!--lang:es-->
+
+<p>En este ejemplo se puede ver:</p>
+
+<ul>
+<li>la cadena de promesas</li>
+
+<li>los parámetros apsados a <em>libpq</em> en la función <em>query</em></li>
+
+<li><code>.then(function(result)</code> es el equivalente a pasar callback a la función a <em>query</em></li>
+</ul>
+
+<!--lang:en--]
+
+In this example you see:
+ * the Promise chain
+ * parameters passed to *libpq* in the query function
+ * `.then(function(result)` is the equivalent callback passed to query
+
+<!--lang:es-->
+
+<h3 id="ejemplosinelpooldeconexiones">Ejemplo sin el pool de conexiones</h3>
+
+<p>Corresponde al ejemplo de llamada a <a href="https://github.com/brianc/node-postgres#client-instance">PG</a>
+con conexión directa del cliente</p>
+
+<!--lang:en--]
+
+### Example without connection pool
+
+Corresponds to calls to [PG](https://github.com/brianc/node-postgres#client-instance) 
+direct client instance
+
+[!--lang:*-->
+
+<pre><code class="js language-js"><span class="hljs-keyword">var</span> pg = <span class="hljs-built_in">require</span>(<span class="hljs-string">'pg-promise-strict'</span>);
+
+<span class="hljs-keyword">var</span> conString = <span class="hljs-string">"postgres://username:password@localhost/database"</span>;
+
+<span class="hljs-keyword">var</span> client = <span class="hljs-keyword">new</span> pg.Client(conString);
+
+client.connect().then(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">client</span>)</span>{
+    <span class="hljs-keyword">return</span> client.query(<span class="hljs-string">'SELECT NOW() AS "theTime"'</span>);
+}).then(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">result</span>)</span>{
+    <span class="hljs-built_in">console</span>.log(result.rows[<span class="hljs-number">0</span>].theTime);
+    <span class="hljs-built_in">console</span>.log(row.name);
+    client.end();
+}).catch(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">err</span>)</span>{
+    <span class="hljs-keyword">return</span> <span class="hljs-built_in">console</span>.error(<span class="hljs-string">'error connecting or running query'</span>, err);
+});
+</code></pre>
+
+<!--lang:es-->
+
+<h3 id="ejemploprocesandodeaunafilaalavez">Ejemplo procesando de a una fila a la vez</h3>
+
+<p>Corresponde al ejemplo de llamada a <a href="https://github.com/brianc/node-postgres/wiki/Client#simple-query-without-callback">PG</a>.query 
+sin función callback. En la documentación de <a href="https://github.com/brianc/node-postgres/wiki/Client#parameters-1">PG</a>,
+<a href="https://github.com/brianc">Brian C</a> dice <em>no especifique una function callback para consultas que devuelven grandes conjuntos de datos salvo que quiera que se acumule todo en memoria</em></p>
+
+<p>Esta es la manera de procesar fila por fila</p>
+
+<!--lang:en--]
+
+### Example with fetch row by row
+
+Corresponds to calls to [PG](https://github.com/brianc/node-postgres/wiki/Client#simple-query-without-callback).query 
+without callback. In [PG](https://github.com/brianc/node-postgres/wiki/Client#parameters-1) documentation 
+[Brian C](https://github.com/brianc) says *do not provide callback function for large result sets unless you're okay with loading the entire result set into memory*
+
+This is the way for process data row by row
+
+[!--lang:*-->
+
+<pre><code class="js language-js"><span class="hljs-selector-tag">pg</span><span class="hljs-selector-class">.connect</span>({<span class="hljs-attribute">user</span>: <span class="hljs-string">'brianc'</span>, <span class="hljs-attribute">database</span>: <span class="hljs-string">'test'</span>})<span class="hljs-selector-class">.then</span>(function(client){
+    <span class="hljs-selector-tag">client</span><span class="hljs-selector-class">.query</span>(<span class="hljs-string">"SELECT name FROM users"</span>)<span class="hljs-selector-class">.onRow</span>(function(row){
+        console<span class="hljs-selector-class">.log</span>(row.name);
+    })<span class="hljs-selector-class">.then</span>(function(result){
+        console<span class="hljs-selector-class">.log</span>(<span class="hljs-string">'ready.'</span>,result.rowCount,<span class="hljs-string">'rows processed'</span>);
+        client<span class="hljs-selector-class">.done</span>();
+    });
+});
+</code></pre>
+
+<!--lang:es-->
+
+<h1 id="corriendolostests">Corriendo los tests</h1>
+
+<p>Para correr los test, además de clonar el repositorio e instalar con npm
+tenemos que proveer una conexión a la base de datos <em>postgresql-9.3</em> para
+poder crear el usuario <em>test_user</em> y la base <em>test_db</em>.</p>
+
+<!--lang:en--]
+
+# Running tests
+
+Clone the repository and install the developer dependencies in then normal way. 
+You must provide a *postgresql-9.3* instalation for create a *test_db*.
+Then you can test pg-promise-strict
+
+[!--lang:*-->
+
+<!--lang:en-->
+
+<h1 id="additionsinpgpromisestrict">Additions in pg-promise-strict</h1>
+
+<!--lang:es--]
+
+# Agregados en pg-promise-strict
+
+[!--lang:*-->
+
+<!--multilang v0 en:additions.md es:agregados.md -->
+
+<!--multilang buttons-->
+
+<p>language: <img src="https://raw.githubusercontent.com/codenautas/multilang/master/img/lang-en.png" alt="English" />
+also available in:
+<a href="agregados.md"><img src="https://raw.githubusercontent.com/codenautas/multilang/master/img/lang-es.png" alt="Spanish" /></a> - </p>
+
+<!--lang:en-->
+
+<p>(for this section see <a href="agregados.md">spanish version</a>)</p>
+
+<p>Addings:</p>
+
+<ul>
+<li>explicit indication of how many rows are expected in the result</li>
+
+<li>explicit indication of <code>fetchAll</code> in <code>query(...).then</code> calls</li>
+</ul>
+
+<!--lang:es--]
+
+Si bien el objetivo de ***pg-promise-strict*** es ser neutro respecto de la librería [pg](//npmjs.com/package/pg)
+es conveniente hacer algunos agregados que persiguen los siguientes objetivos:
+* indicar explícitamente (cuando *se sabe*) cuántas líneas se esperan en el resultado, 
+para que en caso de no cumplirse se lance una excepción (porque estamos en una situación que *no se sabía que podía pasar*)
+* indicar explícitamente que se desean traer todas las líneas de una sola vez
+(en [pg](//npmjs.com/package/pg) eso es explícito al pasar un callback a la función query, 
+pero como el equivalente en pg-promise-strict es esperar una promesa con la función then, 
+podría pasar desapersibido el hecho de que se está haciendo un `fetchAll`)
+
+[!--lang:*-->
+
+<p>function   | min | max | return
+-----------|-----|-----|--------------
+execute    |  -  |  -  | result.rowCount
+fetchAll   |  0  | inf | result.rows, result.rowCount
+fetchUniqueValue | 1 | 1 | result.value
+fetchUniqueRow | 1 | 1 | result.row
+fetchOneRowIfExists | 0 | 1 | result.row, result.rowCount</p>
+
 <!-- multilang from README.md
 
 
@@ -31,12 +406,12 @@ NO MODIFIQUE ESTE ARCHIVO. FUE GENERADO AUTOMÁTICAMENTE POR multilang.js
 también disponible en:
 <a href="README.md"><img src="https://raw.githubusercontent.com/codenautas/multilang/master/img/lang-en.png" alt="inglés" /></a></p>
 
-<h2 id="instalacin">Instalación</h2>
+<h2 id="instalacin-2">Instalación</h2>
 
 <pre><code class="sh language-sh">$ npm <span class="hljs-keyword">install</span> <span class="hljs-keyword">fast</span>-devel-<span class="hljs-keyword">server</span>
 </code></pre>
 
-<h2 id="uso">USO</h2>
+<h2 id="uso-1">USO</h2>
 
 <pre><code class="js language-js"><span class="hljs-built_in">npm</span> start
 </code></pre>
@@ -50,5 +425,3 @@ también disponible en:
 <h2 id="licencias">Licencias</h2>
 
 <p><a href="LICENSE">MIT</a></p>
-
-<p>.......................</p>

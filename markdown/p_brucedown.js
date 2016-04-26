@@ -6,8 +6,8 @@ var brucedown = require('brucedown');
 function bruce(html) {
     return Promises.make(function(resolve, reject) {
         brucedown(html, function (err, htmlResult) {
-            if(err) { reject(err); }
-            resolve (htmlResult);
+            if(err) { console.log("brucedown error", err); reject(err); }
+            else { resolve (htmlResult); }
         })
     });
 };

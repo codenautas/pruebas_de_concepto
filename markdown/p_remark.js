@@ -7,8 +7,14 @@ var Promises = require('best-promise');
 
 function remarkPromise(content) {
     return Promises.make(function(resolve, reject) {
-        var res = remark().use(html, {/*sanitize:true, */commonmark: true}).process([content].join('\n'));
-        resolve(res);
+        try {
+            var res = remark().use(html, {/*sanitize:true, */commonmark: true}).process([content].join('\n'));
+            resolve(res);            
+        } catch (e) {
+            console.log("remark error", e);
+            reject(e);
+        }
+
     });
 };
 

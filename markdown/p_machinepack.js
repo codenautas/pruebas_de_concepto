@@ -7,7 +7,7 @@ function mpPromise(html) {
     return Promises.make(function(resolve, reject) {
         return Markdown.compileToHtml({ mdString: html, escapeHtml: false/*, compileCodeBlock: '->',*/}).exec({
             error: function (err){
-                //console.log("err", err);
+                console.log("err", err);
                 return reject(err);
             },
             success: function (result){
