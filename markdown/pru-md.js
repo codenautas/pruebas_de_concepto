@@ -10,7 +10,8 @@ function pruFile(fileName, parser) {
     var outFile = fileName+'_'+parser.name()+'.html';
     return fs.readFile(inFile,'utf8').then(function(content) {
         //console.log(content);
-        var parsed = parser.parse(content);
+        return parser.parse(content);
+    }).then(function(parsed) {
         //console.log("parsed", parsed);
         return fs.writeFile(outFile, parsed);
     }).catch(function(err) {
