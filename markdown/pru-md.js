@@ -23,7 +23,7 @@ function pruFile(fileName, parser) {
 };
 
 pruMD.probar = function probar(parser) {
-    var files = ['./LEEME', './bug'];
+    var files = ['./LEEME', './bug', './estilos'];
     return Promises.all(files.map(function(file) {
         return pruFile(file, parser);
     })).then(function(out) {

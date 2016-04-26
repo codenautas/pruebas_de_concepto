@@ -1,0 +1,25 @@
+<head>
+<link href="markdown.css" media="all" rel="stylesheet" />
+<link href="markdown2.css" media="all" rel="stylesheet" />
+<link href="github.css" media="all" rel="stylesheet" />
+</head>
+
+<div class="highlight"><pre><span class="s2">&quot;use strict&quot;</span><span class="p">;</span>
+<span class="kd">var</span> <span class="nx">pruMD</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;./pru-md.js&#39;</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">hljs</span>       <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;highlight.js&#39;</span><span class="p">);</span> <span class="c1">// https://highlightjs.org/ </span>
+<span class="kd">var</span> <span class="nx">showdown</span>  <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;showdown&#39;</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">converter</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">showdown</span><span class="p">.</span><span class="nx">Converter</span><span class="p">();</span>
+
+<span class="kd">var</span> <span class="nx">extHL</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+  <span class="kd">var</span> <span class="nx">myext1</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="nx">type</span><span class="o">:</span> <span class="s1">&#39;output&#39;</span><span class="p">,</span>
+    <span class="nx">regex</span><span class="o">:</span> <span class="sr">/markdown/g</span><span class="p">,</span>
+    <span class="nx">replace</span><span class="o">:</span> <span class="s1">&#39;showdown&#39;</span>
+  <span class="p">};</span>
+  <span class="k">return</span> <span class="p">[</span><span class="nx">myext1</span><span class="p">];</span>
+<span class="p">}</span>
+
+<span class="nx">pruMD</span><span class="p">.</span><span class="nx">probar</span><span class="p">({</span><span class="nx">parse</span> <span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">content</span><span class="p">)</span> <span class="p">{</span> <span class="k">return</span> <span class="nx">converter</span><span class="p">.</span><span class="nx">makeHtml</span><span class="p">(</span><span class="nx">content</span><span class="p">);</span> <span class="p">},</span>
+              <span class="nx">name</span> <span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span> <span class="k">return</span> <span class="s1">&#39;showdown&#39;</span><span class="p">;</span> <span class="p">}}).</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">out</span><span class="p">)</span> <span class="p">{</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">out</span><span class="p">);</span> <span class="p">});</span>
+</pre></div>
+

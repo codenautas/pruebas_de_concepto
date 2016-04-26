@@ -1,0 +1,24 @@
+<head>
+<link href="markdown.css" media="all" rel="stylesheet" />
+<link href="markdown2.css" media="all" rel="stylesheet" />
+<link href="github.css" media="all" rel="stylesheet" />
+</head>
+
+<pre><code class="lang-javascript">&quot;use strict&quot;;
+var pruMD = require(&#39;./pru-md.js&#39;);
+var hljs       = require(&#39;highlight.js&#39;); // https://highlightjs.org/ 
+var showdown  = require(&#39;showdown&#39;);
+var converter = new showdown.Converter();
+
+var extHL = function () {
+  var myext1 = {
+    type: &#39;output&#39;,
+    regex: /markdown/g,
+    replace: &#39;showdown&#39;
+  };
+  return [myext1];
+}
+
+pruMD.probar({parse : function(content) { return converter.makeHtml(content); },
+              name : function() { return &#39;showdown&#39;; }}).then(function(out) { console.log(out); });
+</code></pre>

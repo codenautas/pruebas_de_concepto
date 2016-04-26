@@ -34,7 +34,8 @@
     "machinepack-markdown": "2.0.0",
     "remark": "4.2.2",
     "remark-html": "3.0.0",
-    "brucedown": "1.1.1"
+    "brucedown": "1.1.1",
+    "highlight.js": "~9.3.0"
   },
   "engines": {
     "node": ">= 0.8.0"
