@@ -1,0 +1,8 @@
+{
+  "dependencies": {
+    "es6-transpiler": "~0.7.18"
+  },
+  "scripts": {
+    "start": "node example/server.js"
+  }
+}
