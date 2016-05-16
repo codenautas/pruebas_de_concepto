@@ -21,13 +21,6 @@ t.on('error', function (err) {
 })
  
 t.track('nodejs')
-t.track('postgresql')
- 
-// 5 minutes later
-t.track('tacos')
- 
-// 10 minutes later
-t.untrack('pizza')
 
 setInterval(function(){
     console.log('stamp',new Date());
