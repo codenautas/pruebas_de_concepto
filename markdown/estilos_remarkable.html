@@ -1,0 +1,32 @@
+<p><link href="markdown.css" media="all" rel="stylesheet" />
+<link href="markdown2.css" media="all" rel="stylesheet" />
+<link href="github.css" media="all" rel="stylesheet" /></p>
+<pre><code class="language-javascript">&quot;use strict&quot;;
+var pruMD = require('./pru-md.js');
+var hljs       = require('highlight.js'); // https://highlightjs.org/ 
+var showdown  = require('showdown');
+var converter = new showdown.Converter();
+ 
+var extHL = function () {
+  var myext1 = {
+    type: 'output',
+    regex: /markdown/g,
+    replace: 'showdown'
+  };
+  return [myext1];
+}
+
+pruMD.probar({parse : function(content) { return converter.makeHtml(content); },
+              name : function() { return 'showdown'; }}).then(function(out) { console.log(out); });
+
+</code></pre>
+<p><h4>Y una tabla</h4></p>
+<table>
+<thead>
+<tr><th style="text-align:left">h1</th><th style="text-align:center">h2</th><th style="text-align:right">h3</th></tr>
+</thead>
+<tbody>
+<tr><td style="text-align:left">100</td><td style="text-align:center">[a][1]</td><td style="text-align:right">![b][2]</td></tr>
+<tr><td style="text-align:left"><em>foo</em></td><td style="text-align:center"><strong>bar</strong></td><td style="text-align:right"><del>baz</del></td></tr>
+</tbody>
+</table>
