@@ -1,0 +1,42 @@
+    <form id=form1 name=form1 action=post method=>
+    <div class='cs'>Listar Forma de Pago:</div>
+    <select id='select_estado' name='estado' onchange='mostrar_formaPago()'>
+    <option value='0'></option>
+    <option value='3'>Todas</option>
+    <option value='1'>Activas</option>
+    <option value='0'>Inactivas</option>
+    </select>
+    <div class='cs'>Forma pago</div><div id='contenedor2'></div>
+    </form>
+    <script>
+    function mostrar_formaPago(estado)
+    {
+            var contenedor, m; 
+      contenedor = document.getElementById('contenedor2');  
+     // document.form1.orden.value = ''
+
+      estado = document.form1.estado.options[document.form1.estado.selectedIndex].value
+
+      var data='estado='+estado+'';
+      /// ajax=nuevoAjax(); 
+      var ajax=new XMLHttpRequest();
+
+      ajax.open('POST','ajax_tarjeta.php',true); 
+
+      ajax.onreadystatechange=function() 
+      { 
+        if (ajax.readyState==4) { 
+
+           contenedor.innerHTML = ajax.responseText 
+        } 
+
+      }
+
+            ajax.setRequestHeader('Connection','Close');
+            ajax.setRequestHeader('Content-Type','application/x-www-form-urlencoded');
+            ajax.setRequestHeader('Cache-Control','no-cache, must-revalidate');
+            ajax.setRequestHeader('Expires','Mon, 26 Jul 1997 05:00:00 GMT');
+            ajax.send(data);
+
+    }
+    </script>
