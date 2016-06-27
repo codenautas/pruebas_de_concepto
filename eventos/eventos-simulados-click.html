@@ -26,7 +26,7 @@ window.addEventListener('load',function(){
     function showOnEvent(element, eventName){
         function show(message, event){
             var o = event.target;
-            msg.textContent+=message+" ("+event.type+") "+o+": "+o.tagName+" "+o.id+" = "+o.value+","+o.checked+' ---- '+event.key+':'+event.code+"\n";
+            msg.textContent+=message+" ("+event.type+") "+o+": "+o.tagName+" "+o.id+" = "+o.value+","+o.checked+' ---- '+event.key+':'+event.code+','+event.keyCode+"\n";
         }
         element.addEventListener(eventName,function(event){
             show(eventName+' ('+(element.id||element.tagName)+')', event);
