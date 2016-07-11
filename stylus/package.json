@@ -6,6 +6,7 @@
         "st-sel": "node node_modules/stylus/bin/stylus selectors.styl -o selectors.css",
         "st-var": "node node_modules/stylus/bin/stylus variables.styl -o variables.css",
         "st-fun": "node node_modules/stylus/bin/stylus functions.styl -o functions.css",
+        "st-ip": "node node_modules/stylus/bin/stylus interpolation.styl -o interpolation.css",
         "st-mix": "node node_modules/stylus/bin/stylus mixins.styl -o mixins.css"
     }
 }
