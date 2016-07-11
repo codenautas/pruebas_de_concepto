@@ -3,6 +3,7 @@
         "stylus": "~0.54.5"
     },
     "scripts": {
-        "st-sel": "node node_modules/stylus/bin/stylus selectors.styl -o selectors.css"
+        "st-sel": "node node_modules/stylus/bin/stylus selectors.styl -o selectors.css",
+        "st-var": "node node_modules/stylus/bin/stylus variables.styl -o variables.css"
     }
 }
