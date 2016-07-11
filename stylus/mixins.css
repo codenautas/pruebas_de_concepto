@@ -1,0 +1,44 @@
+form input[type=button] {
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+}
+#logo:hover {
+  opacity: 0.5;
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=50);
+}
+/* parente references */
+table tr {
+  background-color: #eee;
+}
+table tr.even,
+table tr:nth-child(even) {
+  background-color: #fff;
+}
+table td {
+  padding: 4px 10px;
+}
+table#users tr {
+  background-color: #494848;
+}
+table#users tr.even,
+table#users tr:nth-child(even) {
+  background-color: #303030;
+}
+table#users td {
+  color: #fff;
+}
+/* block mixing */
+.bar {
+  width: 10px;
+}
+/* mixing in mixing */
+ul li {
+  display: inline;
+}
+ul li:after {
+  content: ', ';
+}
+ul li:last-child:after {
+  content: '';
+}

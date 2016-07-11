@@ -1,0 +1,61 @@
+border-radius()
+  -webkit-border-radius arguments
+  -moz-border-radius arguments
+  border-radius arguments
+
+form input[type=button]
+  border-radius 5px
+  
+  
+support-for-ie ?= true
+
+    opacity(n)
+      opacity n
+      if support-for-ie
+        filter unquote('progid:DXImageTransform.Microsoft.Alpha(Opacity=' + round(n * 100) + ')')
+
+    #logo
+      &:hover
+        opacity 0.5
+        
+/* parente references */
+stripe(even = #fff, odd = #eee)
+   tr
+     background-color odd
+     &.even
+     &:nth-child(even)
+       background-color even
+       
+ table
+   stripe()
+   td
+     padding 4px 10px
+
+ table#users
+   stripe(#303030, #494848)
+   td
+     color white
+     
+/* block mixing */
+foo()
+  .bar
+    {block}
+
++foo()
+  width: 10px
+  
+/* mixing in mixing */
+ inline-list()
+   li
+     display inline
+
+ comma-list()
+   inline-list()
+   li
+     &:after
+       content ', '
+     &:last-child:after
+       content ''
+
+ ul
+   comma-list()
