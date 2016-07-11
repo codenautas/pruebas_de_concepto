@@ -1,0 +1,53 @@
+border-radius()
+  -webkit-border-radius: arguments
+  -moz-border-radius: arguments
+  border-radius: arguments
+
+body
+  font: 12px Helvetica, Arial, sans-serif
+  color white
+
+a.button
+  border-radius: 5px
+  
+textarea, input
+  border 1px solid #eee
+  
+
+// parent references
+textarea
+input
+  color #A7A7A7
+  &:hover
+    color #000
+
+box-shadow()
+  -webkit-box-shadow arguments
+  -moz-box-shadow arguments
+  box-shadow arguments
+  html.ie8 &,
+  html.ie7 &,
+  html.ie6 &
+    border 2px solid arguments[length(arguments) - 1]
+
+body
+  #login
+    box-shadow 1px 1px 3px #eee
+
+
+// partial references
+.foo
+  &__bar
+    width: 10px
+
+    ^[0]:hover &
+      width: 20px
+      
+// negative partial references
+.foo-neg
+  &__bar-neg
+    &_baz-neg
+      width: 10px
+
+      ^[-1]:hover &
+        width: 20px

@@ -3,6 +3,6 @@
         "stylus": "~0.54.5"
     },
     "scripts": {
-        "st1": "node node_modules/stylus/bin/stylus ex1.styl -o ex1.css"
+        "st-sel": "node node_modules/stylus/bin/stylus selectors.styl -o selectors.css"
     }
 }

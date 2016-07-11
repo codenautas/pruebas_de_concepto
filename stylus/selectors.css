@@ -1,0 +1,43 @@
+body {
+  font: 12px Helvetica, Arial, sans-serif;
+  color: #fff;
+}
+a.button {
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+}
+textarea,
+input {
+  border: 1px solid #eee;
+}
+textarea,
+input {
+  color: #a7a7a7;
+}
+textarea:hover,
+input:hover {
+  color: #000;
+}
+body #login {
+  -webkit-box-shadow: 1px 1px 3px #eee;
+  -moz-box-shadow: 1px 1px 3px #eee;
+  box-shadow: 1px 1px 3px #eee;
+}
+html.ie8 body #login,
+html.ie7 body #login,
+html.ie6 body #login {
+  border: 2px solid #eee;
+}
+.foo__bar {
+  width: 10px;
+}
+.foo:hover .foo__bar {
+  width: 20px;
+}
+.foo-neg__bar-neg_baz-neg {
+  width: 10px;
+}
+.foo-neg__bar-neg:hover .foo-neg__bar-neg_baz-neg {
+  width: 20px;
+}
