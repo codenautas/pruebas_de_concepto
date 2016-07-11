@@ -11,6 +11,7 @@ textarea,
 input {
   border: 1px solid #eee;
 }
+/* parent references */
 textarea,
 input {
   color: #a7a7a7;
@@ -29,6 +30,7 @@ html.ie7 body #login,
 html.ie6 body #login {
   border: 2px solid #eee;
 }
+/* partial references */
 .foo__bar {
   width: 10px;
 }
@@ -40,4 +42,45 @@ html.ie6 body #login {
 }
 .foo-neg__bar-neg:hover .foo-neg__bar-neg_baz-neg {
   width: 20px;
+}
+/* ranges in partial references */
+.foo .bar {
+  width: 10px;
+}
+.foo:hover .bar {
+  width: 20px;
+}
+/* initial reference */
+.block:hover .block__element {
+  color: #f00;
+}
+/* relative reference */
+.foo .bar {
+  width: 10px;
+}
+.foo .bar,
+.foo .baz {
+  height: 10px;
+}
+/* root reference */
+textarea,
+input {
+  color: #a7a7a7;
+}
+textarea:hover,
+input:hover,
+.is-hovered {
+  color: #000;
+}
+/* selector bif */
+.a .b .c,
+.a .b .d {
+  color: #f00;
+}
+.aa .bb__cc {
+  content: '.aa', '& .bb', '&__cc';
+}
+/* disambiguation */
+body {
+  margin: -5px;
 }
