@@ -1,0 +1,21 @@
+<html>
+<head>
+    <title>Prueba de On/OffLine mode</title>
+</head>
+<body>
+<div id="msg"></div>
+<input type="button" id="check" value="Verificar" />
+<script>
+function $(elem) { return document.getElementById(elem); }
+window.onload=function() {
+    $('check').onclick = function() {
+        if(navigator.onLine) {
+            $('msg').innerHTML = 'ON LINE';
+        } else {
+            $('msg').innerHTML = 'off line';
+        }
+    }
+}
+</script>
+</body>
+</html>
