@@ -11,3 +11,20 @@ body {
   margin-left: -75px;
   margin-top: -40px;
 }
+#logo {
+  z-index: 20;
+  position: absolute;
+}
+#logo2 {
+  position: absolute;
+  z-index: 1;
+}
+body {
+  color: #f00;
+}
+body ul li {
+  color: #00f;
+}
+body ul li a {
+  background-color: #00f;
+}

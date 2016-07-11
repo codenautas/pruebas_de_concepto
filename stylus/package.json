@@ -4,6 +4,8 @@
     },
     "scripts": {
         "st-sel": "node node_modules/stylus/bin/stylus selectors.styl -o selectors.css",
-        "st-var": "node node_modules/stylus/bin/stylus variables.styl -o variables.css"
+        "st-var": "node node_modules/stylus/bin/stylus variables.styl -o variables.css",
+        "st-fun": "node node_modules/stylus/bin/stylus functions.styl -o functions.css",
+        "st-mix": "node node_modules/stylus/bin/stylus mixins.styl -o mixins.css"
     }
 }

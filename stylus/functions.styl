@@ -1,0 +1,102 @@
+add(a, b)
+  a + b
+  
+body 
+   padding add(10px, 5)
+   
+/* default arguments */
+add2(a, b = unit(a, px))
+   a + b
+
+div 
+   padding add2(10px)
+   
+/* named parameters */
+subtract(a, b)
+  a - b
+  
+td 
+   padding subtract(b:30, a:60) px
+   
+/* multiple return values */
+   sizes()
+     15px 10px
+     
+tr
+    padding sizes()[0]
+    spacing sizes()[1]
+
+swap(a, b)
+  return b a
+    
+a
+    href: swap(target,link)
+    
+// condicionales
+ stringish(val)
+   if val is a 'string' or val is a 'ident'
+     yes
+   else
+     no
+
+compare(a, b)
+  if a > b
+    higher
+  else if a < b
+    lower
+  else
+    equal
+    
+/* variable functions */
+add(a, b)
+  a + b
+
+sub(a, b)
+  a - b
+
+invoke(a, b, fn)
+  fn(a, b)
+  
+body
+  padding invoke(5, 10, add)
+  padding invoke(5, 10, sub)
+
+
+// anonymous functions
+sort(list, fn = null)
+  // default sort function
+  if fn == null
+    fn = @(a, b) {
+      a > b
+    }
+
+  // bubble sort
+  for $i in 1..length(list) - 1
+    for $j in 0..$i - 1
+      if fn(list[$j], list[$i])
+        $temp = list[$i]
+        list[$i] = list[$j]
+        list[$j] = $temp
+  return list
+
+  sort('e' 'c' 'f' 'a' 'b' 'd')
+  // => 'a' 'b' 'c' 'd' 'e' 'f'
+
+  sort(5 3 6 1 2 4, @(a, b){
+    a < b
+  })
+  // => 6 5 4 3 2 1
+  
+// hash example
+get(hash, key)
+  return pair[1] if pair[0] == key for pair in hash
+  
+hash = (one 1) (two 2) (three 3)  
+get(hash, two)
+// => 2
+
+get(hash, three)
+// => 3
+
+get(hash, something)
+// => null  
