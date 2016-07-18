@@ -9,10 +9,12 @@
 
 prueba / funcion | window.onLine | !!err.originalError | not logged
 ------------------------|-----------------------|--------------------------|-----------
-Invalidar la sesión  | NO | NO                 | SI
-Detener servidor | tarda en dar offline | enseguida   | no aplica
-Sacar cable de red | tarda           | tarda                 | no aplica
+Invalidar la sesión  | F | F                 | V
+Detener servidor | V, tarda | V, tarda   | no aplica
+Sacar cable de red | F           | V                 | no aplica
 
 ### Aclaraciones
-*no aplica* = no aplica ese control porque cachea el error antes
+- V = Verdadero
+- F = Falso
+- *no aplica* = no aplica ese control porque cachea el error antes
 
