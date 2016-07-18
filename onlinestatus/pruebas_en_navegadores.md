@@ -9,7 +9,7 @@
 - **F** = Falso
 - **Latencia** = Tiempo aproximado en segundos que tarda en responder (esto depende de la conexión de red pero sirve para estimar)
 
-#### Las pruebas se realizaron con los clientes en una máquina virtual y el servidor en otra
+#### Las pruebas se realizaron con los clientes en una máquina virtual y el servidor en otra. Ambas con windows 7.
 
 ***
 
