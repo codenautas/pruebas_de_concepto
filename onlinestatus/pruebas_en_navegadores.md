@@ -4,6 +4,7 @@
 - **Invalidar la sesión**: borrar los archivos de sesión o reiniciar el servidor con otra clave
 - **Detener servidor**: ejecutar Control+C para detener el servidor node
 - **Sacar cable de red**: desconectar cable físicamente o hacerlo con el switch correspondiente en una máquina virtual.
+- **N/A**: No Aplica ese control porque cachea el error antes
 - **V** = Verdadero
 - **F** = Falso
 - **Latencia** = Tiempo aproximado en segundos que tarda en responder (esto depende de la conexión de red pero sirve para estimar)
