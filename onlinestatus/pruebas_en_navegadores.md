@@ -1,18 +1,22 @@
 ## Registro del funcionamiento de window.navigator.onLine y err.originalError (ProgressEvent en un request AJAX)
 
-## Nomenclatura:
+### Nomenclatura:
 - **Invalidar la sesión**: borrar los archivos de sesión o reiniciar el servidor con otra clave
 - **Detener servidor**: ejecutar Control+C para detener el servidor node
 - **Sacar cable de red**: desconectar cable físicamente o hacerlo con el switch correspondiente en una máquina virtual.
 - **V** = Verdadero
 - **F** = Falso
-- **N/A** = No Aplica ese control porque cachea el error antes
+- **Latencia** = Tiempo aproximado en segundos que tarda en responder (esto depende de la conexión de red pero sirve para estimar)
+
+#### Las pruebas se realizaron con los clientes en una máquina virtual y el servidor en otra
+
+***
 
 ### Chrome
 
-prueba / funcion | window.onLine | !!err.originalError | not logged
-------------------------|-----------------------|--------------------------|-----------
-Invalidar la sesión  | N/A | N/A                 | V
-Detener servidor | V, tarda | V, tarda   | N/A
-Sacar cable de red | F           | V                 | N/A
+prueba / funcion | window.onLine | !!err.originalError | Latencia |  not logged
+------------------------|-----------------------|--------------------------|--------------------------|-----------
+Invalidar la sesión  | N/A | N/A                 | 2 | V
+Detener servidor | V | V   |  20 | N/A
+Sacar cable de red | F           | V                 | 0 | N/A
 
