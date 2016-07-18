@@ -16,8 +16,15 @@
 ### Chrome
 
 prueba / funcion | window.onLine | !!err.originalError | Latencia |  not logged
-------------------------|-----------------------|--------------------------|--------------------------|-----------
-Invalidar la sesión  | N/A | N/A                 | 2 | V
-Detener servidor | V | V   |  20 | N/A
-Sacar cable de red | F           | V                 | 0 | N/A
+----|----|----|---|----
+Invalidar la sesión | N/A | N/A  | 1 | V
+Detener servidor | V | V |  20 | N/A
+Sacar cable de red | F | V | 0 | N/A
 
+### Firefox
+
+prueba / funcion | window.onLine | !!err.originalError | Latencia |  not logged
+----|----|----|---|----
+Invalidar la sesión | N/A | N/A  | 1 | V
+Detener servidor | V | V |  42 | N/A
+Sacar cable de red | F | V | 9 | N/A
