@@ -27,17 +27,16 @@ console.log("undefined", yaml.customLoad(yaml.customDump(undefined)))
 
 for(var p in convertir){
     console.log('------',p,':');
-    var u=yaml.dump(convertir[p]);
-    console.log(u);
-    try{
-        var s=yaml.safeDump(convertir[p], {schema:yaml.CUSTOM_SCHEMA});
-    }catch(err){
-        s=err;
+    // usa este par de funciones que andan (hasta que llegan regex/fun)
+    try {
+       console.log(yaml.customLoad(yaml.customDump(convertir[p]))); 
     }
-    if(u!=s){
-        console.log(" ++++++ Error", s);
-    var o=yaml.load(u)
-    console.log(o,o && o.a?(o.a===o.b):'');
+    catch(err) {
+        var ok = (p === 'fun' || p === 'regex');
+        var m = ok ? "OK" : "INESPERADO";
+        console.log(ok ? m+" falla con "+p : m+":"+err)
+    }
+    
 }
 
 console.log('-------------');
