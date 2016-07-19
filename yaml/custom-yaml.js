@@ -101,8 +101,11 @@ var UndefYamlType = new yaml.Type('!undefined', {
 });
 // After our types are defined, it's time to join them into a schema.
 
-var CUSTOM_SCHEMA = yaml.Schema.create([ SpaceYamlType, PointYamlType, UndefYamlType ]);
+// var CUSTOM_SCHEMA = yaml.Schema.create([ SpaceYamlType, PointYamlType, UndefYamlType ]);
 
+var CUSTOM_SCHEMA = yaml.Schema.create(yaml.DEFAULT_SAFE_SCHEMA, [ SpaceYamlType, PointYamlType, UndefYamlType ]);
+
+// 'tag:yaml.org,2002:js/undefined'
 
 // do not execute the following if file is required (http://stackoverflow.com/a/6398335)
 if (require.main === module) {

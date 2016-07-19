@@ -1,6 +1,7 @@
 "use strict";
 
 var yaml = require('js-yaml');
+var fs = require('fs');
 
 var parte={
     parteA: "A",
@@ -47,30 +48,33 @@ var MiClaseYamlType = new yaml.Type('!date2', {
   }
 });
 
+var schema = yaml.DEFAULT_SAFE_SCHEMA;
 var schema = yaml.Schema.create([ DateYamlType, MiClaseYamlType ]);
 
 var convertir={
-    fecha: new Date(1969, 5-1, 6),
-    undef: undefined,
+    //fecha: new Date(1969, 5-1, 6),
+    //undef: undefined,
     miFecha: new MiClase(new Date(1969, 5-1, 6)),
 };
 
 for(var p in convertir){
     console.log('------',p,':',convertir[p]);
     var u=yaml.dump(convertir[p], {schema});
-    console.log(u);
+    console.log("unsafe", u);
     try{
         var s=yaml.safeDump(convertir[p], {schema});
     }catch(err){
         s=err;
     }
+    //fs.writeFileSync("./yaml-custom.yaml", s);
+    console.log("safe", s.toString());
     if(u!=s){
-        console.log(s);
+        console.log("ERROR", s);
     }
     var o=yaml.load(u, {schema})
     console.log(o,o && o.a?(o.a===o.b):'');
 }
 
 console.log('-------------');
-console.log(yaml.load(" id_type: pepe\n "));
-console.log(yaml.load('- card\n- 123456\n '));
+//console.log(yaml.load(" id_type: pepe\n "));
+//console.log(yaml.load('- card\n- 123456\n '));
