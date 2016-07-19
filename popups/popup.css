@@ -35,7 +35,7 @@ button {
 /* Center the image and position the close button */
 .imgcontainer {
     text-align: center;
-    margin: 24px 0 12px 0;
+    margin: 0px 0 20px 0;
     position: relative;
 }
 
@@ -45,7 +45,7 @@ img.avatar {
 }
 
 .container {
-    padding: 16px;
+    /* padding: 16px; */
 }
 .margen {
     padding: 10px;
@@ -65,31 +65,33 @@ span.psw {
     width: auto;
     height: auto;
     overflow: auto;
+    /*
     background-color: rgb(0,0,0);
     background-color: rgba(0,0,0,0.4);
-    padding-top: 60px;
+    */
+    /* padding-top: 60px; */
     position: fixed;
     top: 50%;
     left: 50%;
-    margin-top: -50px;
+    margin-top: -10px;
     margin-left: -100px;
 }
 
 /* Modal Content/Box */
 .modalcontent {
-    background-color: #fefefe;
+    /* background-color: #fefefe; */
     margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
-    border: 1px solid #888;
+    /* border: 1px solid #888; */
     width: auto; /* Could be more or less, depending on screen size */
 }
 
 /* The Close Button (x) */
 .close {
     position: absolute;
-    right: 25px;
+    right: 15px;
     top: 0;
     color: #000;
-    font-size: 35px;
+    font-size: 30px;
     font-weight: bold;
 }
 
@@ -109,7 +111,7 @@ span.psw {
     from {-webkit-transform: scale(0)}
     to {-webkit-transform: scale(1)}
 }
-    
+
 @keyframes animatezoom {
     from {transform: scale(0)}
     to {transform: scale(1)}
