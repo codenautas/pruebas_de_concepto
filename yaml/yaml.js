@@ -18,7 +18,9 @@ var convertir={
     parte: parte,
     partes: [parte, parte],
     rombo: {a:parte, b:parte},
-    array: [1,"2", false]
+    array: [1,"2", false],
+    regex: /hola/,
+    fun: function(x){ return x+1; }
 };
 
 for(var p in convertir){
@@ -40,3 +42,5 @@ for(var p in convertir){
 console.log('-------------');
 console.log(yaml.load(" id_type: pepe\n "));
 console.log(yaml.load('- card\n- 123456\n '));
+
+console.log(yaml.load(yaml.dump(convertir.fun)).toString());
