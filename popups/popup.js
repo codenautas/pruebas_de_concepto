@@ -16,25 +16,24 @@ function PopUp(opts) {
         html.span({class:margen}, btnOK)
     ]).create();
     
+    var form = html.form([container]).create();
+    form.classList.add('modal-content');
+    form.classList.add('animate');
     this.div = html.div({id:divName, class:'modal'}).create();
-    this.div.appendChild(container);
+    this.div.appendChild(form);
     
     this.show = function() { me.div.style.display='block'; }
     this.hide = function() { me.div.style.display='none'; }
 
-    btnCancel.onclick = this.hide;
-    
+    btnCancel.addEventListener('click', this.hide);
     var body = document.body;
     body.appendChild(this.div);
     /*
     // cerrar ventana al clickear afuera
     function windowOnClick(event) { if(event.target==me.div) { me.hide(); } };
     var wok = window.onclick;
-    if(wok) {
-        window.onclick = function(event) {
-            wok(event);
-            windowOnClick(event);
-        }
-    } else { window.onclick = windowOnClick; }
+    window.addEventListener('click',
+                            !wok ? windowOnClick
+                                 : function(event) { wok(event); windowOnClick(event); });
     */
 }
