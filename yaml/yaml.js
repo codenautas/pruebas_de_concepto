@@ -1,7 +1,7 @@
 "use strict";
 
-var yaml = require('js-yaml');
-//var yaml = require('./custom-yaml.js');
+//var yaml = require('js-yaml');
+var yaml = require('./custom-yaml.js');
 
 var parte={
     parteA: "A",

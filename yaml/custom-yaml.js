@@ -95,12 +95,12 @@ var UndefYamlType = new yaml.Type('!undefined', {
 
 var SPACE_SCHEMA = yaml.Schema.create([ SpaceYamlType, PointYamlType, UndefYamlType ]);
 
-/*
+
 // do not execute the following if file is required (http://stackoverflow.com/a/6398335)
 if (require.main === module) {
-
+    console.log("dn", __dirname)
   // And read a document using that schema.
-  fs.readFile(path.join(__dirname, 'custom_types.yml'), 'utf8', function (error, data) {
+  fs.readFile(path.join(__dirname, 'custom,yaml'), 'utf8', function (error, data) {
     var loaded;
 
     if (!error) {
@@ -111,7 +111,7 @@ if (require.main === module) {
     }
   });
 }
-*/
+
 
 // There are some exports to play with this example interactively.
 module.exports.Point         = Point;
