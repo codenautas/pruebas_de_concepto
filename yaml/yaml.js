@@ -26,7 +26,7 @@ for(var p in convertir){
     var u=yaml.dump(convertir[p]);
     console.log(u);
     try{
-        var s=yaml.safeDump(convertir[p]);
+        var s=yaml.safeDump(convertir[p], {schema:yaml.SPACE_SCHEMA});
     }catch(err){
         s=err;
     }

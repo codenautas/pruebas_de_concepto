@@ -75,25 +75,33 @@ var SpaceYamlType = new yaml.Type('!space', {
   // That is regular mapping with three key-value pairs but with !space tag.
 });
 
-function Undef(v) {
-  this.klass = 'Undef';
-  this.v     = v;
+function resolveJavascriptUndefined() {
+  return true;
+}
+
+function constructJavascriptUndefined() {
+  /*eslint-disable no-undefined*/
+  return undefined;
+}
+
+function representJavascriptUndefined() {
+  return '';
+}
+
+function isUndefined(object) {
+  return typeof object === 'undefined';
 }
 
 var UndefYamlType = new yaml.Type('!undefined', {
   kind: 'scalar',
-  construct: function (data) {
-    data = data; // in case of empty node
-    return new Undef(data);
-  },
-  instanceOf: Undef
-
+  resolve: resolveJavascriptUndefined,
+  construct: constructJavascriptUndefined,
+  predicate: isUndefined,
+  represent: representJavascriptUndefined
 });
-
-
 // After our types are defined, it's time to join them into a schema.
 
-var SPACE_SCHEMA = yaml.Schema.create([ SpaceYamlType, PointYamlType, UndefYamlType ]);
+var CUSTOM_SCHEMA = yaml.Schema.create([ SpaceYamlType, PointYamlType, UndefYamlType ]);
 
 
 // do not execute the following if file is required (http://stackoverflow.com/a/6398335)
@@ -104,7 +112,7 @@ if (require.main === module) {
     var loaded;
 
     if (!error) {
-      loaded = yaml.load(data, { schema: SPACE_SCHEMA });
+      loaded = yaml.load(data);
       console.log(util.inspect(loaded, false, 20, true));
     } else {
       console.error(error.stack || error.message || String(error));
@@ -118,7 +126,8 @@ module.exports.Point         = Point;
 module.exports.Space         = Space;
 module.exports.PointYamlType = PointYamlType;
 module.exports.SpaceYamlType = SpaceYamlType;
-module.exports.SPACE_SCHEMA = SPACE_SCHEMA;
+module.exports.UndefYamlType = UndefYamlType;
+module.exports.CUSTOM_SCHEMA = CUSTOM_SCHEMA;
 module.exports.dump = yaml.dump;
 module.exports.safeDump = yaml.safeDump;
 module.exports.load = yaml.load;
