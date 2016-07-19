@@ -1,0 +1,7 @@
+{
+  "dependencies": {
+    "deep-equal": "1.0.1",
+    "json3": "3.3.2",
+    "js-yaml": "3.6.1"
+  }
+}
