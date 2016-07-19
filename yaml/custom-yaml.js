@@ -123,6 +123,12 @@ if (require.main === module) {
   });
 }
 
+function customLoad(data) {
+    return yaml.safeLoad(data, {schema:CUSTOM_SCHEMA});
+}
+function customDump(data) {
+    return yaml.safeDump(data, {schema:CUSTOM_SCHEMA});
+}
 
 // There are some exports to play with this example interactively.
 module.exports.Point         = Point;
@@ -132,5 +138,9 @@ module.exports.SpaceYamlType = SpaceYamlType;
 module.exports.UndefYamlType = UndefYamlType;
 module.exports.CUSTOM_SCHEMA = CUSTOM_SCHEMA;
 module.exports.dump = yaml.dump;
-module.exports.safeDump = yaml.safeDump;
 module.exports.load = yaml.load;
+module.exports.safeDump = yaml.safeDump;
+module.exports.safeLoad = yaml.safeLoad;
+
+module.exports.customLoad = customLoad;
+module.exports.customDump = customDump;

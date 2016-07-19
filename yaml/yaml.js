@@ -25,6 +25,7 @@ var convertir={
 
 for(var p in convertir){
     console.log('------',p,':');
+    /*
     var u=yaml.dump(convertir[p]);
     console.log(u);
     try{
@@ -33,10 +34,13 @@ for(var p in convertir){
         s=err;
     }
     if(u!=s){
-        console.log(s);
-    }
+        console.log(" ++++++ Error", s);
     var o=yaml.load(u)
     console.log(o,o && o.a?(o.a===o.b):'');
+    */
+    
+    // usa este par de funciones que andan (hasta que llegan regex/fun)
+    console.log(yaml.customLoad(yaml.customDump(convertir[p])));
 }
 
 console.log('-------------');
