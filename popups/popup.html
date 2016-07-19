@@ -25,7 +25,17 @@ function msg(m) {
 
 function showDialog(cb) {
     var pu = new PopUp(cb);
-    return pu.show();
+    return new Promise(function(resolve, reject) {
+        pu.show();
+        function esperar() {
+            if(pu.shown()) {
+                setInterval(esperar, 1000);
+            } else {
+                resolve(pu.result);
+            }
+        }
+        esperar();
+    }); 
 }
 
 function prettyAlert(message) {
@@ -46,7 +56,7 @@ function runDialog(dlgFun, args) {
     dlgFun(args).then(function(result) {
         msg(JSON.stringify(result));
     }).catch(function(err){
-        msg('Error: el usuario cerró la ventana sin clickear algo útil dentro de la ventana');
+        msg('Error: el usuario cerró la ventana sin clickear algo útil dentro de la ventana'+err);
     });
 }
 

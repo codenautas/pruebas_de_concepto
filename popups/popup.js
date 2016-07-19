@@ -2,9 +2,8 @@
 
 function PopUp(cb) {
     var divName = 'pu_div';
-    var me = this;
     this.cb = cb;
-    
+    var me = this;
     this.div = document.getElementById(divName);
     var body = document.body;
     if(this.div) {
@@ -29,10 +28,16 @@ function PopUp(cb) {
     this.div = html.div({id:divName, class:'modal'}).create();
     this.div.appendChild(outDiv);
     
+    this.setResult = function(result) {
+        me.result = result;
+        me.hide();
+        return result;
+    }
     this.show = function() {
         me.div.style.display='block';
-        return Promise.resolve(me.cb(innerContainer, me.hide));
+        me.cb(innerContainer, me.setResult);
     }
+    this.shown = function() { return me.div.style.display=='block'; }
     this.hide = function() { me.div.style.display='none'; }
 
     // btnCancel.addEventListener('click', this.hide);
