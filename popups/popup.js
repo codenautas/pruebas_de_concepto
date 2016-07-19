@@ -16,11 +16,9 @@ function PopUp(opts) {
         html.span({class:margen}, btnOK)
     ]).create();
     
-    var form = html.form([container]).create();
-    form.classList.add('modal-content');
-    form.classList.add('animate');
+    var outDiv = html.div({class:['modalcontent','animate']}, [container]).create();
     this.div = html.div({id:divName, class:'modal'}).create();
-    this.div.appendChild(form);
+    this.div.appendChild(outDiv);
     
     this.show = function() { me.div.style.display='block'; }
     this.hide = function() { me.div.style.display='none'; }
@@ -29,11 +27,11 @@ function PopUp(opts) {
     var body = document.body;
     body.appendChild(this.div);
     /*
-    // cerrar ventana al clickear afuera
+    // cerrar ventana al clickear afuera (no funciona)
     function windowOnClick(event) { if(event.target==me.div) { me.hide(); } };
     var wok = window.onclick;
     window.addEventListener('click',
-                            !wok ? windowOnClick
-                                 : function(event) { wok(event); windowOnClick(event); });
+                            !wok ? windowOnClick : function(event) { wok(event); windowOnClick(event); }
+                           );
     */
 }
