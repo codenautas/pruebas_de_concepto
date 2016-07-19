@@ -23,6 +23,8 @@ var convertir={
     fun: function(x){ return x+1; }
 };
 
+console.log("undefined", yaml.customLoad(yaml.customDump(undefined)))
+
 for(var p in convertir){
     console.log('------',p,':');
     /*
