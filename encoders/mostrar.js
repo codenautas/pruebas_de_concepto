@@ -9,15 +9,18 @@ var deepEqual = require('deep-equal');
 var JSON3 = require('json3');
 var yaml = require('js-yaml');
 
+var cYaml = require('../yaml/custom-yaml.js');
+
 var parte={
     parteA: "A",
 }
 
 var encoders=[
-    {name: 'JSON3'     , object:JSON3, parseName:'parse'   , stringifyName:'stringify'},
-    {name: 'JSON'      , object:JSON , parseName:'parse'   , stringifyName:'stringify'},
-    {name: 'yaml'      , object:yaml , parseName:'load'    , stringifyName:'dump'     },
-    {name: 'yaml-safe' , object:yaml , parseName:'safeLoad', stringifyName:'safeDump' },
+    {name: 'JSON3'      , object:JSON3, parseName:'parse'     , stringifyName:'stringify' },
+    {name: 'JSON'       , object:JSON , parseName:'parse'     , stringifyName:'stringify' },
+    {name: 'yaml'       , object:yaml , parseName:'load'      , stringifyName:'dump'      },
+    {name: 'yaml-safe'  , object:yaml , parseName:'safeLoad'  , stringifyName:'safeDump'  },
+    {name: 'yaml-custom', object:cYaml, parseName:'customLoad', stringifyName:'customDump'},
 ]
 
 var fixtures=[
