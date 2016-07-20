@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Custom Dialog</title>
+<link rel="stylesheet" type="text/css" href="popup-dp.css" media="screen" />
+<link rel="stylesheet" type="text/css" href="dialog-promise.css" media="screen" />
+<script src="node_modules/js-to-html/js-to-html.js"></script>
+<script src="dialog-promise.js"></script>
+<script src="popup-dp.js"></script>
+</head>
+<body>
+<h1>Custom dialogs</h1>
+<p>
+<button onclick="runDialog('Un mensaje de alerta')" style="width:auto;">Crear mensaje</button>
+</p>
+
+<p>
+<pre id="status"></pre>
+<button onclick="document.getElementById('status').innerHTML = '\n'" style="width:auto;">Limpiar mensajes</button>
+</p>
+
+<script>
+
+function msg(m) {
+    document.getElementById('status').innerHTML += m + '\n';
+}
+
+
+function prettyAlert(message) {
+    var html = jsToHtml.html;
+    return showDialog(function(mainElement, done){
+        var button=html.button("Ok").create();
+        button.addEventListener('click', function(){
+            done("ok");
+        });
+        mainElement.appendChild(html.div([
+            html.h1(message),
+            button
+        ]).create());
+    });
+}
+
+function runDialog(args) {
+    prettyAlert(args).then(function(result) {
+        msg(JSON.stringify(result));
+    }).catch(function(err){
+        msg('Error: el usuario cerró la ventana sin clickear algo útil dentro de la ventana'+err);
+    });
+}
+
+window.onload = function() {
+    msg('Seleccione alguno de las opciones...');
+};
+
+</script>
+</body>
+</html>
