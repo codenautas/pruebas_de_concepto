@@ -16,7 +16,7 @@ function dialogPromise(dialogConstructor){
         var container = html.div({id:'container', class:'container'}, [
             innerContainer,
         ]).create();
-        var innerDiv = html.div().create(); // a dialogConstructor hay que pasarle un DIV vacío para que haga lo que quiera.
+        var innerDiv = html.div().create(); // a dialogConstructor hay que pasarle un DIV vacÃ­o para que haga lo que quiera.
         var outDiv = html.div({class:['modalcontent','animate']}, [imgContainer, container, innerDiv]).create();
         dialogWindow = html.div({id:divName, class:'modal'}).create();
         dialogWindow.appendChild(outDiv);

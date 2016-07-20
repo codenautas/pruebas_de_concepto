@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+<meta charset="UTF-8">
 <title>Custom Dialog</title>
 <link rel="stylesheet" type="text/css" href="popup-dp.css" media="screen" />
 <link rel="stylesheet" type="text/css" href="dialog-promise.css" media="screen" />
@@ -75,13 +76,13 @@ function runDialog(args) {
     alertPromise(args).then(function(result) {
         msg(JSON.stringify(result));
     }).catch(function(err){
-        msg('Error: el usuario cerr\u00F2 la ventana sin clickear algo \u00FAtil dentro de la ventana'+err);
+        msg('Error: el usuario cerró la ventana sin clickear algo útil dentro de la ventana'+err);
     });
 }
 
 function runDialog2() {
     askPromise({
-        message:'\u00BFQu\u00E9 te parece?',
+        message:'¿Qué te parece?',
         buttonList:[
             {label:'bueno', returning: true},
             {label:'puede andar', returning: 'maybe', isDefault:true},
@@ -90,7 +91,7 @@ function runDialog2() {
     }).then(function(result) {
         msg(JSON.stringify(result));
     }).catch(function(err){
-        msg('Error: el usuario cerr\u00F2 la ventana sin clickear algo \u00FAtil dentro de la ventana'+err);
+        msg('Error: el usuario cerró la ventana sin clickear algo útil dentro de la ventana'+err);
     });
 }
 
