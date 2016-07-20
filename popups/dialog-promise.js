@@ -1,6 +1,6 @@
 "use strict";
 
-function showDialog(dialogConstructor){
+function dialogPromise(dialogConstructor){
     return new Promise(function(resolve, reject) {
         var divName = 'pu_div';
         var dialogWindow = document.getElementById(divName);
@@ -16,9 +16,15 @@ function showDialog(dialogConstructor){
         var container = html.div({id:'container', class:'container'}, [
             innerContainer,
         ]).create();
-        var outDiv = html.div({class:['modalcontent','animate']}, [imgContainer, container]).create();
+        var innerDiv = html.div().create(); // a dialogConstructor hay que pasarle un DIV vacío para que haga lo que quiera.
+        var outDiv = html.div({class:['modalcontent','animate']}, [imgContainer, container, innerDiv]).create();
         dialogWindow = html.div({id:divName, class:'modal'}).create();
         dialogWindow.appendChild(outDiv);
+        dialogConstructor(innerDiv, function doneWithGoodAnswer(answer){
+            hide();
+            resolve(answer)
+        });
+        body.appendChild(dialogWindow);
         // show:
         dialogWindow.style.display='block';
         // hide:
@@ -30,10 +36,5 @@ function showDialog(dialogConstructor){
             reject(new Error(message));
         }
         cruz.addEventListener('click', doneWithoutAnswer.bind(null,'closed by the \u00d7'));
-        body.appendChild(dialogWindow);
-        dialogConstructor(dialogWindow, function doneWithGoodAnswer(answer){
-            hide();
-            resolve(answer)
-        });
     });
 }

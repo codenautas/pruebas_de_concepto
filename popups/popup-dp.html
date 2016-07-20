@@ -6,12 +6,14 @@
 <link rel="stylesheet" type="text/css" href="dialog-promise.css" media="screen" />
 <script src="node_modules/js-to-html/js-to-html.js"></script>
 <script src="dialog-promise.js"></script>
-<script src="popup-dp.js"></script>
 </head>
 <body>
 <h1>Custom dialogs</h1>
 <p>
 <button onclick="runDialog('Un mensaje de alerta')" style="width:auto;">Crear mensaje</button>
+</p>
+<p>
+<button onclick="runDialog2('Un mensaje de alerta')" style="width:auto;">Hacer pregunta</button>
 </p>
 
 <p>
@@ -26,9 +28,9 @@ function msg(m) {
 }
 
 
-function prettyAlert(message) {
+function alertPromise(message) {
     var html = jsToHtml.html;
-    return showDialog(function(mainElement, done){
+    return dialogPromise(function(mainElement, done){
         var button=html.button("Ok").create();
         button.addEventListener('click', function(){
             done("ok");
@@ -40,8 +42,52 @@ function prettyAlert(message) {
     });
 }
 
+function askPromise(opts) {
+    if(typeof opts === 'string'){
+        opts={
+            message: opts,
+            buttonList:[
+               {label: 'Ok', returns: true, isDefault:true},
+               {label: 'Cancel', returns: false},
+            ],
+            cancelValue: false
+        }
+    }
+    var html = jsToHtml.html;
+    return dialogPromise(function(mainElement, done){
+        innerElement = html.div([
+            html.div(opts.message),
+            html.div({'class':'answer-buttons'}, opts.buttonList.map(function(buttonDef){
+                var attrs={};
+                if(buttonDef.isDefault){
+                    attrs.autofocus=true;
+                }
+                var button=html.button(attrs, buttonDef.label).create();
+                button.addEventListener('click', done.bind(null, buttonDef.returning));
+                return button;
+            }))
+        ]).create();
+        mainElement.appendChild(innerElement);
+    });
+}
+
 function runDialog(args) {
-    prettyAlert(args).then(function(result) {
+    alertPromise(args).then(function(result) {
+        msg(JSON.stringify(result));
+    }).catch(function(err){
+        msg('Error: el usuario cerró la ventana sin clickear algo útil dentro de la ventana'+err);
+    });
+}
+
+function runDialog2() {
+    askPromise({
+        message:'¿Qué te parece?',
+        buttonList:[
+            {label:'bueno', returning: true},
+            {label:'puede andar', returning: 'maybe', isDefault:true},
+            {label:'no me gusta', returning: 0},
+        ]
+    }).then(function(result) {
         msg(JSON.stringify(result));
     }).catch(function(err){
         msg('Error: el usuario cerró la ventana sin clickear algo útil dentro de la ventana'+err);
