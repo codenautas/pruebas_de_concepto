@@ -25,6 +25,8 @@ Navegador | Plataforma | Alert | Confirm | Prompt | Menu
 Chrome | Windows | OK | OK | OK | OK
 Firefox | Windows | OK | OK | OK | OK
 Safari | Windows | OK | OK | OK | OK
+Chrome | Android | ERR | ERR | ERR | ERR
+Firefox | Android | ERR | ERR | ERR | ERR
 
 ***
 ### Referencia
