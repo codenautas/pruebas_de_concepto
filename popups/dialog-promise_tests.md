@@ -28,7 +28,7 @@ Navegador | Plataforma | Alert | Confirm | Prompt | Menu
 ----|----|----|----|---|----
 Chrome | Windows | OK | OK | OK | OK
 Firefox | Windows | OK | OK | OK | OK
-Firefox | Windows | OK | OK | OK | OK,W1 
+Internet Explorer | Windows | OK | OK | OK | OK,W1 
 Safari | Windows | OK | OK | OK | OK
 Chrome | Android | OK | OK | OK | OK
 Firefox | Android | OK | OK | OK | OK
