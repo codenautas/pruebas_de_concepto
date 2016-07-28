@@ -16,8 +16,8 @@ Button/Spot | Resultado
 ----|----
 ok | true o el valor del input
 cancel | false
-close | undefined
 input | valor tipeado
+close | undefined
 outside | undefined
 
 *** 
@@ -27,6 +27,7 @@ Chrome | Windows | OK | OK | OK | OK
 Firefox | Windows | OK | OK | OK | OK
 Safari | Windows | OK | OK | OK | OK
 Chrome | Android | OK | OK | OK | OK
+Firefox | Android | OK | OK | OK | OK
 
 ***
 ### Referencia
