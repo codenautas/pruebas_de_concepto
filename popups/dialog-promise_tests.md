@@ -7,7 +7,10 @@ Para cada tipo de diálogo se probó:
   * English, close button off
   * Spanish, close button on
   * Spanish, close button off
-  * En todos los casos verificando el resultado del click en todos los botones o entrada tipeada y el click fuera del diálogo
+  * En todos los casos verificando:
+    * Resultado del click en todos los botones o entrada tipeada
+    * click fuera del diálogo
+    * idioma del texto de los botones
 
 
 #### Resultados esperados en los clicks
@@ -25,11 +28,13 @@ Navegador | Plataforma | Alert | Confirm | Prompt | Menu
 ----|----|----|----|---|----
 Chrome | Windows | OK | OK | OK | OK
 Firefox | Windows | OK | OK | OK | OK
+Firefox | Windows | OK | OK | OK | OK,W1 
 Safari | Windows | OK | OK | OK | OK
 Chrome | Android | OK | OK | OK | OK
 Firefox | Android | OK | OK | OK | OK
 
 ***
-### Referencia
+### Referencia/Comentarios
 - **OK** Funciona correctamente
+- **W1** Agrega scrollbar (no deseado)
 
