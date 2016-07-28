@@ -31,7 +31,7 @@ Firefox | Windows | OK | OK | OK | OK
 Internet Explorer | Windows | OK | OK | OK | OK,W1 
 Safari | Windows | OK | OK | OK | OK
 Chrome | Android | OK | OK | OK | OK
-Firefox | Android | OK | OK | OK | OK
+Firefox | Linux | OK | OK | OK | OK
 
 ***
 ### Referencia/Comentarios
