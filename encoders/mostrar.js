@@ -11,6 +11,8 @@ var yaml = require('js-yaml');
 
 var cYaml = require('../yaml/custom-yaml.js');
 
+var EJSON = require('ejson');
+
 var parte={
     parteA: "A",
 }
@@ -21,6 +23,7 @@ var encoders=[
     {name: 'yaml'       , object:yaml , parseName:'load'      , stringifyName:'dump'      },
     {name: 'yaml-safe'  , object:yaml , parseName:'safeLoad'  , stringifyName:'safeDump'  },
     {name: 'yaml-custom', object:cYaml, parseName:'customLoad', stringifyName:'customDump'},
+    {name: 'ejson'      , object:EJSON, parseName:'parse'     , stringifyName:'stringify' },
 ]
 
 var fixtures=[
@@ -35,6 +38,7 @@ var fixtures=[
     {name:'bool'      ,value: true,                      },
     {name:'null'      ,value: null,                      },
     {name:'undef'     ,value: undefined,                 },
+    {name:'{undef}'   ,value: {a:undefined}, expected:{} },
     {name:'regex'     ,value: /hola/,                    },
     {name:'fun'       ,value: function(x){ return x+1; } },
 ];
@@ -54,7 +58,7 @@ encoders.forEach(function(encoderDef){
             results.push(['encoded:',encoded]);
             var decoded=encoderDef.object[encoderDef.parseName](encoded);
             var res=['decoded:',decoded]; 
-            dif=!deepEqual(decoded,fixture.value);
+            dif=!deepEqual(decoded,'expected' in fixture?fixture.expected:fixture.value);
             if(dif){ res.push('* !='); }
             results.push(res);
         }catch(err){

@@ -1,0 +1,55 @@
+<style>
+table {
+  border: 1px solid green;
+  border-collapse: collapse;
+}
+td {
+  border: 1px dashed green;
+}
+button {
+  float: right;
+}
+[contenteditable="true"] {
+  background-color: rgb(200,200,255);
+}
+span {
+  background-color: rgb(200,200,255);
+  display: inline-block;
+  padding-right:22px;
+}
+.der {
+  text-align: right;
+}
+.sin-span td{
+  padding-left: 20px;
+  background-image: url(flecha-abajo.png);
+  background-size: 20px 20px;
+  background-repeat: no-repeat;
+}
+</style>
+<table>
+  <tr>
+    <td>primer campo
+    <td>segund campo
+    <td>tercer campo
+    <td>cuarto campo
+  <tr>
+    <td class=izq><span style="width:100%" contenteditable>X</span> <button tabindex=-1>B</button>
+    <td class=izq><span style="width:100%" contenteditable></span>  <button tabindex=-1>&#x2193;</button>
+    <td class=der><span style="width:100%" contenteditable>3</span> <button tabindex=-1>&#x2193;</button>
+    <td class=der><span style="width:100%" contenteditable></span>  <button tabindex=-1>&#x2193;</button>
+  <tr>
+    <td class=izq><span style="width:100%" contenteditable>X</span> 
+    <td class=izq><span style="width:100%" contenteditable></span>  
+    <td class=der><span style="width:100%" contenteditable>3</span> 
+    <td class=der><span style="width:100%" contenteditable></span>  
+  <tr class=sin-span>
+    <td class=izq contenteditable>A</td>
+    <td class=izq contenteditable></td>
+    <td class=der contenteditable>2</td>
+    <td class=der contenteditable></td>
+</table>    
+<p>
+  En este ejemplo se ve que el Firefox tiene un problema al hacer click en los TD fuera de los span.
+<p>
+  También se ve raro al borrar todo el contenido. El cursor sube feo
