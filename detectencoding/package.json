@@ -4,6 +4,7 @@
     "fs-promise": "^0.3.1",
     "best-promise": "0.2.3",
     "charset-detector": "0.0.2",
+    "is-utf8": "0.2.1",
     "jschardet": "1.4.1"
   },
   "devDependencies": {
@@ -12,6 +13,6 @@
   },
   "scripts": {
     "test-jschardet": "mocha --globals confidence --reporter spec --bail --check-leaks .",
-    "test": "env SKIP=jschardet,chardet-detector mocha --reporter spec --bail --check-leaks ."
+    "test": "env SKIP=jschardet,charset-detector mocha --reporter spec --bail --check-leaks ."
   }
 }
