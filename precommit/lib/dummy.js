@@ -12,6 +12,7 @@ function generateScripts(info){
     });
 }
 
+// mod 1
 txtToSql.generateScripts = generateScripts;
 
 module.exports = txtToSql;
