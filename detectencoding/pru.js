@@ -7,6 +7,11 @@ var Path = require('path');
 
 var jschardet = require("jschardet");
 
+console.log("ENV", process.env.SKIP)
+
+var skipped = (process.env.SKIP || "").split(',');
+console.log("skipped", skipped)
+
 var encFiles=[];
 function setupFiles() {
     if(encFiles.length) { return Promise.resolve(encFiles); }
@@ -25,26 +30,28 @@ function setupFiles() {
 }
 
 describe('detect ending', function(){
-    it('test jschardet', function(done){
-        setupFiles().then(function() {
-            //console.log("encFiles", encFiles);
-            encFiles.forEach(function(file) {
-                //console.log("file", file)
-                var detected = jschardet.detect(file.content).encoding.toLowerCase();
-                var enc = file.file.split('_')[0];
-                //console.log("detected", detected, "enc", enc)
-                if(detected=='iso-8859-2') {
-                    console.log("expected failure on '"+file.file+"'", detected, enc)
-                } else {
-                    expect(detected).to.eql(enc);                    
-                }
+    if(skipped.indexOf('jschardet') == -1) {
+        it('test jschardet', function(done){
+            setupFiles().then(function() {
+                //console.log("encFiles", encFiles);
+                encFiles.forEach(function(file) {
+                    //console.log("file", file)
+                    var detected = jschardet.detect(file.content).encoding.toLowerCase();
+                    var enc = file.file.split('_')[0];
+                    //console.log("detected", detected, "enc", enc)
+                    if(detected=='iso-8859-2') {
+                        console.log("expected failure on '"+file.file+"'", detected, enc)
+                    } else {
+                        expect(detected).to.eql(enc);                    
+                    }
+                });
+                done();
+            }).catch(function(err) {
+                console.log("mal", err);
+                done(err);
             });
-            done();
-        }).catch(function(err) {
-            console.log("mal", err);
-            done(err);
-        });
-    });
+        });   
+    }
 });
 
 /*
