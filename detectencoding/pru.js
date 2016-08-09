@@ -7,7 +7,8 @@ var Path = require('path');
 
 var jschardet = require("jschardet");
 var charsetDetector = require('charset-detector');
-var isUtf8 = require('is-utf8');
+var is_utf8 = require('is-utf8');
+var isUtf8 = require('isutf8');
 
 var skipped = (process.env.SKIP || "").split(',');
 //console.log("skipped", skipped)
@@ -71,6 +72,27 @@ describe('detect encoding', function(){
             });
         });   
     } else it.skip(testName);
+    testName = 'is_utf8';
+    if(skipped.indexOf(testName) == -1) {
+        it(testName, function(done){
+            setupFiles().then(function() {
+                encFiles.forEach(function(file) {
+                    var detected = is_utf8(file.content);
+                    var enc = file.file.split('_')[0];
+                    //console.log("detected", detected, "enc", enc)
+                    if(enc.match(/utf-8/)) {
+                        expect(detected).to.be.ok();
+                    } else {
+                        expect(detected).not.to.be.ok();
+                    }
+                });
+                done();
+            }).catch(function(err) {
+                console.log("mal", err);
+                done(err);
+            });
+        });   
+    } else it.skip(testName);
     testName = 'isUtf8';
     if(skipped.indexOf(testName) == -1) {
         it(testName, function(done){
@@ -93,14 +115,3 @@ describe('detect encoding', function(){
         });   
     } else it.skip(testName);
 });
-
-/*
-
-// "àíàçã" in UTF-8
-console.log(jschardet.detect("\xc3\xa0\xc3\xad\xc3\xa0\xc3\xa7\xc3\xa3"));
-// { encoding: "UTF-8", confidence: 0.9690625 }
-
-// "次常用國字標準字體表" in Big5
-console.log(jschardet.detect("\xa6\xb8\xb1\x60\xa5\xce\xb0\xea\xa6\x72\xbc\xd0\xb7\xc7\xa6\x72\xc5\xe9\xaa\xed"));
-
-*/

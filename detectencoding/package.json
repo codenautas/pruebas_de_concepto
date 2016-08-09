@@ -5,6 +5,7 @@
     "best-promise": "0.2.3",
     "charset-detector": "0.0.2",
     "is-utf8": "0.2.1",
+    "isutf8": "2.0.0",
     "jschardet": "1.4.1"
   },
   "devDependencies": {
