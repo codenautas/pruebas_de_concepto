@@ -6,6 +6,7 @@ var fs = require('fs-promise');
 var Path = require('path');
 
 var jschardet = require("jschardet");
+var detect = require('charset-detector');
 
 console.log("ENV", process.env.SKIP)
 
@@ -30,15 +31,13 @@ function setupFiles() {
 }
 
 describe('detect ending', function(){
-    if(skipped.indexOf('jschardet') == -1) {
-        it('test jschardet', function(done){
+    var testName = 'jschardet';
+    if(skipped.indexOf(testName) == -1) {
+        it(testName, function(done){
             setupFiles().then(function() {
-                //console.log("encFiles", encFiles);
                 encFiles.forEach(function(file) {
-                    //console.log("file", file)
                     var detected = jschardet.detect(file.content).encoding.toLowerCase();
                     var enc = file.file.split('_')[0];
-                    //console.log("detected", detected, "enc", enc)
                     if(detected=='iso-8859-2') {
                         console.log("expected failure on '"+file.file+"'", detected, enc)
                     } else {
@@ -51,7 +50,28 @@ describe('detect ending', function(){
                 done(err);
             });
         });   
-    }
+    } else it.skip(testName);
+    testName = 'chardet-detector';
+    if(skipped.indexOf(testName) == -1) {
+        it(testName, function(done){
+            setupFiles().then(function() {
+                encFiles.forEach(function(file) {
+                    var detected = jschardet.detect(file.content).encoding.toLowerCase();
+                    var enc = file.file.split('_')[0];
+                    console.log("detected", detected, "enc", enc)
+                    if(detected=='iso-8859-2') {
+                        console.log("expected failure on '"+file.file+"'", detected, enc)
+                    } else {
+                        expect(detected).to.eql(enc);                    
+                    }
+                });
+                done();
+            }).catch(function(err) {
+                console.log("mal", err);
+                done(err);
+            });
+        });   
+    } else it.skip(testName);
 });
 
 /*

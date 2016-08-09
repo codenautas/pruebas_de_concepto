@@ -1,6 +1,13 @@
 ANDAN:
-- https://www.npmjs.com/package/jschardet (https://github.com/aadsm/jschardet)
+(*) https://www.npmjs.com/package/jschardet (https://github.com/aadsm/jschardet)
+    - mocha da un error: Error: global leak detected: confidence
+(*) https://www.npmjs.com/package/charset-detector (https://github.com/btd/node-charset-detector)
     - mocha da un error: Error: global leak detected: confidence
 
 FALLAN:
-- https://www.npmjs.com/package/detect-character-encoding : error en npm install
+(-) https://www.npmjs.com/package/detect-character-encoding : error en npm install
+
+
+(+) andan
+(*) andan con reservas
+(-) No andan
