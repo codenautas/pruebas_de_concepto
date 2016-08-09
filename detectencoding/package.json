@@ -13,6 +13,6 @@
   },
   "scripts": {
     "test-jschardet": "mocha --globals confidence --reporter spec --bail --check-leaks .",
-    "test": "env SKIP=jschardet,charset-detector mocha --reporter spec --bail --check-leaks ."
+    "test": "env SKIP=jschardet mocha --reporter spec --bail --check-leaks ."
   }
 }

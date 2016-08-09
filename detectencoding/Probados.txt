@@ -1,10 +1,10 @@
 ANDAN:
 (*) https://www.npmjs.com/package/jschardet (https://github.com/aadsm/jschardet)
     - mocha da un error: Error: global leak detected: confidence
-(*) https://www.npmjs.com/package/charset-detector (https://github.com/btd/node-charset-detector)
+(+) https://www.npmjs.com/package/charset-detector (https://github.com/btd/node-charset-detector)
     - NO se entiende lo que detecta
-    
-(?) https://www.npmjs.com/package/is-utf8 (https://github.com/wayfind/is-utf8)
+(+) https://www.npmjs.com/package/is-utf8 (https://github.com/wayfind/is-utf8)
+    - Sólo detecta si es o no utf-8
 
 FALLAN:
 (-) https://www.npmjs.com/package/detect-character-encoding : error en npm install
