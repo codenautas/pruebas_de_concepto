@@ -1,0 +1,14 @@
+{
+  "devDependencies": {
+    "best-promise": "~0.2.4",
+    "fs-extra": "~0.30.0",
+    "fs-promise": "~0.5.0",
+    "precommit-hook": "3.0.0"
+  },
+  "scripts": {
+    "pc": "node precommit.js"
+  },
+  "pre-commit": [
+    "pc"
+  ]
+}
