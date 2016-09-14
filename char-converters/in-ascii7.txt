@@ -1,0 +1,2 @@
+Para comprobar si ve que esto es ASCII7.
+Se ve que se pudo comprobar.

@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "fs-promise": "~0.5.0",
+    "iconv-lite": "~0.4.13"
+  }
+}
