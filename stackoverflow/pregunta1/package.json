@@ -1,0 +1,7 @@
+{
+  "dependencies":{
+    "on-finished": "~2.3.0",
+    
+    "best-globals": "~0.5.0"
+  }
+}
