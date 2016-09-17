@@ -1,6 +1,7 @@
 var express = require('express')
-var app = express();
 var bodyParser = require('body-parser')
+var app = express();
+
 var onFinished = require('on-finished')
 
 app.listen(3000);
@@ -12,6 +13,8 @@ function logRes(res){
     console.log(res.statusMessage)
     console.log(res.body)
 }
+
+app.use(bodyParser.json({ type: 'application/*+json' }))
 
 app.use(function(req,res,next){
     onFinished(res, function (err, res) {
@@ -28,4 +31,3 @@ app.get('/example',function(req,res){
     res.header('Content-Type','text/plain');
     res.end('example data');
 });
-

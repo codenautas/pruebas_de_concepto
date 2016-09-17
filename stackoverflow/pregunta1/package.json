@@ -1,5 +1,6 @@
 {
   "dependencies":{
+    "body-parser": "~1.15.2",
     "on-finished": "~2.3.0",
     
     "best-globals": "~0.5.0"
