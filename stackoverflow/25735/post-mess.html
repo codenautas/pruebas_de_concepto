@@ -1,0 +1,13 @@
+    <body bgcolor="black"></body>
+    <script>
+      onmousedown=function(e){
+        window.postMessage(prompt("Enter your message"),location.href)
+      }
+      window.onmessage=function(e){
+        if(e.origin==location.href){
+          alert(e.data)
+        }else{
+          alert(e.origin+'!='+location.href)
+        }
+      }
+    </script>

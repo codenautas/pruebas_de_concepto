@@ -1,0 +1,27 @@
+<head>
+<meta charset="utf-8"/>
+</head>
+<body>
+<input id=a_enviar autofocus>
+<input id=enviar type=button value=enviar>
+<pre id=mensajes>
+</pre>
+<pre id=errores style='background:red'>
+</pre>
+<script>
+var worker=new SharedWorker("a3.js")
+worker.port.start()
+worker.port.onmessage=function(e){
+    mensajes.textContent+="\n"+e.data;
+}
+worker.port.onerror=function(e){
+    errores.textContent+="\n"+e.data;
+}
+worker.port.postMessage("An user has connected.")
+enviar.onclick=function(){
+    worker.port.postMessage(a_enviar.value);
+    a_enviar.value='';
+    a_enviar.focus();
+}
+</script>
+</body>
