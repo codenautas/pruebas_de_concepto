@@ -7,14 +7,14 @@ function leerMilestones(page, milestones){
     .then(function(response){
         return response.json();
     }).then(function(arr){
-        arr=[
+        /* arr=[
             {name: 'backend-plus'},
             {name: 'dialog-promise'},
             {name: 'typed-controls'},
-        ]
+        ] // */
         return Promise.all(
             arr.map(function(proyecto){
-                return fetch('https://api.github.com/repos/codenautas/'+proyecto.name+'/milestones')
+                return fetch('https://api.github.com/repos/codenautas/'+proyecto.name+'/milestones?state=all')
                 .then(function(response){
                     return response.json();
                 }).then(function(arr){
@@ -25,7 +25,7 @@ function leerMilestones(page, milestones){
                 });
             })
         ).then(function(){
-            if(arr.length && false){
+            if(arr.length /* && false */){
                 return leerMilestones(page+1, milestones);
             }
             return milestones;
