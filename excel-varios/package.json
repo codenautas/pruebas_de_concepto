@@ -1,7 +1,7 @@
 {
   "dependencies": {
     "fs-promise": "~0.5.0",
-    "parse-xl": "1.0.1",
+    "libxl": "0.2.20",
     "node-xlrd": "0.2.4",
     "xlsx": "0.8.0",
     "xl-json": "3.3.2",

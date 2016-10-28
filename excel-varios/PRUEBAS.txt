@@ -5,3 +5,6 @@
 - test_parse-xl.js: Lee correctamente pero no tiene buena info de celdas
 
 - test_node-xldr.js: funciona bien, trae mucha info pero no lee .xlsx (anda sólos con 2003 y anteriores (esto último sin probar))
+
+Usan python (a probar después de ser neceario)
+    - libxl 
