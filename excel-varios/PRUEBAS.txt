@@ -3,3 +3,5 @@
 - test_xl-json.js: No funciona porque tiene el package.json  desactualizado
 
 - test_parse-xl.js: Lee correctamente pero no tiene buena info de celdas
+
+- test_node-xldr.js: funciona bien, trae mucha info pero no lee .xlsx (anda sólos con 2003 y anteriores (esto último sin probar))
