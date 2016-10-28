@@ -1,0 +1,7 @@
+{
+  "dependencies": {
+    "excel-parser": "0.2.2",
+    "excel": "0.1.7",
+    "excel-data": "2.0.4"
+  }
+}
