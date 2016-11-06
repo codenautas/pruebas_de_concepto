@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Prueba JavaScript</title>
+<script type="text/javascript">
+    window.onload = iniciar;
+
+    function iniciar() {
+        generarListas("Lista1","uno","dos","tres","cuatro","cinco","seis");
+    }
+
+    function generarListas() {
+        var s = '<ol>';
+        var i;
+
+        for(i=1; i<arguments.length; i++) {
+            s = s+"<li>"+arguments[i]+"</li>";
+        }
+
+        s = s+"</lo>";
+
+        var elemento1 = document.getElementById(arguments[0]);
+        elemento1.innerHTML = s;
+    }
+</script>
+</head>
+<body>
+<div id="Lista1"></div>
+</body>
+</html>
