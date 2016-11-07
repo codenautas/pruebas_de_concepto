@@ -10,17 +10,17 @@
     }
 
     function generarListas() {
-        var s = '<ol>';
+        var ol = document.createElement('ol');
         var i;
 
         for(i=1; i<arguments.length; i++) {
-            s = s+"<li>"+arguments[i]+"</li>";
+            var li = document.createElement('li');
+            li.textContent = arguments[i];
+            ol.appendChild(li);
         }
 
-        s = s+"</lo>";
-
         var elemento1 = document.getElementById(arguments[0]);
-        elemento1.innerHTML = s;
+        elemento1.appendChild(ol);
     }
 </script>
 </head>

@@ -1,0 +1,53 @@
+<style>
+table{
+  border: 2px solid blue;
+}
+table td{
+  border: 2px solid blue;
+}
+.uno{
+  height:200px;
+  width:200px;
+  border:1px solid green;
+  transition: height 2s ease;
+}
+div{
+  height: 10px;
+  border:1px solid green;
+  transition: height 2s ease;
+}
+</style>
+<table id=tabla>
+<tr>
+<td>uno
+<td>dos
+<tr>
+<td>
+<div id=uno></div>
+</td>
+<td>
+<td>
+</tr>
+</table>
+<button id=ya>hacer</button>
+<button id=ins>insert</button>
+<script>
+ya.onclick=function(){
+    uno.className='uno';
+    uno.style.height='400px';
+}
+ins.onclick=function(){
+    var tr=tabla.insertRow(1);
+    var td=tr.insertCell(-1);
+    var td=tr.insertCell(-1);
+    var td=tr.insertCell(-1);
+    var div=document.createElement('div');
+    td.appendChild(div);
+    setTimeout(function(){
+        // div.className='uno';
+        div.style.height='40px';
+    },10);
+    // uno.className='uno';
+    // uno.style.height='400px';
+}
+</script>
