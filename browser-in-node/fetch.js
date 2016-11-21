@@ -1,3 +1,5 @@
+"use strict";
+
 var fetch = require('node-fetch');
 
 // if you are on node v0.10, set a Promise library first, eg.
