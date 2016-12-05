@@ -1,0 +1,4 @@
+EMPLOYEE_ID;NOMBRE;APELLIDO;CITI_ID
+1234;José;Pérez;30
+5678;Juan;González;25
+9012;David;López;1
