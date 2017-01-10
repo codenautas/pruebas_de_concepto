@@ -1,18 +1,18 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
 <head>
 <title>Comparator</title>
 <link rel="stylesheet" type="text/css" href="comparator.css" media="screen" />
 <script src="node_modules/js-to-html/js-to-html.js"></script>
-<script src="comparator.js"></script>
+<script src="comparator-functions.js"></script>
 </head>
 <body>
 <h1>Comparator</h1>
 <h3>Numbers</h3>
 <form>
     <p>
-        <input id="numberToCheck"></input>
-        <select id="numberOperator">
+        <input id="numberToCheck" value="Ingrese un numero" onClick="this.select();" class="input-value"></input>
+        <select id="numberOperator" class="operators">
             <option value="null"></option>
             <option value="=">=</option>
             <option value=">">></option>
@@ -21,27 +21,27 @@
             <option value="<="> <= </option>
             <option value="&#x2205"> &#x2205 </option>
         </select>
-        <input id="numberCondition"></input>
-        <button type="button" id="number-compare-button" onclick="numberComparator()">Comparar</button>
-        <span id="number-answer">Esperando resultado</span>
+        <input id="numberCondition" value="Ingrese un numero" class="input-value" onClick="this.select();"></input>
+        <button type="button" id="number-compare-button"  class="comparator-button">Comparar</button>
+        <span id="number-answer" class="answer">Esperando resultado</span>
     </p>
     <h3>Strings</h3>
     <p>
-        <input id="stringToCheck"></input>
-        <select id="stringOperator">
+        <input id="stringToCheck" class="input-value" value="Ingrese string en el que buscar" onClick="this.select();"></input>
+        <select id="stringOperator" class="operators">
             <option value="null"></option>
             <option value="=">=</option>
             <option value="~">~</option>
             <option value="&#x2205"> &#x2205 </option>
         </select>
-        <input id="stringCondition"></input>
-        <button type="button" id="string-compare-button" onclick="stringComparator()">Comparar</button>
-        <span id="string-answer">Esperando resultado</span>
+        <input id="stringCondition" class="input-value" value="Ingrese string a buscar" onClick="this.select();"></input>
+        <button type="button" id="string-compare-button" class="comparator-button">Comparar</button>
+        <span id="string-answer" class="answer">Esperando resultado</span>
     </p>
     <h3>Dates</h3>
     <p>
-        <input id="dateToCheck"></input>
-        <select id="dateOperator">
+        <input id="dateToCheck" class="input-value" value="Ingrese una fecha" onClick="this.select();"></input>
+        <select id="dateOperator" class="operators">
             <option value="null"></option>
             <option value="=">=</option>
             <option value=">">></option>
@@ -50,10 +50,19 @@
             <option value="<="> <= </option>
             <option value="&#x2205"> &#x2205 </option>
         </select>
-        <input id="dateCondition"></input>
-        <button type="button" id="date-compare-button" onclick="dateComparator()">Comparar</button>
-        <span id="date-answer">Esperando resultado</span>
+        <input id="dateCondition" class="input-value" value="Ingrese una fecha" onClick="this.select();"></input>
+        <button type="button" id="date-compare-button" class="comparator-button">Comparar</button>
+        <span id="date-answer" class="answer">Esperando resultado</span>
     </p>
 </form>
+<div style='font-size:120%'> asjdkfl asjdlkñf jaksldñf jaklsñdfj kalñsdfj kalñsdfj klañsdfjklñasdfjklña sjdfkqiop uwqeoptuiq operuiqopweuriopqdvjklavjiodf uiqe qfjsal sf hjklefh qwefh iaefh iaodfhakldshf jklaewh ruio heuiqowefhusadhf jkladshvjqayhe uioqwehfuoahdvu ashdf
+   <div style='color:blue'>qwnerm,qwenrm,. 
+      <div style='display:inline-block; font-size:50%'>ñamifuli<br>fali frù</div>
+   nmr.q nmqrew.n mq.wernm q.enr mq.enrm .qwenrm q.wnerm .qwnerm .qnwerm. qnwme.r nmq.wernmrew.,q nm,.qewrn mq.wenrm .qwer</div>
+   ajs klfñajskdfl ñjakdslfñ jaksdlfjaksf jaklsñdjf kñlasdjfk ñasjdfkñ ajskdlfñ jaksdñf jakñsdfj akñlsdjfk lñasdjfk ñasjkdfñ jkasdñ
+</div>   
+<script>
+useComparator()
+</script>
 </body>
 </html>

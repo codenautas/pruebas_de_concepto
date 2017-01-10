@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "json4all": "~0.2.4",
+    "type-store":"~0.0.2"
+  }
+}

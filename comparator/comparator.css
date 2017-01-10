@@ -1,24 +1,47 @@
-#number-answer{
-    border: 1px solid black;
-    width: 50px;
-    height: 50px;
-    padding: 2px
+.comparator-button{
+    background-color: red; 
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
 }
-#string-answer{
-    border: 1px solid black;
-    width: 50px;
-    height: 50px;
-    padding: 2px
+#numberToCheck{
+    background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
 }
-#date-answer{
-    border: 1px solid black;
-    width: 50px;
-    height: 50px;
-    padding: 2px
+.input-value{
+    background-color: #4CAF50; /* Green */
+    border: 1px solid #298A08;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
 }
-#status{
-    border: 1px solid red;
-    width: 300px;
-    height: 50px;
-    padding: 2px
+.operators{
+    background-color: #F5A9F2;
+    border: none;
+    font-size: 16px;
+    width: 40px;
+    height: 48px;
+    box-shadow: 10px 10px 5px #888888;
+}
+.answer{
+    background-color: #A9E2F3;
+    padding: 2px;
+    width: 100px;
+    height: 48px;
+    display: inline-block;
+    margin: 2px;
+    margin-top: 5px
 }

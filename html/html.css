@@ -1,0 +1,28 @@
+body{
+    background-color: #fff2ff;
+}
+#title{
+    width: 100%;
+    height: 50px;
+    background-color: #cce6ff;
+    font-family: arial;
+    font-size: 30px;
+    text-align: center;
+    line-height: 50px;
+}
+#mitad-izquierda{
+    width: 200px;
+    height: 200px;
+    background-color:#cc66ff;
+    margin: 10px
+}
+#adentro-div{
+    background-color: #ffe0b3;
+    float: left;
+    width: 100px;
+    margin: 0px
+}
+#adentro-otro-lado{
+    background-color: #ccfff2;
+    bottom: 0px;
+}

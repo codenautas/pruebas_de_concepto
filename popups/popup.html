@@ -56,7 +56,7 @@ function runDialog(dlgFun, args) {
     dlgFun(args).then(function(result) {
         msg(JSON.stringify(result));
     }).catch(function(err){
-        msg('Error: el usuario cerró la ventana sin clickear algo útil dentro de la ventana'+err);
+        msg('Error: el usuario cerró la ventana sin clickear algo util dentro de la ventana'+err);
     });
 }
 
