@@ -2,7 +2,7 @@
 
 function screenCreator(){
     var html=jsToHtml.html;
-    function trier(checkerId,numberToCheckId,operatorsId,conditionId,compareButtonId,answerId){
+    function trier(checkerId,numberToCheckId,operatorsId,conditionId,compareButtonId,answerId,opts){
         var number=html.p({id:checkerId},[
             html.input({id:numberToCheckId,value:""}),
             html.select({id:operatorsId},),
