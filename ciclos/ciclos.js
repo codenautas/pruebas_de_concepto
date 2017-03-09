@@ -2,8 +2,12 @@
 
 var expect=require('expect.js')
 
+function AdaptWithArrayMethods(objectData, objectBase){
+    Object.defineProperty(objectData, '_object', { value: objectBase, configurable:true});
+}
+
 function ObjectWithArrayMethods(o){
-    this._object = o;
+    AdaptWithArrayMethods(this, o);
 }
 
 function id(x){ return x; };
@@ -20,17 +24,17 @@ function ArrayAndKeys2Object(result, keys){
     return adapted;
 } 
 
-function Argument3(__,___,x){ return x; };
+function Argument3Adapt(__,___,x){ AdaptWithArrayMethods(x, x); return x; };
 
 [
     {name:'forEach'},
-    {name:'map'     , resultAdapt: ArrayAndKeys2Object, },
-    {name:'filter'  , resultAdapt: Argument3, stepAdapt:function(x, v, n, a){ if(x){a[n]=v;} }},
+    {name:'map'     , resultAdapt: Argument3Adapt, stepAdapt:function(x, v, n, a){ a[n]=x;        }},
+    {name:'filter'  , resultAdapt: Argument3Adapt, stepAdapt:function(x, v, n, a){ if(x){a[n]=v;} }},
 ].forEach(function(method){
     ObjectWithArrayMethods.prototype[method.name] = function (f, fThis){
         var oThis=this._object;
         var keys=Object.keys(oThis);
-        var acumulator={}
+        var acumulator=object2Array(oThis);
         var result=keys[method.name](function(arrayKey, arrayIndex){
             var arrayValue=oThis[arrayKey]
             return (method.stepAdapt||id)(f.call(fThis, arrayValue, arrayKey, oThis), arrayValue, arrayKey, acumulator);
@@ -105,5 +109,23 @@ describe("object2Array", function(){
             b:'8',
         })
         expect(algo).to.eql({a:'7', b:'z', c:'9'})
+    });
+    it("map filter map", function(){
+        var res = object2Array(algo)
+        .map(function(valor, indice, contenedor){
+            if(indice=='c'){
+                contenedor[indice]='w';
+            }
+            return valor+'!';
+        }).filter(function(valor, indice, contenedor){
+            return valor!='8!';
+        }).map(function(valor, indice, contenedor){
+            return valor+'?';
+        });
+        expect(res).to.eql({
+            a:'7!?',
+            c:'9!?',
+        })
+        expect(algo).to.eql({a:'7', b:'8', c:'w'})
     });
 });
