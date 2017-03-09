@@ -2,13 +2,22 @@
 
 var expect=require('expect.js')
 
+var json4all=require('json4all')
+
 function AdaptWithArrayMethods(objectData, objectBase){
-    Object.defineProperty(objectData, '_object', { value: objectBase, configurable:true});
+    Object.defineProperty(objectData, '_object', { value: objectBase||objectData});
 }
 
+function anonymous(o){
+    AdaptWithArrayMethods(this, o);
+}
+var ObjectWithArrayMethods = anonymous;
+
+/*
 function ObjectWithArrayMethods(o){
     AdaptWithArrayMethods(this, o);
 }
+*/
 
 function id(x){ return x; };
 
@@ -24,7 +33,7 @@ function ArrayAndKeys2Object(result, keys){
     return adapted;
 } 
 
-function Argument3Adapt(__,___,x){ AdaptWithArrayMethods(x, x); return x; };
+function Argument3Adapt(__,___,x){ return x; };
 
 [
     {name:'forEach'},
@@ -34,7 +43,7 @@ function Argument3Adapt(__,___,x){ AdaptWithArrayMethods(x, x); return x; };
     ObjectWithArrayMethods.prototype[method.name] = function (f, fThis){
         var oThis=this._object;
         var keys=Object.keys(oThis);
-        var acumulator=object2Array(oThis);
+        var acumulator=object2Array();
         var result=keys[method.name](function(arrayKey, arrayIndex){
             var arrayValue=oThis[arrayKey]
             return (method.stepAdapt||id)(f.call(fThis, arrayValue, arrayKey, oThis), arrayValue, arrayKey, acumulator);
@@ -110,7 +119,7 @@ describe("object2Array", function(){
         })
         expect(algo).to.eql({a:'7', b:'z', c:'9'})
     });
-    it("map filter map", function(){
+    it("chaining map filter map", function(){
         var res = object2Array(algo)
         .map(function(valor, indice, contenedor){
             if(indice=='c'){
@@ -126,6 +135,8 @@ describe("object2Array", function(){
             a:'7!?',
             c:'9!?',
         })
+        expect(JSON.stringify(res)).to.eql('{"a":"7!?","c":"9!?"}');
+        expect(json4all.stringify(res)).to.eql('{"a":"7!?","c":"9!?"}');
         expect(algo).to.eql({a:'7', b:'8', c:'w'})
     });
 });
