@@ -1,0 +1,6 @@
+{
+  "name": "pspp",
+  "dependencies": {
+    "node-spss": "avilaton/node-spss"
+  }
+}
