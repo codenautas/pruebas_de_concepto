@@ -25,12 +25,15 @@ var y = new PostgresInterval("4:12:00");
 var x = new PostgresInterval();
 
 console.log('-----------------');
-console.log('is ours');
+console.log('is theirs');
 console.log(y);
+console.log(JSON.stringify(y));
 console.log(y.toPostgres());
+console.log('is ours');
 x.hours=4;
 x.minutes=12;
 console.log(x);
+console.log(JSON.stringify(x));
 console.log(x.toPostgres());
 
 process.exit();

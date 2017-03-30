@@ -12,6 +12,26 @@
         <div id="adentro-div"> El div que está adentro del div</div>
         <div id="adentro-otro-lado"> El div que está adentro en otro lado</div>
     </div>
-    
+    <div>
+      <h2> un select
+      <select multiple id=sele1 height=100px>
+        <option >uno</option>
+        <option >dos</option>
+        <option >tres</option>
+        <option >cuatro</option>
+        <option >cinco</option>
+        <option >seis</option>
+      </select>
+      <select multiple id=sele2 height=100px>
+      </select>
+    </div>
   </body>
+  <script>
+    window.addEventListener('load',function(){
+        sele1.onclick=function(){
+            sele2.add(sele1.item(sele1.selectedIndex));
+            sele1.remove(sele1.selectedIndex);
+        }
+    });
+  </script>
 </html>

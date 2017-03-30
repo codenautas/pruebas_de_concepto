@@ -1,0 +1,7 @@
+db:
+  motor: postgresql
+  host: localhost
+  database: test_db
+  schema: tst
+  user: test_user
+  password: test_pass
