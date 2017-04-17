@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "mini-tools": "0.3.15",
+    "best-globals": "0.8.0"
+  }
+}
