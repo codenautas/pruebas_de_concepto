@@ -1,0 +1,6 @@
+{
+  "dependencies":{
+    "express": "4.15.2",
+    "express-interceptor": "1.2.0"
+  }
+}
