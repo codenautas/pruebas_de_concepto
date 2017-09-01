@@ -6,8 +6,12 @@ class User {
     }
 
     getFullName(): string {
-        return this.lastName + ' ' + this.firstName;
+        return 'Hola ' + this.lastName + ' ' + this.firstName;
+    }
+
+    printFullName():void{
+        document.getElementsByTagName('body')[0].innerHTML += this.getFullName();
     }
 }
 
-export {User} 
+export {User}
