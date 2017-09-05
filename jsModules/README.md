@@ -11,10 +11,3 @@ topics to test:
     * webpack (resuelve modulos en es6 y dependencias externas, pero genera un archivo con todo adentro (bundle)...)
     * browserify
 - Typescript approaches (en pruebas de conceptos/Typescript)
-    * No module manual dependency management (target: es5, module: none) (including files in index.html)
-    * NO modules (one file)
-    * module and target: es6 (with chrome experimental flag)
-    * triple slash
-    * module loader 
-        + systemjs
-        + webpack
