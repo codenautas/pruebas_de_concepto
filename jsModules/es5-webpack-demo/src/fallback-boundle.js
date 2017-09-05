@@ -1,0 +1,1 @@
+document.body.innerHTML = "NO ES2015 MODULE SUPPORTED"

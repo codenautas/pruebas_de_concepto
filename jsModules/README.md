@@ -8,17 +8,13 @@ topics to test:
     * polifills for es5 - those polifills are module loaders
 - module loaders
     * system js (para soportar modulos necesita transpilar el codigo js con imports a es5 (con algun plugin transpiler como TS o babel))
-    * webpack
+    * webpack (resuelve modulos en es6 y dependencias externas, pero genera un archivo con todo adentro (bundle)...)
     * browserify
 - Typescript approaches (en pruebas de conceptos/Typescript)
-    * No module (target: es5, module: none) (including files in index.html)
-    * module: es6 (with chrome experimental flag)
-    * one file
+    * No module manual dependency management (target: es5, module: none) (including files in index.html)
+    * NO modules (one file)
+    * module and target: es6 (with chrome experimental flag)
     * triple slash
-    * no module / manual dependency management
-    * module loader
-
-    DIFERENCIA ENTRE 
-        - Soportar modulos en js para archivos propios
-        vs
-        - Incluir otras librerías de manera transparente (jspm)
+    * module loader 
+        + systemjs
+        + webpack
