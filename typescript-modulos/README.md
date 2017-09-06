@@ -4,6 +4,7 @@
     * module: es6 (with chrome experimental flag) **done**
     * module loader (target:es5, module: es6 or commonjs)
         + systemjs + jspm
-        + webpack
+        + webpack **done** (working with sourcemaps for TS debugging in browser)
 - External module approaches
-    * module loaders
+    * webpack **done** (sourcemaps + typings for external library)
+    * system js
