@@ -2,14 +2,12 @@
   "name": "prueba_webpack_modules",
   "version": "0.0.1",
   "description": "Pruebas de concepto Webpack",
-  "dependencies": {},
+  "dependencies": {
+  },
   "devDependencies": {
-    "@types/lodash": "^4.14.74",
-    "ts-loader": "^2.3.4",
-    "webpack": "^3.5.5"
+    
   },
   "scripts": {
-    "build": "webpack"
   },
   "license": "MIT",
   "repository": "codenautas/pruebas_de_concepto"

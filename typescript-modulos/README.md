@@ -6,5 +6,7 @@
         + systemjs + jspm
         + webpack **done** (working with sourcemaps for TS debugging in browser)
 - External module approaches
-    * webpack **done** (sourcemaps + typings for external library)
+    * webpack **done** (sourcemaps + typings for external library installing with ´npm install --save-dev @types/lodash´)
     * system js
+
+LIVE RELOAD

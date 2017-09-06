@@ -1,4 +1,3 @@
-import * as _ from "lodash";
 class User {
     firstName: string;
     lastName: string;
@@ -7,8 +6,7 @@ class User {
     }
 
     getFullName(): string {
-        // using lodash external library... try typing _ and crtl + spacebar
-        return 'Hola ' + this.lastName + ' ' + this.firstName + _.isBoolean("adsf");
+        return 'Hola ' + this.lastName + ' ' + this.firstName;
     }
 
     printFullName():void{
