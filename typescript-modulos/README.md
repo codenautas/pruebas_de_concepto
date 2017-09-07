@@ -6,7 +6,9 @@
         + systemjs + jspm
         + webpack **done** (working with sourcemaps for TS debugging in browser)
 - External module approaches
-    * webpack **done** (sourcemaps + typings for external library installing with ´npm install --save-dev @types/lodash´)
-    * system js
+    * webpack **done** (sourcemaps + typings for external library installing with ´npm install --save-dev @types/lodash´) https://webpack.js.org/guides/typescript/
+    * system js + jspm
+        + http://www.westerndevs.com/javascript/How-to-Compile-TypeScript-into-a-Single-File-with-SystemJS-Modules-with-Gulp/
 
-LIVE RELOAD
+
+LIVE RELOAD? watch mode ?
