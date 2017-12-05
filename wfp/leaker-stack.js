@@ -17,19 +17,17 @@ class Emiter{
     }
     next(){
         var emiter = this;
-        if(this.currentNext>=this.max){
+        if(this.currentNext>=this.max && this.max){
             return Promise.resolve(false);
         }
         this.currentNext++;
         controlog('pidió next',this.currentNext)
         this.nextTick = Math.max(new Date().getTime(),this.nextTick)+this.delayMs;
         return new Promise(function(resolve, reject){
-            setTimeout(function(current){
-                return function(){
-                    controlog('dio 1 next',current);
-                    resolve(current);
-                }
-            }(emiter.currentNext),Math.max(emiter.nextTick-new Date(),emiter.delayMs));
+            //setTimeout(function(current){ return function(){
+                controlog('dio 1 next',emiter.currentNext);
+                resolve(emiter.currentNext);
+            //} }(emiter.currentNext),Math.max(emiter.nextTick-new Date(),emiter.delayMs));
         });
     }
 }
@@ -43,15 +41,15 @@ class Digester{
         var digester = this;
         this.nextTick = Math.max(new Date().getTime(),this.nextTick)+this.delayMs;
         return new Promise(function(resolve, reject){
-            setTimeout(function(){
+            // setTimeout(function(){
                 controlog('digesté a',data);
                 resolve(data);
-            },Math.max(digester.nextTick-new Date(),digester.delayMs));
+            // },Math.max(digester.nextTick-new Date(),digester.delayMs));
         });
     }
 }
 
-var emiter = new Emiter(1,1000000000);
+var emiter = new Emiter(1,!1000000000);
 var digester = new Digester(1);
 
 function stepByStep(){
