@@ -1,0 +1,26 @@
+
+<h1> input 'capture' attribute</h1>
+<br/><br/>
+
+solo acepta imagenes, pero en el celu no deja seleccionar archivos del FS
+<input type="file" accept="image/*" capture="camera">
+<br/><br/>
+
+en el celu deja elegir cámara o archivo de cualquier tipo
+<input type="file" capture="camera">
+<br/><br/>
+
+solo imagenes pero multiple !!
+<input type="file" accept="image/*" multiple="multiple" capture="camera">
+<br/><br/>
+
+sin atributo capture
+<input type="file" accept="image/*">
+<br/><br/>
+
+definitivo: camara o seleccion multiple de archivos (solo imágenes)
+<input type="file" accept="image/*" multiple="multiple" >
+<br/><br/>
+
+Se podría poner accept="video/*,image/*"  para que acepte videos también!!
+Aparentemente el atributo capture="camera" no funciona en Ipad ya que pregunta si se quiere usar cámara o seleccionar img guardadas
