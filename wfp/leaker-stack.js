@@ -62,8 +62,7 @@ function stepByStep(){
                 if(!pedir_mucha_memoria[0]){
                     controlog('x')
                 }
-                return stepByStep();
-            });
+            }).then(stepByStep);
         }
     });
 }
