@@ -49,22 +49,23 @@ class Digester{
     }
 }
 
-var emiter = new Emiter(1,!1000000000);
+var emiter = new Emiter(1,!10000000);
 var digester = new Digester(1);
 
-function stepByStep(){
+async function stepByStep(){
     // var pedir_mucha_memoria=new Array(1000000).join(new Date());
-    var pedir_mucha_memoria=Date();
-    return emiter.next().then(function(data){
+    while(true){
+        var pedir_mucha_memoria=Date();
+        var data = await emiter.next();
         controlog('recibio ',data);
-        if(data){
-            return digester.digest(data).then(function(){
-                if(!pedir_mucha_memoria[0]){
-                    controlog('x')
-                }
-            }).then(stepByStep);
+        if(!data){
+            return
         }
-    });
+        await digester.digest(data);
+        if(!pedir_mucha_memoria[0]){
+            controlog('x')
+        }
+    }
 }
 
 stepByStep().catch(function(err){
