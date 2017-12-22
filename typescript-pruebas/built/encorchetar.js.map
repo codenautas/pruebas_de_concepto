@@ -1,0 +1,1 @@
+{"version":3,"file":"encorchetar.js","sourceRoot":"","sources":["../lib/encorchetar.ts"],"names":[],"mappings":"AAAA,qBAAqB,KAAa;IAC9B,MAAM,CAAC,GAAG,GAAC,KAAK,GAAC,GAAG,CAAC;AACzB,CAAC","sourcesContent":["function encorchetar(frase: string){\r\n    return \"[\"+frase+\"]\";\r\n}"]}

@@ -49,17 +49,16 @@ class Digester{
     }
 }
 
-var emiter = new Emiter(1,!10000000);
+var emiter = new Emiter(1,10000000);
 var digester = new Digester(1);
 
 async function stepByStep(){
     // var pedir_mucha_memoria=new Array(1000000).join(new Date());
-    while(true){
+    for await (const data = await of emiter){
         var pedir_mucha_memoria=Date();
-        var data = await emiter.next();
         controlog('recibio ',data);
         if(!data){
-            return
+            return "ok";
         }
         await digester.digest(data);
         if(!pedir_mucha_memoria[0]){
@@ -68,7 +67,9 @@ async function stepByStep(){
     }
 }
 
-stepByStep().catch(function(err){
+stepByStep().then(function(data){
+    console.log('data',data);
+}).catch(function(err){
     console.log('******** ERROR');
     console.log(err);
 });
