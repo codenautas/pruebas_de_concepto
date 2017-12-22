@@ -2,6 +2,7 @@
     "compilerOptions": {
         "outDir": "./built",
         "allowJs": true,
+        "module": "UMD",
         "target": "es5",
         "sourceMap": true
     },

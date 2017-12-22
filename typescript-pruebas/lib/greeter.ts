@@ -1,3 +1,5 @@
+import {encorchetar} from './encorchetar';
+
 class Student {
     fullName: string;
     constructor(public firstName: string, public middleInitial: string, public lastName: string) {
@@ -15,5 +17,7 @@ function greeter(person : Person) {
 }
 
 let user = new Student("Jane", "M.", "User");
+
+console.log(greeter(user));
 
 document.body.innerHTML = greeter(user);
