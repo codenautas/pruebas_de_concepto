@@ -1,0 +1,13 @@
+{
+  "compilerOptions": {
+    "module": "UMD",
+    "target": "es5",
+    "sourceMap": false,
+    "lib": [
+      "dom",
+      "es2015",
+      "es5",
+      "es6"
+    ]
+  }
+}
