@@ -68,7 +68,7 @@
 
     circle = svgContainer.selectAll("circle").data(circleRadii);
     circle.data(circleRadii);
-    circle.exit().transition().remove();
+    circle.exit().transition().attr("r",2).remove();
     circle.transition().attr("r",15);
   },6000);
 
