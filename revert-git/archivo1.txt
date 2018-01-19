@@ -1,1 +1,3 @@
-información sensible, no debe estar versionada, ni en ningún commit histórico
+(información sensible), no debe estar versionada, ni en ningún commit histórico
+
+(info no sensible) este archivo también se modifica pero sigue con información sensible en histórico
