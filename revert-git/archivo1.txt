@@ -1,0 +1,1 @@
+información sensible, no debe estar versionada, ni en ningún commit histórico
