@@ -31,3 +31,7 @@ node_modules
 
 local-*
 *-local.*
+
+npm-debug.*
+
+package-lock.json
