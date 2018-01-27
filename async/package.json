@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "best-globals": "~0.10.4",
+    "fs-extra": "~5.0.0"
+  }
+}

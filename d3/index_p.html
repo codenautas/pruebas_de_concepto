@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script type="text/javascript" src="https://d3js.org/d3.v4.min.js"></script>
+  </head>
+  <body>
+  </body>
+  <script>
+
+
+window.onload=function(){
+  var G=0.05; 
+  var vi=1; //factor de la velocidad inicial
+  var sol_quieto=false;
+  
+  var astros = [
+    {r:200, me: 1, d: 0   , color:'yellow'  , vi:0},
+    // {r:  9 , me: 1, d: 4200, color:'#d4a'  },
+    // {r: 10 , me: 1, d: 2900, color:'#4da'  },
+    {r: 18 , me: 1, d: 1800, color:'blue'  , vi:16},
+    {r: 20 , me: 1, d: 1100, color:'violet', vi:22},
+    {r:  4 , me: 1, d: 1140, color:'#f0f'  , vi:26.5},
+    {r:  3 , me: 1, d: 900 , color:'red'   , vi:24},
+    {r:  4 , me: 1, d: 600 , color:'#44f'  , vi:32},
+    {r:  4 , me: 1, d: 400 , color:'green' , vi:42},
+    {r:  2 , me: 1, d: 300 , color:'#f55'  , vi:53},
+  ];
+  
+  var cx=500; cy=500;
+  
+  astros.forEach(function(d,i){
+    d.cx=cx+d.d/2 // *((-1.0)**i);
+    d.cy=cy;
+    d.vx=0;
+    d.vy=-d.vi*vi; // *((-1.0)**i);
+    d.m=d.me*d.r*d.r*d.r;
+  });
+  
+  var svgContainer = d3.select("body").append("svg").attr("width", 2000).attr("height", 1000);
+  
+  var circles = svgContainer.selectAll("circle").data(astros).enter().append("circle");
+
+  var circleAttributes = circles
+                         .attr("cx", function(d){ return d.cx; })
+                         .attr("cy", function(d){ return d.cy; })
+                         .attr("r", function (d) { return d.r/2; })
+                         .style("fill", function(d) { return d.color; });
+  
+  var circle;
+  
+  setInterval(function(){
+    circle = svgContainer.selectAll("circle").data(astros);
+    astros.forEach(function(d, i){
+        if(sol_quieto && !i){ return }
+        d.cx=d.cx+d.vx;
+        d.cy=d.cy+d.vy;
+        astros.forEach(function(s,is){
+            if(i!=is){
+                var den2=((d.cy-s.cy)**2+(d.cx-s.cx)**2);
+                var g=s.m*d.m/den2*G;
+                den=Math.sqrt(den2);
+                d.vy+=g*(s.cy-d.cy)/den/d.m;
+                d.vx+=g*(s.cx-d.cx)/den/d.m;
+            }
+        });
+    });
+    circle.transition()                         
+        .attr("cx", function(d){ return d.cx; })
+        .attr("cy", function(d){ return d.cy; })
+
+  },100);
+};
+
+  </script>
+</html>

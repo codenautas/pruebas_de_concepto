@@ -30,5 +30,47 @@
                             return returnColor;
                           });
                             
+  setTimeout(function(){
+    d3.selectAll("circle").transition().style("fill", function(d){ return "rgb(1,"+(d*6)+",99)"; });
+  },2000);
+
+  setTimeout(function(){
+    circleRadii.push(30);
+  },3000);
+  
+  var circle;
+  
+  setTimeout(function(){
+    circle = svgContainer.selectAll("circle")
+      .data(circleRadii);
+
+    circle.exit().remove();
+
+    circle.enter().append("circle")
+        .attr("r", 25)
+      .merge(circle).transition()
+        .attr("cx", function(d) { return d * 2; })
+        .attr("cy", function(d) { return d * 3; });
+  },4000);
+
+  setTimeout(function(){
+    circle = svgContainer.selectAll("circle").data(circleRadii);
+
+    circle.exit().remove();
+
+    circle.transition()
+        .attr("cx", function(d) { return d * 3;    })
+        .attr("cy", function(d) { return d * 2+20; });
+  },5000);
+
+  setTimeout(function(){
+    circleRadii.shift();
+
+    circle = svgContainer.selectAll("circle").data(circleRadii);
+    circle.data(circleRadii);
+    circle.exit().transition().attr("r",2).remove();
+    circle.transition().attr("r",15);
+  },6000);
+
   </script>
 </html>
