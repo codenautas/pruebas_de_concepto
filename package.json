@@ -2,13 +2,13 @@
   "name": "pruebas_de_concepto",
   "version": "0.0.1",
   "description": "Pruebas de concepto para proyectos de codenautas",
-  "dependencies": {
-  },
-  "devDependencies": {
-  },
-  "scripts": {
-  },
-  "author": ["Emilio Platzer", "Diego Efe"],
+  "dependencies": {},
+  "devDependencies": {},
+  "scripts": {},
+  "author": [
+    "Emilio Platzer",
+    "Diego Efe"
+  ],
   "license": "MIT",
   "repository": "codenautas/pruebas_de_concepto"
 }
