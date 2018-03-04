@@ -22,8 +22,10 @@
     function greeter(person) {
         return "Hello, " + encorchetar_1.encorchetar(person.firstName) + " " + encorchetar_1.encorchetar(person.lastName);
     }
-    var user = new Student("Jane", "M.", "User");
+    var user = new Student("Jane", "M.", "Userlove");
     console.log(greeter(user));
-    document.body.innerHTML = greeter(user);
+    if (typeof document === 'object') {
+        document.body.innerHTML = greeter(user);
+    }
 });
 //# sourceMappingURL=greeter.js.map

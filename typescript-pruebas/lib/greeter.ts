@@ -16,8 +16,10 @@ function greeter(person : Person) {
     return "Hello, " + encorchetar(person.firstName) + " " + encorchetar(person.lastName);
 }
 
-let user = new Student("Jane", "M.", "User");
+let user = new Student("Jane", "M.", "Userlove");
 
 console.log(greeter(user));
 
-document.body.innerHTML = greeter(user);
+if(typeof document === 'object'){
+    document.body.innerHTML = greeter(user);
+}
