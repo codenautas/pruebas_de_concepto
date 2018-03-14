@@ -11,7 +11,7 @@ create table id_generados(
 
 insert into id_generados values ('ejemplo','null'::jsonb, 1000);
 
-select setseed(0.12312333);
+-- select setseed(0.1233);
 
 create or replace function generar_id(p_nomvar text, p_valores jsonb) returns bigint
   language plpgsql
@@ -31,10 +31,10 @@ begin
     if v_id is null then
       raise 'No hay primer ID para generar_id de %', p_nomvar;
     else
-      while random()<0.2 loop
-        v_id:=v_id+10;
+      while random()<0.5 loop
+        v_id:=v_id+1;
       end loop;
-      v_id:=v_id+floor((random()*10));
+      v_id:=v_id+1;
       insert into id_generados(nomvar, valores, id) values (p_nomvar, p_valores, v_id);
     end if;
   end if;
@@ -61,4 +61,8 @@ select siguiente_id-id, count(*)
   ) x
   group by siguiente_id-id
   order by 1;
-  
+
+/*
+select count(*), max(id)
+  from id_generados;
+-- */ 
