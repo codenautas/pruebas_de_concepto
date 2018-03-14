@@ -14,4 +14,9 @@ app.get('/', function(req, res) {
   console.log('Cookies: ', req.cookies)
 })
  
-app.listen(8080)
+var server = app.listen(8080);
+
+setTimeout(function(){
+    server.close();
+    console.log('closed'); // esto prueba que al cerrar el node se libera 
+},2000);
