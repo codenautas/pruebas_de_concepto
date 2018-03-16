@@ -8,7 +8,7 @@
             "type": "node",
             "request": "launch",
             "name": "Launch Program",
-            "program": "${workspaceFolder}/ts-decorators\\class.ts",
+            "program": "${workspaceFolder}/ts-decorators\\properties.ts",
             "outFiles": [
                 "${workspaceFolder}/ts-decorators/*.js"
             ]
