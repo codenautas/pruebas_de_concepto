@@ -7,7 +7,7 @@ function classDecorator<T extends {new(...args:any[]):{}}>(constructor:T) {
 
 @classDecorator
 class Greeter {
-    property = "property";
+    property:number = 33;
     hello: string;
     other: string;
     constructor(m: string) {
