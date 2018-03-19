@@ -21,6 +21,14 @@
             "outFiles": [
                 "${workspaceFolder}/ts-decorators/build/*.js"
             ]
+        },{
+            "type": "node",
+            "request": "launch",
+            "name": "parameterTypes",
+            "program": "${workspaceFolder}/ts-decorators/src\\parameters-dec.ts",
+            "outFiles": [
+                "${workspaceFolder}/ts-decorators/build/*.js"
+            ]
         }
     ]
 }
