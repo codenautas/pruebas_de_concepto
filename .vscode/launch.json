@@ -7,10 +7,19 @@
         {
             "type": "node",
             "request": "launch",
-            "name": "Launch Program",
-            "program": "${workspaceFolder}/ts-decorators\\properties.ts",
+            "name": "properties",
+            "program": "${workspaceFolder}/ts-decorators/src\\properties.ts",
             "outFiles": [
-                "${workspaceFolder}/ts-decorators/*.js"
+                "${workspaceFolder}/ts-decorators/build/*.js"
+            ]
+        },
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "reflection",
+            "program": "${workspaceFolder}/ts-decorators/src\\reflectSample.ts",
+            "outFiles": [
+                "${workspaceFolder}/ts-decorators/build/*.js"
             ]
         }
     ]
