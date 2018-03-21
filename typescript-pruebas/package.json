@@ -1,0 +1,15 @@
+{
+  "name": "ts-manual",
+  "version": "0.0.1",
+  "description": "Pruebas de concepto typescript con require-bro",
+  "dependencies": {
+    "@types/typescript": "~2.0.0",
+    "typescript": "~2.7.2"
+  },
+  "devDependencies": {
+    "require-bro": "~0.1.9"
+  },
+  "scripts": {},
+  "license": "MIT",
+  "repository": "codenautas/pruebas_de_concepto"
+}
