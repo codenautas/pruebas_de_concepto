@@ -9,8 +9,6 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "flora-sql-parser": "^0.7.7",
-    "node-sqlparser": "^1.0.2",
     "sqlite-parser": "^1.0.1"
   }
 }
