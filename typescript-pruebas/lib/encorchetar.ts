@@ -1,5 +1,3 @@
-function encorchetar(frase: string){
+export function encorchetar(frase: string){
     return "["+frase+"]";
 }
-
-export {encorchetar};
