@@ -11,5 +11,11 @@
             "name": "Launch Program",
             "program": "${workspaceFolder}\\tree4JS.js"
         }
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "tree change",
+            "program": "${workspaceFolder}\\treeChange.js"
+        }
     ]
 }

@@ -21,6 +21,7 @@ t = {
  var sqlExpression = "select 2+4 AND 8+c.f+3 AND 'hola' is null";
 
 try {
+    console.log(sqlExpression);
     var sqliteParser = require('sqlite-parser');
     var ast = sqliteParser(sqlExpression);
     var astStatement = ast.statement[0].result[0];
