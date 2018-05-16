@@ -1,0 +1,58 @@
+<style>
+input:valid{
+    background-color: #8F8  
+}
+input{
+    background-color: #F88
+}
+table{
+  border-collapse:collapse
+}
+table td{
+  border: 1px solid gray
+}
+#filter td{
+  background-color: #AFF;
+  padding-left:16px;
+  background-image: url(parecido.png);
+  background-origin: padding-box;
+  background-size: 16px;
+  background-repeat: no-repeat;
+}
+#filter td:before{
+}
+</style>
+<input pattern="[A-Z][a-zA-Z0-9]*:[ \w\d]*" required>
+
+<br>
+<hr>
+<br>
+<table>
+<tr><th>uno<th>titulo muy largo
+<tr id=filter><td id=filter1 contenteditable> <td id=filter2 contenteditable>
+<tr><td contenteditable>un dato<td contenteditable>otro dato
+</table>
+<script>
+
+myOwn={};
+
+myOwn.getRect = function getRect(element){
+    var rect = {top:0, left:0, width:element.offsetWidth, height:element.offsetHeight};
+    while( element != null ) {
+        rect.top += element.offsetTop;
+        rect.left += element.offsetLeft;
+        element = element.offsetParent;
+    }
+    return rect;
+}
+
+window.addEventListener('load', function(){
+    var clickFun=function(event){
+        var rect=myOwn.getRect(this);
+        alert(event.clientX+','+event.clientY+'; ---- '+this.offsetLeft+','+this.offsetTop+'; ---- '+this.clientLeft+','+this.clientTop+' //// '+event.pageX+','+event.pageY+'; ---- '+rect.left+','+rect.top+' xxxxxxx '+(this.offsetLeft-event.clientX)+';'+(this.clientLeft-event.clientX)+';'+(rect.left-event.pageX)+';');
+        // alert(event.clientX+','+event.clientY+'; ---- '+this.offsetLeft+','+this.offsetTop);
+    }
+    filter1.onclick=clickFun
+    filter2.onclick=clickFun
+});
+</script>
