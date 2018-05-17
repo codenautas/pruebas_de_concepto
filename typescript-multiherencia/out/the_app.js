@@ -2,12 +2,28 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 const base_app_1 = require("./base-app");
 const log_app_1 = require("./log-app");
-var AppType = log_app_1.emergeLogApp(base_app_1.BaseApp);
-class TheApp extends AppType {
+const secured_1 = require("./secured");
+var LogApp = log_app_1.emergeLogApp(base_app_1.BaseApp);
+class TheLogApp extends LogApp {
     getName() {
-        return "The App";
+        return "TheLogApp";
     }
 }
-var myApp = new TheApp();
-myApp.enableLog(true);
-myApp.install();
+var chain = Promise.resolve();
+var myTheLogApp = new TheLogApp();
+myTheLogApp.enableLog(true);
+chain = chain.then(function () {
+    return myTheLogApp.install();
+});
+var SecuredLogApp = secured_1.emergeSecuredApp(LogApp);
+class TheSecuredLogApp extends SecuredLogApp {
+    getName() {
+        return "TheSecuredLogApp";
+    }
+}
+var myTheSecuredLogApp = new TheSecuredLogApp();
+myTheSecuredLogApp.enableLog(true);
+myTheSecuredLogApp.setUser("ADMIN");
+chain = chain.then(function () {
+    return myTheSecuredLogApp.install();
+});

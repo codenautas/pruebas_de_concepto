@@ -8,38 +8,44 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-function emergeLogApp(base) {
-    class LogApp extends base {
+function emergeSecuredApp(base) {
+    class SecuredApp extends base {
         constructor() {
             super(...arguments);
-            this.enabled = false;
+            this.user = 'UNLOGGED';
         }
         getTables() {
             return super.getTables().concat([
-                { name: 'log' }
+                { name: 'secured' },
+                { name: 'roles' }
             ]);
         }
         installPart(part, content) {
             const _super = name => super[name];
             return __awaiter(this, void 0, void 0, function* () {
-                console.log('installing part', part, content);
-                yield _super("installPart").call(this, part, content);
+                if (this.hasPermission(this.user, part)) {
+                    yield _super("installPart").call(this, part, content);
+                }
+                else {
+                    console.log("ERROR. Not authorized ", part);
+                }
             });
+        }
+        hasPermission(user, part) {
+            return user == 'ADMIN';
         }
         install() {
             const _super = name => super[name];
             return __awaiter(this, void 0, void 0, function* () {
-                console.log('=====================');
-                console.log("INSTALL ", this.getName());
                 yield _super("install").call(this);
-                yield this.installPart('log-part', 'log part');
+                yield this.installPart('log-part', 'the log');
                 return;
             });
         }
-        enableLog(enable) {
-            this.enabled = enable;
+        setUser(user) {
+            this.user = user;
         }
     }
-    return LogApp;
+    return SecuredApp;
 }
-exports.emergeLogApp = emergeLogApp;
+exports.emergeSecuredApp = emergeSecuredApp;

@@ -4,5 +4,11 @@
     },
     {
         "name": "log"
+    },
+    {
+        "name": "secured"
+    },
+    {
+        "name": "roles"
     }
 ]

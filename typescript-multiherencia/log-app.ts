@@ -13,6 +13,7 @@ export function emergeLogApp(base:typeof BaseApp){
             await super.installPart(part, content);
         }
         async install(){
+            console.log('=====================');
             console.log("INSTALL ",this.getName());
             await super.install();
             await this.installPart('log-part','log part');
