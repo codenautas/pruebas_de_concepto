@@ -4,6 +4,8 @@ const base_app_1 = require("./base-app");
 const log_app_1 = require("./log-app");
 const secured_1 = require("./secured");
 var LogApp = log_app_1.emergeLogApp(base_app_1.BaseApp);
+class LogAppClass extends LogApp {
+}
 class TheLogApp extends LogApp {
     getName() {
         return "TheLogApp";
@@ -20,10 +22,16 @@ class TheSecuredLogApp extends SecuredLogApp {
     getName() {
         return "TheSecuredLogApp";
     }
+    doThe() {
+        console.log('doing');
+    }
 }
-var myTheSecuredLogApp = new TheSecuredLogApp();
+var myTheSecuredLogApp;
+myTheSecuredLogApp = new TheSecuredLogApp();
 myTheSecuredLogApp.enableLog(true);
 myTheSecuredLogApp.setUser("ADMIN");
+myTheSecuredLogApp.doThe();
 chain = chain.then(function () {
     return myTheSecuredLogApp.install();
 });
+//# sourceMappingURL=the_app.js.map

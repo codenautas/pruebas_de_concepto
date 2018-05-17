@@ -10,7 +10,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
-}
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 const fs_extra_1 = __importDefault(require("fs-extra"));
 class BaseApp {
@@ -36,3 +36,4 @@ class BaseApp {
     }
 }
 exports.BaseApp = BaseApp;
+//# sourceMappingURL=base-app.js.map

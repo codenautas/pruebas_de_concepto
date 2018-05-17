@@ -9,10 +9,13 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 function emergeLogApp(base) {
-    class LogApp extends base {
+    return class extends base {
         constructor() {
             super(...arguments);
             this.enabled = false;
+        }
+        getName() {
+            throw new Error('must implemente getName');
         }
         getTables() {
             return super.getTables().concat([
@@ -39,7 +42,7 @@ function emergeLogApp(base) {
         enableLog(enable) {
             this.enabled = enable;
         }
-    }
-    return LogApp;
+    };
 }
 exports.emergeLogApp = emergeLogApp;
+//# sourceMappingURL=log-app.js.map

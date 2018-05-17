@@ -1,8 +1,11 @@
 import {BaseApp, TableDef} from "./base-app"
 
 export function emergeLogApp(base:typeof BaseApp){
-    abstract class LogApp extends base{
+    return class extends base{
         enabled:boolean=false
+        getName():string{
+            throw new Error('must implemente getName')
+        }
         getTables():TableDef[]{
             return super.getTables().concat([
                 {name:'log'}
@@ -24,5 +27,4 @@ export function emergeLogApp(base:typeof BaseApp){
         }
 
     }
-    return LogApp;
 }

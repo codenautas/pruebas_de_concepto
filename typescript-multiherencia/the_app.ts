@@ -4,6 +4,7 @@ import {emergeLogApp} from "./log-app";
 import {emergeSecuredApp} from "./secured";
 
 var LogApp = emergeLogApp(BaseApp);
+class LogAppClass extends LogApp{}
 
 class TheLogApp extends LogApp{
     getName(){
@@ -25,13 +26,16 @@ class TheSecuredLogApp extends SecuredLogApp{
     getName(){
         return "TheSecuredLogApp";
     }
+    doThe(){
+        console.log('doing')
+    }
 }
 
-var myTheSecuredLogApp = new TheSecuredLogApp();
+var myTheSecuredLogApp:TheSecuredLogApp & LogAppClass;
+myTheSecuredLogApp = new TheSecuredLogApp() as TheSecuredLogApp & LogAppClass;
 myTheSecuredLogApp.enableLog(true);
 myTheSecuredLogApp.setUser("ADMIN");
+myTheSecuredLogApp.doThe();
 chain = chain.then(function(){
     return myTheSecuredLogApp.install();
 });
-
-

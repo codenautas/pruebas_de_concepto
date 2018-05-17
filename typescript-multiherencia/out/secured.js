@@ -9,10 +9,13 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 function emergeSecuredApp(base) {
-    class SecuredApp extends base {
+    return class extends base {
         constructor() {
             super(...arguments);
             this.user = 'UNLOGGED';
+        }
+        getName() {
+            throw new Error('must implemente getName');
         }
         getTables() {
             return super.getTables().concat([
@@ -45,7 +48,7 @@ function emergeSecuredApp(base) {
         setUser(user) {
             this.user = user;
         }
-    }
-    return SecuredApp;
+    };
 }
 exports.emergeSecuredApp = emergeSecuredApp;
+//# sourceMappingURL=secured.js.map
