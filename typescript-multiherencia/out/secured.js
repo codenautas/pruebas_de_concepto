@@ -35,7 +35,7 @@ function emergeSecuredApp(base) {
             });
         }
         hasPermission(user, part) {
-            return user == 'ADMIN';
+            return user == 'ADMIN' || part == 'public';
         }
         install() {
             const _super = name => super[name];

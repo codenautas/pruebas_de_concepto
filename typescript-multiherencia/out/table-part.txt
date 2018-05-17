@@ -3,12 +3,12 @@
         "name": "usuarios"
     },
     {
-        "name": "log"
-    },
-    {
         "name": "secured"
     },
     {
         "name": "roles"
+    },
+    {
+        "name": "log"
     }
 ]

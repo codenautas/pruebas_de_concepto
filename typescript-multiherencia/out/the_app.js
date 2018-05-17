@@ -34,4 +34,20 @@ myTheSecuredLogApp.doThe();
 chain = chain.then(function () {
     return myTheSecuredLogApp.install();
 });
+var SecuredApp = secured_1.emergeSecuredApp(base_app_1.BaseApp);
+class SecuredClass extends SecuredApp {
+}
+var LogSecuredApp = log_app_1.emergeLogApp(SecuredApp);
+class TheLogSecuredApp extends LogSecuredApp {
+    getName() {
+        return "TheLogSecuredApp";
+    }
+}
+var myTheLogSecuredApp;
+myTheLogSecuredApp = new TheLogSecuredApp();
+myTheLogSecuredApp.enableLog(true);
+myTheLogSecuredApp.setUser("ADMIN");
+chain = chain.then(function () {
+    return myTheLogSecuredApp.install();
+});
 //# sourceMappingURL=the_app.js.map

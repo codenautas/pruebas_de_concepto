@@ -20,7 +20,7 @@ export function emergeSecuredApp(base:typeof BaseApp){
             }
         }
         hasPermission(user:string, part:string):boolean{
-            return user=='ADMIN';
+            return user=='ADMIN' || part=='public';
         }
         async install(){
             await super.install();

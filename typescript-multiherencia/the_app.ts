@@ -39,3 +39,22 @@ myTheSecuredLogApp.doThe();
 chain = chain.then(function(){
     return myTheSecuredLogApp.install();
 });
+
+
+var SecuredApp = emergeSecuredApp(BaseApp);
+class SecuredClass extends SecuredApp{}
+var LogSecuredApp = emergeLogApp(SecuredApp);
+
+class TheLogSecuredApp extends LogSecuredApp{
+    getName(){
+        return "TheLogSecuredApp";
+    }
+}
+
+var myTheLogSecuredApp:SecuredClass & LogAppClass;
+myTheLogSecuredApp = new TheLogSecuredApp() as TheSecuredLogApp & LogAppClass;
+myTheLogSecuredApp.enableLog(true);
+myTheLogSecuredApp.setUser("ADMIN");
+chain = chain.then(function(){
+    return myTheLogSecuredApp.install();
+});
