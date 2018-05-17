@@ -1,12 +1,27 @@
 // module BaseApp
 
-export interface DataApp{
-    base:string
+import fs from 'fs-extra';
+
+export interface TableDef{
+    name:string
 }
 
-export class BaseApp{
-    constructor(public data:DataApp){}
-    getData():DataApp{
-        return this.data;
+export abstract class BaseApp{
+    tables:TableDef[]=[{name:'usuarios'}];
+    constructor(){
+    }
+    abstract getName():string
+    getTables():TableDef[]{
+        return this.tables;
+    }
+    async installPart(part:string, content:string){
+        await fs.writeFile(`./out/${part}.txt`,content,{encoding:'utf8'});
+        return;
+    }
+    async install():Promise<void>{
+        console.log('INSTALLING',this.getName());
+        await this.installPart('base-part','la base');
+        await this.installPart('table-part',JSON.stringify(this.getTables(),null,'    '));
+        return ;
     }
 }
