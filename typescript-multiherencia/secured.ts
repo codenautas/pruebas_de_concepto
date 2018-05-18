@@ -1,10 +1,12 @@
 import {BaseApp, TableDef} from "./base-app"
 
-export function emergeSecuredApp(base:typeof BaseApp){
-    return class extends base{
+export type Constructor<T> = new(...args: any[]) => T;
+
+export function emergeSecuredApp<T extends Constructor<BaseApp>>(Base:T){
+    return class extends Base{
         user:string='UNLOGGED';
-        constructor(){
-            super();
+        constructor(...rest:any[]){
+            super(...rest);
             this.user='UNLOGGED';
         }
         getName():string{
@@ -38,5 +40,5 @@ export function emergeSecuredApp(base:typeof BaseApp){
     }
 }
 
-export var SecuredApp = emergeSecuredApp(BaseApp);
-export class SecuredAppType extends SecuredApp{};
+// export var SecuredApp = emergeSecuredApp(BaseApp);
+// export class SecuredAppType extends SecuredApp{};

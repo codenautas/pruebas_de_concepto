@@ -1,5 +1,8 @@
-import {emergeLogApp,LogApp,LogAppType} from "./log-app";
-import {emergeSecuredApp,SecuredApp,SecuredAppType} from "./secured";
+import {BaseApp} from "./base-app";
+import {emergeLogApp} from "./log-app";
+import {emergeSecuredApp} from "./secured";
+
+var LogApp = emergeLogApp(BaseApp);
 
 class TheLogApp extends LogApp{
     getName(){
@@ -26,20 +29,15 @@ class TheSecuredLogApp extends SecuredLogApp{
     }
 }
 
-var myTheSecuredLogApp:TheSecuredLogApp & LogAppType;
-var myTheSecuredLogAppTemp = new TheSecuredLogApp();
-if(!(myTheSecuredLogAppTemp instanceof LogApp)){
-    throw new TypeError('!(myTheSecuredLogAppTemp instanceof LogAppType)')
-}else{
-    myTheSecuredLogApp=myTheSecuredLogAppTemp;
-    myTheSecuredLogApp.enableLog(true);
-    myTheSecuredLogApp.setUser("ADMIN");
-    myTheSecuredLogApp.doThe();
-    chain = chain.then(function(){
-        return myTheSecuredLogApp.install();
-    });
-}
+var myTheSecuredLogApp = new TheSecuredLogApp();
+myTheSecuredLogApp.enableLog(true);
+myTheSecuredLogApp.setUser("ADMIN");
+myTheSecuredLogApp.doThe();
+chain = chain.then(function(){
+    return myTheSecuredLogApp.install();
+});
 
+var SecuredApp = emergeSecuredApp(BaseApp);
 var LogSecuredApp = emergeLogApp(SecuredApp);
 
 class TheLogSecuredApp extends LogSecuredApp{
@@ -48,15 +46,26 @@ class TheLogSecuredApp extends LogSecuredApp{
     }
 }
 
-var myTheLogSecuredApp:TheLogSecuredApp & SecuredAppType;
-var myTheLogSecuredAppTemp = new TheLogSecuredApp();
-if(!(myTheLogSecuredAppTemp instanceof SecuredApp)){
-    throw new TypeError('!(myTheLogSecuredAppTemp instanceof SecuredAppType)')
-}else{
-    myTheLogSecuredApp=myTheLogSecuredAppTemp;
-    myTheLogSecuredApp.enableLog(true);
-    myTheLogSecuredApp.setUser("ADMIN");
-    chain = chain.then(function(){
-        return myTheLogSecuredApp.install();
-    });
+var myTheLogSecuredApp = new TheLogSecuredApp();
+myTheLogSecuredApp.enableLog(true);
+myTheLogSecuredApp.setUser("ADMIN");
+chain = chain.then(function(){
+    return myTheLogSecuredApp.install();
+});
+
+
+class OtherLogSecuredApp extends LogSecuredApp{
+    getName(){
+        return "OtherLogSecuredApp";
+    }
+    constructor(){
+        super();
+        this.setUser('admin');
+        this.enableLog(true);
+    }
 }
+
+var otherLogSecuredApp = new OtherLogSecuredApp();
+chain = chain.then(function(){
+    return otherLogSecuredApp.install();
+});

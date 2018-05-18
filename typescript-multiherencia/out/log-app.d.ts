@@ -1,6 +1,7 @@
 import { BaseApp, TableDef } from "./base-app";
-export declare function emergeLogApp(base: typeof BaseApp): {
-    new (): {
+export declare type Constructor<T> = new (...args: any[]) => T;
+export declare function emergeLogApp<T extends Constructor<BaseApp>>(Base: T): {
+    new (...args: any[]): {
         enabled: boolean;
         getName(): string;
         getTables(): TableDef[];
@@ -9,17 +10,4 @@ export declare function emergeLogApp(base: typeof BaseApp): {
         enableLog(enable: boolean): void;
         tables: TableDef[];
     };
-};
-export declare var LogApp: {
-    new (): {
-        enabled: boolean;
-        getName(): string;
-        getTables(): TableDef[];
-        installPart(part: string, content: string): Promise<void>;
-        install(): Promise<void>;
-        enableLog(enable: boolean): void;
-        tables: TableDef[];
-    };
-};
-export declare class LogAppType extends LogApp {
-}
+} & T;

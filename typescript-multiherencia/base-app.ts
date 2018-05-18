@@ -6,11 +6,11 @@ export interface TableDef{
     name:string
 }
 
-export abstract class BaseApp{
+export class BaseApp{
     tables:TableDef[]=[{name:'usuarios'}];
     constructor(){
     }
-    abstract getName():string
+    getName():string
     getTables():TableDef[]{
         return this.tables;
     }

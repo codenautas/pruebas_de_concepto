@@ -3,6 +3,9 @@
         "name": "usuarios"
     },
     {
+        "name": "log"
+    },
+    {
         "name": "secured"
     },
     {

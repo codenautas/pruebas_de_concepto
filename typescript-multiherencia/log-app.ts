@@ -1,7 +1,9 @@
 import {BaseApp, TableDef} from "./base-app"
 
-export function emergeLogApp(base:typeof BaseApp){
-    return class extends base{
+export type Constructor<T> = new(...args: any[]) => T;
+
+export function emergeLogApp<T extends Constructor<BaseApp>>(Base:T){
+    return class extends Base{
         enabled:boolean=false
         getName():string{
             throw new Error('must implemente getName')
@@ -29,5 +31,5 @@ export function emergeLogApp(base:typeof BaseApp){
     }
 }
 
-export var LogApp=emergeLogApp(BaseApp);
-export class LogAppType extends LogApp{};
+// export var LogApp=emergeLogApp(BaseApp);
+// export class LogAppType extends LogApp{};
