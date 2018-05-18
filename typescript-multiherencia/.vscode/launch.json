@@ -10,6 +10,13 @@
             "preLaunchTask": "compile-all",
             "name": "Launch Program",
             "program": "${workspaceFolder}/out/the_app.js"
+        },
+        {
+            "type": "node",
+            "request": "launch",
+            "preLaunchTask": "compile-all",
+            "name": "Example",
+            "program": "${workspaceFolder}/out/example.js"
         }
     ]
 }
