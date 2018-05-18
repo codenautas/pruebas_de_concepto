@@ -8,6 +8,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+const base_app_1 = require("./base-app");
 function emergeLogApp(base) {
     return class extends base {
         constructor() {
@@ -45,4 +46,9 @@ function emergeLogApp(base) {
     };
 }
 exports.emergeLogApp = emergeLogApp;
+exports.LogApp = emergeLogApp(base_app_1.BaseApp);
+class LogAppType extends exports.LogApp {
+}
+exports.LogAppType = LogAppType;
+;
 //# sourceMappingURL=log-app.js.map

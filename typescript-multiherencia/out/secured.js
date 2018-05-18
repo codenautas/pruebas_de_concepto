@@ -8,10 +8,12 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+const base_app_1 = require("./base-app");
 function emergeSecuredApp(base) {
     return class extends base {
         constructor() {
-            super(...arguments);
+            super();
+            this.user = 'UNLOGGED';
             this.user = 'UNLOGGED';
         }
         getName() {
@@ -51,4 +53,9 @@ function emergeSecuredApp(base) {
     };
 }
 exports.emergeSecuredApp = emergeSecuredApp;
+exports.SecuredApp = emergeSecuredApp(base_app_1.BaseApp);
+class SecuredAppType extends exports.SecuredApp {
+}
+exports.SecuredAppType = SecuredAppType;
+;
 //# sourceMappingURL=secured.js.map

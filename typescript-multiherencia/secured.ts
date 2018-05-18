@@ -3,6 +3,10 @@ import {BaseApp, TableDef} from "./base-app"
 export function emergeSecuredApp(base:typeof BaseApp){
     return class extends base{
         user:string='UNLOGGED';
+        constructor(){
+            super();
+            this.user='UNLOGGED';
+        }
         getName():string{
             throw new Error('must implemente getName')
         }
@@ -33,3 +37,6 @@ export function emergeSecuredApp(base:typeof BaseApp){
 
     }
 }
+
+export var SecuredApp = emergeSecuredApp(BaseApp);
+export class SecuredAppType extends SecuredApp{};

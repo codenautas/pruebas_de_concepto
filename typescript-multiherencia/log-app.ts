@@ -28,3 +28,6 @@ export function emergeLogApp(base:typeof BaseApp){
 
     }
 }
+
+export var LogApp=emergeLogApp(BaseApp);
+export class LogAppType extends LogApp{};
