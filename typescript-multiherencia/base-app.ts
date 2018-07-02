@@ -10,7 +10,9 @@ export class BaseApp{
     tables:TableDef[]=[{name:'usuarios'}];
     constructor(){
     }
-    getName():string
+    getName():string{
+        return "no esta"
+    }
     getTables():TableDef[]{
         return this.tables;
     }

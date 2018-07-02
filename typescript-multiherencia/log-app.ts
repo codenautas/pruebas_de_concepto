@@ -1,4 +1,5 @@
 import {BaseApp, TableDef} from "./base-app"
+import { emergeSecuredApp } from "./secured";
 
 export type Constructor<T> = new(...args: any[]) => T;
 
@@ -27,9 +28,12 @@ export function emergeLogApp<T extends Constructor<BaseApp>>(Base:T){
         enableLog(enable:boolean){
             this.enabled=enable;
         }
-
     }
 }
 
 // export var LogApp=emergeLogApp(BaseApp);
 // export class LogAppType extends LogApp{};
+
+
+export var LogApp=emergeLogApp(BaseApp);
+
