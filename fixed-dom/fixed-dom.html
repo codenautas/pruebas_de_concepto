@@ -1,0 +1,474 @@
+<!doctype html>
+<html>
+  <head>
+    <title>prueba de fixed lateral</title>
+    <meta charset='utf-8'><link href='img/logo-128.png' rel='shortcut icon' type='image/png'><link href='img/logo.png' rel=icon type='image/png'><link href='img/logo.png' rel='apple-touch-icon'><meta name='format-detection' content='telephone=no'><link href='dialog-promise/dialog-promise.css' rel=stylesheet><link href='pikaday/pikaday.css' rel=stylesheet><link href='css/my-things.css' rel=stylesheet><link href='css/my-tables.css' rel=stylesheet><link href='css/my-menu.css' rel=stylesheet>
+    <style>
+      *::-webkit-scrollbar{
+        width:6px;
+        height:6px;
+      }
+      *::-webkit-scrollbar-track{
+        -webkit-box-shadow:inset 0 0 6px rgba(0,0,0,0.3);
+        border-radius:6px;
+        }
+        *::-webkit-scrollbar-thumb{
+            border-radius:6px;
+            -webkit-box-shadow:inset 0 0 6px rgba(0,0,0,0.5);
+        }
+        #lateral {
+            position: fixed;
+            left:0;
+            right:0;
+            padding: 2px;
+            background-color: rgba(240,240,240,0.8);
+            width: 40px;
+            box-sizing: border-box;
+            height:100%;
+            overflow-y: scroll;
+            overflow-x: hidden;
+        }
+        #lateral img{
+            max-width: 32px;
+            margin-top: 4px;
+        }
+        #lateral button{
+            width: 32px;
+            height: 32px;
+            margin-top: 4px;
+            font-weight: bold;
+        }
+        body{
+            padding-left: 42px;
+            background-color: #fea;
+        }
+        .reglamento a{
+            color: black;
+            text-decoration: none;
+        
+        }
+        #button_end{
+            font-size:70%;
+            position:fixed;
+            bottom: 2px;
+            top:auto;
+        }
+    </style>
+  </head>
+  <body>
+    <div id=lateral>
+      <div id=laterl_interno>
+        <img src="../postgresql/deferred_trigger/node_modules/mocha/images/error.png">
+        <br>
+        <img src="../layout/flecha-abajo.png">
+        <br>
+        <img src="../html/Hydrogen.png">
+        <br>
+        <img src="../filter/parecido.png">
+        <br>
+        <img src="../html/Hydrogen.png">
+        <br>
+        <button id=button_A1>A1</button><br>
+        <button id=button_B2>B2</button><br>
+        <button id=button_C3>C3</button><br>
+        <button id=button_D3>D3</button><br>
+        <button id=button_C4>C4</button><br>
+        <button id=button_E5>E5</button><br>
+        <button id=button_F6>F6</button><br>
+        <button id=button_G7>G7</button><br>
+        <button id=button_H8>H8</button><br>
+        <button id=button_I9>I9</button><br>
+        <button id=button_J0>J0</button><br>
+        <button id=button_Kg>Kg</button><br>
+        <button id=button_end>end</button><br>
+      </div>
+    </div>
+    <div>
+            <div id="main-top-bar" class="top-menu-bar"><img id="main-logo" src="img/logo.png"><a class="menu-item" menu-type="menu" menu-name="periodic table" href="menu#i=periodic table" menu-selected="yes">periodic table</a><a class="menu-item" menu-type="table" menu-name="images" href="menu#i=images">images</a><a class="menu-item" menu-type="menu" menu-name="test" href="menu#i=test">test</a><a class="menu-item" menu-type="menu" menu-name="bitacora" href="menu#i=bitacora">bitacora</a><a class="menu-item" menu-type="menu" menu-name="config" href="menu#i=config">config</a><img src="img/three-dot-menu.png" id="right-menu-icon"><span id="active-user" style="display: none;">bob</span><a id="not-logged" href="login" style="display: inherit;">login</a><span class="right-lights"><img class="light" id="light-server" src="img/server.png"><img class="light" id="light-network-signal" src="img/network-signal.png"><img class="light" id="light-airplane" src="img/airplane-off.png"></span><span id="mini-console"></span></div>
+            <div id="main-top-bar1" class="sub-menu-bar" style="padding-left: 60px;"><a class="menu-item" menu-type="table" menu-name="ptable" href="menu#i=periodic table,ptable">elements</a><a class="menu-item" menu-type="table" menu-name="pgroups" href="menu#i=periodic table,pgroups">groups</a><a class="menu-item" menu-type="table" menu-name="isotopes" href="menu#i=periodic table,isotopes">isotopes</a><a class="menu-item" menu-type="table" menu-name="new_element" href="menu#i=periodic table,new_element">new element</a><a class="menu-item" menu-type="table" menu-name="new_isotopes" href="menu#i=periodic table,new_isotopes">new isotopes</a><a class="menu-item" menu-type="proc" menu-name="count/without-isotopes" href="menu#i=periodic table,count/without-isotopes">count</a></div>            
+            <input id=input1>
+            <input id=input2>
+            <input id=input3>
+            <input id=input4>
+            <div class=reglamento>
+                    <h1 class="titulo">Reglamento de Tute Cabrero</h1>
+                    <ul><li><a href="#Mec&aacute;nica_del_juego">Mec&aacute;nica del juego</a></li><li><a href="#Los_cantos">Los cantos</a></li><li><a href="#El_juego_seg&uacute;n_la_cantidad_de_jugadores">El juego seg&uacute;n la cantidad de jugadores</a></li><li><a href="#En_caso_de_empate">En caso de empate</a></li><li><a href="#Renuncio">Renuncio</a></li><li><a href="#Variantes">Variantes</a></li><li><a href="#Errores_comunes">Errores comunes</a></li><li><a href="#Otros_tutes">Otros tutes</a></li><li><a href="#Otros_juegos_de_bazas">Otros juegos de bazas</a></li></ul><div class="justificado"><ol class="lista_articulos"><h2 class="subtitulo"><a name="Mec&aacute;nica_del_juego"></a>Mec&aacute;nica del juego</h2>
+                    <li><p>El <a href="glosario.html#tute" class="palclave">tute</a> es un juego de <a href="glosario.html#baza" class="palclave">bazas</a>. Se juega con un <a href="glosario.html#mazo" class="palclave">mazo</a> de cuarenta
+                    
+                            <a href="glosario.html#cartas_espa&ntilde;olas" class="palclave">cartas espa&ntilde;olas</a>. Pueden participar entre tres y seis jugadores. En cada
+                    
+                            <a href="glosario.html#mano" class="palclave">mano</a> pierde al menos un jugador. Cuando un jugador ha perdido en cuatro
+                    
+                            <a href="glosario.html#mano" class="palclave">manos</a> se retira del partido. El partido termina cuando quedan menos de
+                    
+                            tres jugadores (ya no se puede seguir jugando <a href="faq.html#&#191;Por_qu&eacute;_no_se_puede_jugar_de_a_dos?" title="En realidad existe una variante para desempatar a los &uacute;ltimos dos jugadores.
+                     Esta variante es muy poco usada.
+                     No es recomendada porque sus manos son sustancialmente distintas al resto del juego
+                     "><sup>(1)</sup></a>).</p>
+                    </li><li><p>El partido se organiza en <a href="glosario.html#mano" class="palclave">manos</a>. Las <a href="glosario.html#mano" class="palclave">manos</a> se dividen en <a href="glosario.html#baza" class="palclave">bazas</a>. En
+                    
+                            cada <a href="glosario.html#mano" class="palclave">mano</a> se <a href="glosario.html#repartir" class="palclave">reparten</a> todas las cartas, se juegan tantas <a href="glosario.html#baza" class="palclave">bazas</a> como
+                    
+                            cartas se hayan <a href="glosario.html#repartir" class="palclave">repartido</a> por jugador, se cuentan los <a href="glosario.html#puntos" class="palclave">puntos</a> <a href="glosario.html#levantar" class="palclave">levantados</a>
+                    
+                            y se determina qui&eacute;nes pierden la <a href="glosario.html#mano" class="palclave">mano</a>. </p>
+                    </li><li><p>La <a href="glosario.html#mano" class="palclave">mano</a> se divide en <a href="glosario.html#baza" class="palclave">bazas</a>. En la primera <a href="glosario.html#baza" class="palclave">baza</a> empieza tirando una
+                    
+                            carta el jugador que es <a href="glosario.html#mano" class="palclave">mano</a>, esa es la carta que <dfn><i><a href="glosario.html#salir" class="palclave">sali&oacute;</a></i></dfn>. Los dem&aacute;s
+                    
+                            jugadores, en orden, empezando por el de la derecha del que <dfn><i><a href="glosario.html#salir" class="palclave">sali&oacute;</a></i></dfn>,
+                    
+                            tiran una carta. El que tir&oacute; la carta que <dfn><i><a href="glosario.html#matar" class="palclave">mata</a></i></dfn> se lleva todas las
+                    
+                            cartas y las apila boca abajo junto a &eacute;l. Ah&iacute; termina la <a href="glosario.html#baza" class="palclave">baza</a>. El que se
+                    
+                            llev&oacute; la <a href="glosario.html#baza" class="palclave">baza</a> es el que empieza tirando en la <a href="glosario.html#baza" class="palclave">baza</a> siguiente. </p>
+                    </li><li><p>La &uacute;ltima carta <a href="glosario.html#repartir" class="palclave">repartida</a> indica el <a href="glosario.html#palo" class="palclave">palo</a> de <dfn><i><a href="glosario.html#triunfo" class="palclave">triunfo</a></i></dfn>. En cada <a href="glosario.html#baza" class="palclave">baza</a>
+                    
+                            <dfn><i><a href="glosario.html#matar" class="palclave">mata</a></i></dfn> la carta de valor m&aacute;s alto del <a href="glosario.html#palo" class="palclave">palo</a> que <dfn><i><a href="glosario.html#salir" class="palclave">sali&oacute;</a></i></dfn> (el <a href="glosario.html#palo" class="palclave">palo</a> de la
+                    
+                            primera carta tirada en la <a href="glosario.html#baza" class="palclave">baza</a>) con excepci&oacute;n de que alguna de las
+                    
+                            cartas jugadas sea de <a href="glosario.html#triunfo" class="palclave">triunfo</a>. En este caso <dfn><i><a href="glosario.html#matar" class="palclave">mata</a></i></dfn> la carta m&aacute;s alta de
+                    
+                            <a href="glosario.html#triunfo" class="palclave">triunfo</a>.</p>
+                    </li><li><p>Valor de las cartas: Los ases valen 11 <a href="glosario.html#puntos" class="palclave">puntos</a>; los tres valen 10;
+                    
+                            los reyes, 4; los caballos, 3; las sotas, 2; el resto vale 0. Pero para
+                    
+                            determinar qu&eacute; carta <a href="glosario.html#matar" class="palclave">mata</a>, el orden de las cartas sin valor es: siete,
+                    
+                            seis, cinco, cuatro y dos.</p>
+                    </li><li><p>El jugador que comienza la <a href="glosario.html#baza" class="palclave">baza</a> puede tirar la carta que desee. Los
+                    
+                            dem&aacute;s jugadores deben <dfn><i><a href="glosario.html#responder_al_palo" class="palclave">responder al palo</a></i></dfn> (jugar una carta del mismo
+                    
+                            <a href="glosario.html#palo" class="palclave">palo</a> que <dfn><i><a href="glosario.html#salir" class="palclave">sali&oacute;</a></i></dfn>) y <dfn><i><a href="glosario.html#matar" class="palclave">matar</a></i></dfn> (tirar una carta que mate a todas las que ya
+                    
+                            fueron tiradas en la <a href="glosario.html#baza" class="palclave">baza</a>). De no poder cumplir estas dos obligaciones
+                    
+                            simult&aacute;neamente, debe cumplirse la primera (<a href="glosario.html#responder_al_palo" class="palclave">responder al palo</a>), si no se
+                    
+                            puede cumplir la primera, debe cumplirse la segunda (<a href="glosario.html#matar" class="palclave">matar</a>, o sea, en
+                    
+                            este caso, tirar un <a href="glosario.html#triunfo" class="palclave">triunfo</a> m&aacute;s alto que los <a href="glosario.html#triunfo" class="palclave">triunfos</a> que se hayan
+                    
+                            tirado). De no poder cumplir ninguna de las dos, jugar&aacute; cualquier carta.
+                    
+                            Aclaraci&oacute;n: En una <a href="glosario.html#mano" class="palclave">mano</a> en la que no se <dfn><i><a href="glosario.html#salir" class="palclave">sali&oacute;</a></i></dfn> con <a href="glosario.html#triunfo" class="palclave">triunfos</a> pero s&iacute; se
+                    
+                            han jugador <a href="glosario.html#triunfo" class="palclave">triunfos</a>, si el jugador al que le toca jugar no tiene cartas
+                    
+                            del <a href="glosario.html#palo" class="palclave">palo</a> que <dfn><i><a href="glosario.html#salir" class="palclave">sali&oacute;</a></i></dfn> y tiene <a href="glosario.html#triunfo" class="palclave">triunfos</a> pero ninguno m&aacute;s alto que los
+                    
+                            jugados; no est&aacute; obligado a tirar <a href="glosario.html#triunfo" class="palclave">triunfo</a>, puede tirar la carta que
+                    
+                            desee. </p>
+                    </li><li><p><a name="capote"></a>Si un jugador hace todas las bazas (se lleva todas las cartas de la
+                    
+                            mano), se dice que hizo <dfn><strong><i><a href="glosario.html#capote" class="palclave">capote</a></i></strong></dfn>. Pierden todos los dem&aacute;s jugadores.
+                    
+                            (Salvo que haya <a href="#Los_cantos">cantado</a>, porque si cant&oacute; pierde).</p>
+                    </li><li><p>Si las <a href="glosario.html#baza" class="palclave">bazas</a> se <a href="glosario.html#repartir" class="palclave">reparten</a> entre dos jugadores el que haya hecho menos
+                    
+                            <a href="glosario.html#puntos" class="palclave">puntos</a> de los dos es el que pierde la <a href="glosario.html#mano" class="palclave">mano</a> (se dice que el otro <a href="glosario.html#ganar_a_m&aacute;s" class="palclave">gan&oacute; a m&aacute;s</a>). </p>
+                    </li><li><p>Si las <a href="glosario.html#baza" class="palclave">bazas</a> se <a href="glosario.html#repartir" class="palclave">reparten</a> entre m&aacute;s de dos jugadores, pierden los
+                    
+                            jugadores <dfn><i><a href="glosario.html#del_medio" class="palclave">del medio</a></i></dfn> o sea, todos los que hayan levantado cartas salvo
+                    
+                            el que haya sumado m&aacute;s <a href="glosario.html#puntos" class="palclave">puntos</a> (se dice que <a href="glosario.html#ganar_a_m&aacute;s" class="palclave">gan&oacute; a m&aacute;s</a>) y el que haya
+                    
+                            sumado menos <a href="glosario.html#puntos" class="palclave">puntos</a> (se dice que <a href="glosario.html#ganar_a_menos" class="palclave">gan&oacute; a menos</a>). Los que no han levantado
+                    
+                            cartas no cuentan. Ejemplo, jugando cinco jugadores si s&oacute;lo tres han
+                    
+                            levantado cartas pierde uno solo (el <a href="glosario.html#del_medio" class="palclave">del medio</a>), si cuatro han levantado
+                    
+                            cartas pierden dos (los <a href="glosario.html#del_medio" class="palclave">del medio</a>), si los cinco han levantado cartas
+                    
+                            pierden tres (los <a href="glosario.html#del_medio" class="palclave">del medio</a>). As&iacute; siempre se salvan uno a m&aacute;s y uno a
+                    
+                            menos.</p>
+                    </li><li><p><a name="diez_de_&uacute;ltima"></a>El que se lleva la &uacute;ltima baza se anota <dfn><strong><i>las <a href="glosario.html#diez_de_&uacute;ltima" class="palclave">diez de &uacute;ltima</a></i></strong></dfn>, o sea,
+                    
+                            suma 10 <a href="glosario.html#puntos" class="palclave">puntos</a> al valor de las cartas que haya levantado. </p>
+                    </li><li><p>En la primera <a href="glosario.html#mano" class="palclave">mano</a> el jugador que tiene el dos de oro es <a href="glosario.html#mano" class="palclave">mano</a> y oro
+                    
+                            es el <a href="glosario.html#triunfo" class="palclave">palo de triunfo</a>. En las <a href="glosario.html#mano" class="palclave">manos</a> subsiguientes repartir&aacute; el jugador
+                    
+                            que fue <a href="glosario.html#mano" class="palclave">mano</a> la <a href="glosario.html#mano" class="palclave">mano</a> anterior y ser&aacute; <a href="glosario.html#mano" class="palclave">mano</a> el que est&aacute; sentado a su
+                    
+                            derecha.</p>
+                    </li><h2 class="subtitulo"><a name="Los_cantos"></a>Los cantos</h2>
+                    <li><p>Si un jugador tiene en la <a href="glosario.html#mano" class="palclave">mano</a> los <a href="glosario.html#tute" class="palclave">cuatro reyes</a> o los <a href="glosario.html#tute" class="palclave">cuatro caballos</a> tiene <dfn><i><a href="glosario.html#tute" class="palclave">tute</a></i></dfn>. Si tiene el rey y el caballo de <a href="glosario.html#triunfo" class="palclave">triunfo</a> tiene
+                    
+                            <dfn><i><a href="glosario.html#las_cuarenta" class="palclave">las cuarenta</a></i></dfn>. Si tiene un rey y un caballo del mismo <a href="glosario.html#palo" class="palclave">palo</a> tiene <dfn><i><a href="glosario.html#las_veinte" class="palclave">las veinte</a> en ese <a href="glosario.html#palo" class="palclave">palo</a></i></dfn>.</p>
+                    </li><li><p>El jugador que acaba de ganar una <a href="glosario.html#baza" class="palclave">baza</a>, antes de tirar la carta de
+                    
+                            la siguiente <a href="glosario.html#baza" class="palclave">baza</a> puede <a href="glosario.html#cantar" class="palclave">cantar</a>, <dfn><i><a href="glosario.html#tute" class="palclave">tute</a></i></dfn>, <dfn><i><a href="glosario.html#las_veinte" class="palclave">las veinte</a></i></dfn> o <dfn><i><a href="glosario.html#las_cuarenta" class="palclave">las cuarenta</a></i></dfn> si
+                    
+                            a&uacute;n conserva en la <a href="glosario.html#mano" class="palclave">mano</a> las cartas del <a href="glosario.html#canto" class="palclave">canto</a> (no ha jugado ninguna en la
+                    
+                            &uacute;ltima <a href="glosario.html#baza" class="palclave">baza</a> ni en sus anteriores). En ning&uacute;n caso es obligatorio <a href="glosario.html#cantar" class="palclave">cantar</a>.
+                    
+                            </p>
+                    </li><li><p>El jugador que canta <dfn><i><a href="glosario.html#tute" class="palclave">tute</a></i></dfn> gana la <a href="glosario.html#mano" class="palclave">mano</a>. Pierden los otros
+                    
+                            jugadores.</p>
+                    </li><li><p>El jugador que canta <dfn><i><a href="glosario.html#las_cuarenta" class="palclave">las cuarenta</a></i></dfn> tiene al final de la <a href="glosario.html#mano" class="palclave">mano</a> 40
+                    
+                            <a href="glosario.html#puntos" class="palclave">puntos</a> extra que se suman al valor de las cartas levantadas. Lo mismo
+                    
+                            para <dfn><i><a href="glosario.html#las_veinte" class="palclave">las veinte</a></i></dfn>.</p>
+                    </li><li><p>En un <a href="glosario.html#mano" class="palclave">mano</a> se pueden <a href="glosario.html#cantar" class="palclave">cantar</a> <dfn><i><a href="glosario.html#las_cuarenta" class="palclave">las cuarenta</a></i></dfn> y todas <dfn><i><a href="glosario.html#las_veinte" class="palclave">las veinte</a></i></dfn> que
+                    
+                            se tengan pero debe hacerse una por <a href="glosario.html#baza" class="palclave">baza</a>. O sea, despu&eacute;s de cada <a href="glosario.html#baza" class="palclave">baza</a>
+                    
+                            solo puede hacerse un <a href="glosario.html#canto" class="palclave">canto</a>.</p>
+                    </li><li><p>Los <a href="glosario.html#canto" class="palclave">cantos</a> son optativos (cantan s&oacute;lo los que <dfn><i><a href="glosario.html#ir_a_m&aacute;s_(a_menos)" class="palclave">van a m&aacute;s</a></i></dfn>) en cambio
+                    
+                            <dfn><i>las <a href="glosario.html#diez_de_&uacute;ltima" class="palclave">diez de &uacute;ltima</a></i></dfn> son obligatorias. </p>
+                    </li><li><p>Si un jugador <a href="glosario.html#cantar" class="palclave">cant&oacute;</a> <dfn><i><a href="glosario.html#las_veinte" class="palclave">las veinte</a></i></dfn> o <dfn><i><a href="glosario.html#las_cuarenta" class="palclave">las cuarenta</a></i></dfn> y luego hizo
+                    
+                            <dfn><i><a href="glosario.html#capote" class="palclave">capote</a></i></dfn> pierde &eacute;l solo. </p>
+                    </li><h2 class="subtitulo"><a name="El_juego_seg&uacute;n_la_cantidad_de_jugadores"></a>El juego seg&uacute;n la cantidad de jugadores</h2>
+                    <li><p>Cuando se juega entre tres jugadores se <a href="glosario.html#repartir" class="palclave">reparten</a> todas las cartas
+                    
+                            menos una. </p>
+                    </li><ol type="a"><li><p>En la primera <a href="glosario.html#mano" class="palclave">mano</a> del partido esta carta se pone boca abajo en la
+                    
+                              mesa. El jugador que tiene el dos de oro lo <a href="glosario.html#cambiar" class="palclave">cambia</a> por la carta boca
+                    
+                              abajo sin mostrarla al resto y es <a href="glosario.html#mano" class="palclave">mano</a>. El dos de oro permanece boca
+                    
+                              arriba durante toda la <a href="glosario.html#mano" class="palclave">mano</a> y no forma parte del juego. Si nadie tiene
+                    
+                              el dos de oro, porque es la carta boca abajo, el jugador que tiene el
+                    
+                              cuatro de oro lo dice y es <a href="glosario.html#mano" class="palclave">mano</a>; el dos de oro se da vuelta y
+                    
+                              permanece boca arriba. </p>
+                    </li><li><p>En las <a href="glosario.html#mano" class="palclave">manos</a> subsiguientes la &uacute;ltima carta (la que sobra) se
+                    
+                              muestra boca arriba en la mesa. El <a href="glosario.html#palo" class="palclave">palo</a> de esa carta es el <a href="glosario.html#triunfo" class="palclave">palo de triunfo</a>. Si la carta es mayor a siete el jugador que tiene el siete de
+                    
+                              <a href="glosario.html#triunfo" class="palclave">triunfo</a> la <a href="glosario.html#cambiar" class="palclave">cambia</a> y luego <a href="glosario.html#cambiar" class="palclave">cambia</a> por el siete el que tiene el dos. Si
+                    
+                              la carta es menor o igual a siete y mayor a cuatro, la <a href="glosario.html#cambiar" class="palclave">cambia</a> el
+                    
+                              jugador que tiene el dos. El cuatro y el dos no se cambian. La carta
+                    
+                              que sobra permanece boca arriba durante toda la <a href="glosario.html#mano" class="palclave">mano</a> y no forma parte
+                    
+                              del juego.</p>
+                    </li></ol><li><p>Cuando el juego es de m&aacute;s de tres jugadores se <a href="glosario.html#repartir" class="palclave">reparten</a> todas las
+                    
+                            cartas y no hay <a href="glosario.html#cambiar" class="palclave">cambios</a>. La primera <a href="glosario.html#mano" class="palclave">mano</a> es <a href="glosario.html#triunfo" class="palclave">triunfo</a> oro y es <a href="glosario.html#mano" class="palclave">mano</a> el que
+                    
+                            posea el dos. En las subsiguientes es <a href="glosario.html#mano" class="palclave">mano</a> el que est&aacute; a la derecha del
+                    
+                            que dio, quien muestra su &uacute;ltima carta que indica el <a href="glosario.html#triunfo" class="palclave">palo de triunfo</a>.
+                    
+                            </p>
+                    </li><li><p>Cuando el juego es de seis jugadores se decide qui&eacute;n es <a href="glosario.html#mano" class="palclave">mano</a> antes
+                    
+                            de empezar el partido. El que reparte no juega esa <a href="glosario.html#mano" class="palclave">mano</a> y da cartas s&oacute;lo
+                    
+                            para los otros cinco. El jugador que reparti&oacute; no pierde en esa <a href="glosario.html#mano" class="palclave">mano</a>
+                    
+                            (aunque se haya <a href="glosario.html#cantar" class="palclave">cantado</a> <dfn><i><a href="glosario.html#tute" class="palclave">tute</a></i></dfn> o se haya hecho <dfn><i><a href="glosario.html#capote" class="palclave">capote</a></i></dfn>).</p>
+                    </li><h2 class="subtitulo"><a name="En_caso_de_empate"></a>En caso de empate</h2>
+                    <li><p>En cada <a href="glosario.html#mano" class="palclave">mano</a>, cuando por ocurrir <a href="glosario.html#empate_en_puntos" class="palclave">empate en los puntos</a> de los
+                    
+                            jugadores no quede ning&uacute;n jugador en el <dfn><i><a href="glosario.html#del_medio" class="palclave">medio</a></i></dfn>, pierden los jugadores
+                    
+                            que han <a href="glosario.html#empate_en_puntos" class="palclave">empatado</a>. Esto puede ocurrir en dos casos</p>
+                    </li><ol type="a"><li><p>Cuando todos los jugadores que han levantado cartas tienen el
+                    
+                              mismo <a href="glosario.html#puntos" class="palclave">puntaje</a>. En este caso ninguno ha ganado a m&aacute;s, pierden todos los
+                    
+                              que han levantado <a href="glosario.html#baza" class="palclave">bazas</a>.</p>
+                    </li><li><p>Cuando los jugadores que han levantado cartas han <a href="glosario.html#empate_en_puntos" class="palclave">empatado</a> o bien
+                    
+                              en el mayor <a href="glosario.html#puntos" class="palclave">puntaje</a> o bien en el menor y no hay nadie que haya quedado
+                    
+                              en el <a href="glosario.html#del_medio" class="palclave">medio</a>. En este caso nadie ha ganado a m&aacute;s ni a menos. Pierden
+                    
+                              todos los que han levantado <a href="glosario.html#baza" class="palclave">bazas</a>.</p>
+                    </li></ol><h2 class="subtitulo"><a name="Renuncio"></a>Renuncio</h2>
+                    <li><p>Cuando un jugador, pudiendo cumplir con sus obligaciones de
+                    
+                            <dfn><i><a href="glosario.html#responder_al_palo" class="palclave">responder al palo</a></i></dfn> o <dfn><i><a href="glosario.html#matar" class="palclave">matar</a></i></dfn> no lo haya hecho ha <dfn><i><a href="glosario.html#renunciar" class="palclave">renunciado</a></i></dfn>. Pierde
+                    
+                            la <a href="glosario.html#mano" class="palclave">mano</a> y se le anotan dos <a href="glosario.html#mano" class="palclave">manos</a> en contra (es como si hubiese perdido
+                    
+                            dos <a href="glosario.html#mano" class="palclave">manos</a>).</p>
+                    </li><li><p>No est&aacute; permitido jugar antes de tiempo, ni mostrar cartas de la
+                    
+                            <a href="glosario.html#mano" class="palclave">mano</a>, ni revisar las <a href="glosario.html#baza" class="palclave">bazas</a> levantadas (excepto la &uacute;ltima). Tampoco est&aacute;
+                    
+                            permitido dar indicaciones sobre qu&eacute; cartas o palos jugar o hacer
+                    
+                            acordar que se puede <a href="glosario.html#cantar" class="palclave">cantar</a> o <a href="glosario.html#salir" class="palclave">salir</a> a <a href="glosario.html#cortar_los_cantos" class="palclave">cortar los cantos</a> (jugar de modo
+                    
+                            de obligar al posible tenedor de un <a href="glosario.html#canto" class="palclave">canto</a> a jugar una de esas cartas).</p>
+                    </li><h2 class="subtitulo"><a name="Variantes"></a>Variantes</h2>
+                    <li><p>Convini&eacute;ndolo entre todos los jugadores antes de comenzar el juego
+                    
+                            pueden modificarse las siguientes reglas</p>
+                    </li><ol type="a"><li><p>Jugando de m&aacute;s de tres jugadores no se muestra la &uacute;ltima carta y
+                    
+                              se considera <a href="glosario.html#triunfo" class="palclave">triunfo</a> alternativamente oro, copa, espada y
+                    
+                              basto.</p>
+                    </li><li><p>En <a href="glosario.html#empate_en_puntos" class="palclave">caso de empate</a> se desempata sum&aacute;ndole al que es <a href="glosario.html#mano" class="palclave">mano</a> <a href="glosario.html#del_medio" class="palclave">medio</a>
+                    
+                              punto m&aacute;s, de este modo gana a m&aacute;s y pierde a menos. Cuando no es el
+                    
+                              <a href="glosario.html#mano" class="palclave">mano</a> el que empata o se empata entre m&aacute;s de dos, al siguiente se le
+                    
+                              suma un cuarto, al siguiente un octavo y as&iacute; siguiendo. </p>
+                    </li><li><p>Se puede jugar hasta que quede un ganador desempatando entre los
+                    
+                              dos &uacute;ltimos jugando a una variante del <a href="glosario.html#tute" class="palclave">tute</a> llamada <dfn><strong><i><a href="glosario.html#tute" class="palclave">tute</a> de a dos</i></strong></dfn>
+                    
+                              que es similar a la <dfn><i>brisca</i></dfn>. </p>
+                    </li><li><p>El jugador que se da cuenta que otro ha <dfn><i><a href="glosario.html#renunciar" class="palclave">renunciado</a></i></dfn> lo <dfn><i><a href="glosario.html#acusar" class="palclave">acusa</a></i></dfn>.
+                    
+                              Si es en la mitad de la <a href="glosario.html#mano" class="palclave">mano</a> se la interrumpe. Se revisan las <a href="glosario.html#baza" class="palclave">bazas</a>
+                    
+                              que ha levantado cada uno. De no comprobarse el <dfn><i><a href="glosario.html#renunciar" class="palclave">renuncio</a></i></dfn> el jugador
+                    
+                              que <a href="glosario.html#acusar" class="palclave">acus&oacute;</a> pierde la <a href="glosario.html#mano" class="palclave">mano</a>.</p>
+                    </li></ol></ol><h1 class="titulo"><a name="Errores_comunes"></a>Errores comunes</h1>
+                    <p>Los errores m&aacute;s comunes por
+                    
+                             desconocimiento del reglamento son los siguientes:</p>
+                    <ul type="square"><li><p>En el juego de m&aacute;s de tres jugadores considerar que
+                    
+                            pierde el segundo independientemente de la cantidad de jugadores que
+                    
+                            hayan levantado cartas. Salvo claro cuando haya habido uno solo que
+                    
+                            levant&oacute; todo en ese caso hizo <dfn><i><a href="glosario.html#capote" class="palclave">capote</a></i></dfn>. Jugando de esta manera los
+                    
+                            jugadores que <a href="glosario.html#ir_a_m&aacute;s_(a_menos)" class="palclave">van a menos</a> tienen poca participaci&oacute;n. Cuando lo que
+                    
+                            deber&iacute;an hacer es, adem&aacute;s de intentar <a href="glosario.html#ganar_a_menos" class="palclave">ganar a menos</a>, hacer que entren en
+                    
+                            <a href="glosario.html#baza" class="palclave">baza</a> los que todav&iacute;a no entraron para que pierdan m&aacute;s jugadores.</p>
+                    </li><li><p>Considerar que si un jugador no tiene del <a href="glosario.html#palo_que_manda" class="palclave">palo que sali&oacute;</a> ni <a href="glosario.html#triunfo" class="palclave">triunfo</a>
+                    
+                            m&aacute;s alto que el que se ha tirado, est&aacute; obligado a tirar <a href="glosario.html#triunfo" class="palclave">triunfo</a> m&aacute;s
+                    
+                            chico. Esto no es as&iacute; porque de esa manera no estar&iacute;a cumpliendo ninguna
+                    
+                            de las dos obligaciones del <a href="glosario.html#tute" class="palclave">tute</a> <dfn><i><a href="glosario.html#responder_al_palo" class="palclave">responder al palo</a></i></dfn> y
+                    
+                            <dfn><i><a href="glosario.html#matar" class="palclave">matar</a></i></dfn>.</p>
+                    </li></ul><h1 class="titulo"><a name="Otros_tutes"></a>Otros tutes</h1>
+                    <ul type="square"><li><p>El <dfn><i><a href="glosario.html#tute" class="palclave">tute</a> chancho</i></dfn> es similar al cabrero. La principal
+                    
+                            diferencia es que si en una <a href="glosario.html#baza" class="palclave">baza</a> hay un rey y un caballo del mismo <a href="glosario.html#palo" class="palclave">palo</a>
+                    
+                            el que la <a href="glosario.html#levantar" class="palclave">levanta</a> tiene la obligaci&oacute;n de cantarla (<a href="glosario.html#las_veinte" class="palclave">las veinte</a> o <a href="glosario.html#las_cuarenta" class="palclave">las cuarenta</a>).</p>
+                    </li><li><p>El <dfn><i><a href="glosario.html#tute" class="palclave">tute</a> de a dos</i></dfn> es similar al cabrero. Sus diferencias son: Se
+                    
+                            juega solo a m&aacute;s. Pierde el que haya sumado menos <a href="glosario.html#puntos" class="palclave">puntos</a>. Se <a href="glosario.html#repartir" class="palclave">reparten</a>
+                    
+                            seis cartas a cada jugador, se da vuelta una indicando el <a href="glosario.html#triunfo" class="palclave">triunfo</a> y se
+                    
+                            coloca el resto del <a href="glosario.html#mazo" class="palclave">mazo</a> sobre esta carta. Esa carta no se <a href="glosario.html#cambiar" class="palclave">cambia</a>. Al
+                    
+                            terminar cada <a href="glosario.html#baza" class="palclave">baza</a> los jugadores roban una carta del <a href="glosario.html#mazo" class="palclave">mazo</a>, empezando por
+                    
+                            el que gan&oacute; la <a href="glosario.html#baza" class="palclave">baza</a>, para completar las seis cartas. Cuando se hayan
+                    
+                            acabado las cartas del <a href="glosario.html#mazo" class="palclave">mazo</a> se sigue jugando con las que quedan en la
+                    
+                            <a href="glosario.html#mano" class="palclave">mano</a> hasta terminarse. Mientras haya cartas en el <a href="glosario.html#mazo" class="palclave">mazo</a> no es obligatorio
+                    
+                            <dfn><i><a href="glosario.html#responder_al_palo" class="palclave">responder al palo</a></i></dfn> ni <dfn><i><a href="glosario.html#matar" class="palclave">matar</a></i></dfn>.</p>
+                    </li><li><p>En el <dfn><i><a href="glosario.html#tute" class="palclave">tute</a> remate</i></dfn> cada jugador dice alternativamente cu&aacute;ntos
+                    
+                            <a href="glosario.html#puntos" class="palclave">puntos</a> es capaz de hacer jugando a m&aacute;s. El que dijo el n&uacute;mero m&aacute;s alto
+                    
+                            intenta cumplir su promesa y elige el <a href="glosario.html#triunfo" class="palclave">palo de triunfo</a>. <br>El resto trata de imped&iacute;rselo. En este y otros tutes se
+                    
+                            agrega una obligaci&oacute;n <dfn><i>no vale cargar</i></dfn>. Esto es si no se puede
+                    
+                            <a href="glosario.html#matar" class="palclave">matar</a> tampoco se pueden tirar cartas con valor o se debe tirar
+                    
+                            la carta de menor valor.</p>
+                    </li><li><p>El <dfn><i>codillo</i></dfn> es similar al remate. Pero cada jugador dice si juega o
+                    
+                            no. El primer jugador que dice <dfn><i>juego</i></dfn>. Elige un compa&ntilde;ero mencionando
+                    
+                            una carta. El que tiene esa carta debe ayudarlo pero no puede
+                    
+                            comunic&aacute;rselo al resto de los jugadores. Si ganan a m&aacute;s, ganan los dos.
+                    
+                            Caso contrario, pierden los dos.</p>
+                    </li><li><p>El <dfn><i>bato</i></dfn> es similar al remate. Pero se <a href="glosario.html#repartir" class="palclave">reparten</a> cuatro cartas a
+                    
+                            cada jugador y se da vuelta una carta indicando el <a href="glosario.html#triunfo" class="palclave">triunfo</a>. En el remate
+                    
+                            cada jugador dice si juega o no y despu&eacute;s de que uno lo haya dicho el
+                    
+                            resto dice si acompa&ntilde;a o no. Juegan los que juegan y acompa&ntilde;an. El que
+                    
+                            juega est&aacute; comprometido a hacer dos <a href="glosario.html#baza" class="palclave">bazas</a>, los que acompa&ntilde;an una.
+                    
+                            Despu&eacute;s del remate y antes de jugar se pueden <a href="glosario.html#cambiar" class="palclave">cambiar</a> cartas como en el
+                    
+                            poker.</p>
+                    </li></ul><h1 class="titulo"><a name="Otros_juegos_de_bazas"></a>Otros juegos de bazas</h1>
+                    <ul type="square"><li><p>El m&aacute;s parecido al <a href="glosario.html#tute" class="palclave">tute</a> es la <dfn><strong><i>brisca</i></strong></dfn>, que tambi&eacute;n
+                    
+                            tiene muchas variantes. En la brisca todos los jugadores juegan a m&aacute;s y
+                    
+                            no se <a href="glosario.html#repartir" class="palclave">reparten</a> todas las cartas al mismo tiempo. A veces se <a href="glosario.html#repartir" class="palclave">reparten</a> en
+                    
+                            tandas (como en la escoba) a veces se van robando (como en el
+                    
+                            chinch&oacute;n).</p>
+                    </li><li><p>En la <dfn><strong><i>podrida</i></strong></dfn>, el <dfn><strong><i>bridge</i></strong></dfn> y el <dfn><strong><i>corazones</i></strong></dfn> no hay obligaci&oacute;n de
+                    
+                            <a href="glosario.html#matar" class="palclave">matar</a>. Se juegan con un <a href="glosario.html#mazo" class="palclave">mazo</a> de 52 cartas francesas, sin los
+                    
+                            comodines.</p>
+                    </li><li><p>En la <dfn><strong><i>podrida</i></strong></dfn> o <dfn><strong><i>tutecillo</i></strong></dfn> no se <a href="glosario.html#repartir" class="palclave">reparten</a> todas las cartas, pero
+                    
+                            las que se <a href="glosario.html#repartir" class="palclave">reparten</a> se las reparte en el mismo momento. En la primera
+                    
+                            <a href="glosario.html#mano" class="palclave">mano</a> se da una carta a cada jugador, en la segunda dos, y as&iacute; siguiendo
+                    
+                            hasta que se <a href="glosario.html#repartir" class="palclave">reparten</a> todas. En cada <a href="glosario.html#mano" class="palclave">mano</a> cada jugador dice cu&aacute;ntas
+                    
+                            <a href="glosario.html#baza" class="palclave">bazas</a> va a <a href="glosario.html#levantar" class="palclave">levantar</a>. Ganan los que aciertan. </p>
+                    </li><li><p>El <dfn><strong><i>bridge</i></strong></dfn> es un juego de cuatro jugadores que juegan en pareja. En
+                    
+                            cada <a href="glosario.html#mano" class="palclave">mano</a> hay un remate. </p>
+                    </li><li><p>El <a href="tute.html#corazones"><dfn><strong><i>corazones</i></strong></dfn></a> es un juego donde se anotan en contra un punto por
+                    
+                            cada coraz&oacute;n levantado y 13 puntos por la Q de piques.</p>
+                    </li></ul></div><p class="derecha"><small>&Uacute;ltima actualizaci&oacute;n 3/12/2007</small></p>
+                                    
+            </div>
+    </div>
+    <script>
+        window.addEventListener('load',function(){
+            button_A1.onclick=function(event){
+                event.target.value='A1';
+            }
+            button_A1.onmousedown=function(event){
+                event.target.value='A1d';
+            }
+            input1.onblur=function(event){
+                event.target.value='A1b';
+            }
+        })
+    </script>
+  </body>
+</html>
+  
