@@ -1,13 +1,15 @@
 body {
   font-family: arial;
+  width:718px;
+  margin:0;
 }
 #main-logo {
-  height: 24px;
-  width: 24px;
+  height: 34px;
+  width: 34px;
   margin-right: 16px;
 }
 #right-menu-icon {
-  height: 20px;
+  height: 30px;
 }
 #main-top-bar {
   padding: 4px;
@@ -16,7 +18,7 @@ body {
 }
 img.light {
   float: right;
-  height: 20px;
+  height: 30px;
 }
 #main-top-bar * {
   vertical-align: top;
@@ -111,14 +113,6 @@ a.menu-item {
 }
 .table-param-screen td[contenteditable="true"] {
   border: 1px solid #888;
-}
-.div-loading-over {
-  position: absolute;
-  left: 0px;
-  right: 0px;
-  width: 100%;
-  height: 100%;
-  background: rgba(240,240,240,0.5);
 }
 a.disabled {
   pointer-events: none;
