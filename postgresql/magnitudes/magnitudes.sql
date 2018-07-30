@@ -43,8 +43,15 @@ declare
 create type "gramos" as (
   "gramos" decimal
 ); 
+$SENTENCE$;
+  v_sql_agg text:=$SENTENCE$
 create function "gramos"(p_escalar decimal) returns "gramos"
   language sql as $SQL$ select row(p_escalar)::"gramos"; $SQL$;
+create aggregate sum(
+    BASETYPE = "gramos",
+    SFUNC = "+ gramos gramos gramos",
+    STYPE = "gramos"
+);
 $SENTENCE$;
 begin
   execute replace(v_sql, 'gramos', p_type_name);
@@ -53,6 +60,7 @@ begin
   perform create_magnitude_operator(p_type_name,'decimal'  ,p_type_name,'*','*' );
   perform create_magnitude_operator('decimal'  ,p_type_name,p_type_name,'*','*' );
   perform create_magnitude_operator(p_type_name,'decimal'  ,p_type_name,'/',null);
+  execute replace(v_sql_agg, 'gramos', p_type_name);
 end;
 $BODY$;
 
@@ -86,9 +94,6 @@ insert into pesos_atomicos (numero_atomico, simbolo, peso_atomico) values
 
 select * from pesos_atomicos;
 
-select p.*, lag(peso_atomico) over (order by numero_atomico) as peso_anterior, peso_atomico- lag(peso_atomico) over (order by numero_atomico) as diferencia
-  from pesos_atomicos p;
-  
 -- select sum(peso_atomico) from pesos_atomicos;
 select * from pesos_atomicos order by peso_atomico;
 
@@ -121,4 +126,11 @@ end;
 $body$;
 -- */
 
-select *, simbolo||':'||peso_atomico from pesos_atomicos;
+select p.*, simbolo||':'||peso_atomico, 
+       lag(peso_atomico) over (order by numero_atomico) as peso_anterior, peso_atomico- lag(peso_atomico) over (order by numero_atomico) as diferencia,
+       to_jsonb(p.peso_atomico) as p_atomico,
+       -- avg(peso_atomico) over (),
+       sum(peso_atomico) over ()
+       -- max(peso_atomico) over ()
+  from pesos_atomicos p;
+  
