@@ -10,27 +10,23 @@ create function create_magnitude_operator(p_type_name_left text, p_type_name_rig
 as
 $BODY$
 declare
-  v_sql text:=$SENTENCE$
-create function "* LEFT_T RIGH_T RESU_T"(p_op1 "LEFT_T", p_op2 "RIGH_T") returns "RESU_T"
-  language sql as 
+  v_function_name text:=format('%4$s %1$s %2$s %3$s', p_type_name_left, p_type_name_right, p_type_name_result, p_operator);
+  v_expresion_in  text:=format($$ p_op1.%1$I %4$s p_op2.%2$I $$, p_type_name_left, p_type_name_right, p_type_name_result, p_operator);
+  v_expresion_out text:=case p_type_name_result when 'decimal' then v_expresion_in else format($$ row(%s)::%I; $$, v_expresion_in  , p_type_name_result) end; 
+  v_sql text:=format($SENTENCE$
+create function %5$I (p_op1 %1$I, p_op2 %2$I) returns %3$I
+  language sql RETURNS NULL ON NULL INPUT as 
 $SQL$
-  select row(p_op1."LEFT_T" * p_op2."RIGH_T")::"RESU_T";
+  select %6$s;
 $SQL$;
-create operator * (
-  procedure = "* LEFT_T RIGH_T RESU_T",
-  leftarg = "LEFT_T",
-  rightarg = "RIGH_T", commutator = *
+create operator %4$s (
+  procedure = %5$I,
+  leftarg = %1$I,
+  rightarg = %2$I %7$s
 );
-$SENTENCE$;
+$SENTENCE$, p_type_name_left, p_type_name_right, p_type_name_result, p_operator, v_function_name, v_expresion_out, ', commutator = '||p_commutator);
 begin
-  execute replace(replace(replace(replace(replace(replace(replace(v_sql,
-    ', commutator = *',coalesce(', commutator = '||p_commutator,'')),
-    'LEFT_T'     ,p_type_name_left  ),
-    'RIGH_T',p_type_name_right ),
-    'RESU_T'  ,p_type_name_result),
-    '."decimal"',''),
-    '"decimal"','decimal'),
-    '*', p_operator);
+  execute replace(replace(v_sql,format('.%I','decimal'),''),format('%I','decimal'),'decimal');
 end;
 $BODY$;
 
@@ -39,20 +35,16 @@ create function create_magnitude_type(p_type_name text) returns void
 as
 $BODY$
 declare
-  v_sql text:=$SENTENCE$
-create type "gramos" as (
-  "gramos" decimal
+  v_sql text:=format($SENTENCE$
+create type %1$I as (
+  %1$I decimal
 ); 
-$SENTENCE$;
-  v_sql_agg text:=$SENTENCE$
-create function "gramos"(p_escalar decimal) returns "gramos"
-  language sql as $SQL$ select row(p_escalar)::"gramos"; $SQL$;
-create aggregate sum(
-    BASETYPE = "gramos",
-    SFUNC = "+ gramos gramos gramos",
-    STYPE = "gramos"
-);
-$SENTENCE$;
+$SENTENCE$, p_type_name);
+  v_sql_agg text:=format($SENTENCE$
+create function %1$I(p_escalar decimal) returns %1$I
+  language sql as $SQL$ select row(p_escalar)::%1$I; $SQL$;
+create aggregate sum(BASETYPE = %1$I, SFUNC = %2$I, STYPE = %1$I);
+$SENTENCE$, p_type_name, format('+ %1$s %1$s %1$s', p_type_name));
 begin
   execute replace(v_sql, 'gramos', p_type_name);
   perform create_magnitude_operator(p_type_name,p_type_name,p_type_name,'+','+' );
@@ -64,7 +56,25 @@ begin
 end;
 $BODY$;
 
-create function declare_compound_magnitude(p_numerator text, p_denominator text, p_fractional text) returns void
+create function declare_inverse_magnitude(p_type_name text, p_reverse text) returns void
+  language plpgsql
+as 
+$BODY$
+begin
+  perform create_magnitude_operator('decimal'  , p_type_name, p_reverse  ,'/',null);
+  perform create_magnitude_operator('decimal'  , p_reverse  , p_type_name,'/',null);
+  perform create_magnitude_operator(p_reverse  , p_type_name,'decimal'   ,'*','*' );
+  perform create_magnitude_operator(p_type_name, p_reverse  ,'decimal'   ,'*','*' );
+end;
+$BODY$;
+
+create function pharentesis_not_simple(p_type_name text) returns text
+  language sql as
+$SQL$
+  select case when p_type_name ~* '^\w*$' then p_type_name else '('||p_type_name||')' end;
+$SQL$;
+
+create function declare_compound_magnitude(p_numerator text, p_denominator text, p_fractional text, p_inverse text=null) returns void
   language plpgsql 
 as
 $BODY$
@@ -75,8 +85,31 @@ begin
     perform create_magnitude_operator(p_denominator,p_fractional,p_numerator  ,'*','*' );
     perform create_magnitude_operator(p_numerator  ,p_fractional,p_denominator,'/',null);
   end if;
+  if p_inverse is not null then
+    perform declare_compound_magnitude(p_denominator, p_numerator, p_inverse);
+  end if;
 end;
 $BODY$;
+
+create function create_magnitude(p_type_name text, p_reverse text=null, p_square text=null, p_reverse_square text=null) returns void
+  language plpgsql
+as 
+$BODY$
+declare
+  v_reverse_name   text:=coalesce(p_reverse        , pharentesis_not_simple(p_type_name  )||'-1');
+  v_square_name    text:=coalesce(p_square         , pharentesis_not_simple(p_type_name  )||'2' );
+  v_reverse_square text:=coalesce(p_reverse_square , regexp_replace(v_square_name,'2$','-2'), pharentesis_not_simple(p_type_name  )||'-1');
+begin
+  perform create_magnitude_type(p_type_name     );
+  perform create_magnitude_type(v_reverse_name  );
+  perform create_magnitude_type(v_square_name   );
+  perform create_magnitude_type(v_reverse_square);
+  perform declare_inverse_magnitude(p_type_name  , v_reverse_name);
+  perform declare_inverse_magnitude(v_square_name, v_reverse_square);
+  perform declare_compound_magnitude(v_square_name, p_type_name, p_type_name);
+end;
+$BODY$;
+
 
 
 select create_magnitude_type('amstrongs');
@@ -97,14 +130,19 @@ select * from pesos_atomicos;
 -- select sum(peso_atomico) from pesos_atomicos;
 select * from pesos_atomicos order by peso_atomico;
 
-select create_magnitude_type('metros');
-select create_magnitude_type('segundos');
-select create_magnitude_type('m/s');
-select create_magnitude_type('s2');
-select create_magnitude_type('m/s2');
-select declare_compound_magnitude('metros','segundos','m/s');
-select declare_compound_magnitude('s2','segundos','segundos');
+select create_magnitude('metros'  ,'m-1','m2');
+select create_magnitude('segundos','s-1','s2');
+select create_magnitude('m/s'     ,'s/m'  );
+select create_magnitude('m/s2'    ,'s2/m' );
+select create_magnitude('gramos'  ,'g-1','g2');
+select create_magnitude('m/g'     ,'g/m','m2/g2'   ,'g2/m2');
+-- select create_magnitude('m2/g2'   ,'g2/m2');
+select create_magnitude('N');
+select create_magnitude('N m2/g2');
+select declare_compound_magnitude('metros','segundos','m/s','s/m');
 select declare_compound_magnitude('m/s','segundos','m/s2');
+select declare_compound_magnitude('m2' ,'g2','m2/g2','g2/m2');
+select declare_compound_magnitude('N m2/g2','N','m2/g2','g2/m2');
 
 -- /*
 do language plpgsql 
@@ -132,5 +170,11 @@ select p.*, simbolo||':'||peso_atomico,
        -- avg(peso_atomico) over (),
        sum(peso_atomico) over ()
        -- max(peso_atomico) over ()
-  from pesos_atomicos p;
-  
+  from pesos_atomicos p
+  -- where numero_atomico=1
+  ;
+
+-- /*
+select *, tierra*luna/(distancia*distancia)*G as atraccion
+  from (select "gramos"(5972.37e24) as tierra, "gramos"(7342e22) as luna, "metros"(384400000) as distancia, "N m2/g2" (6.67384e-5) as G) x
+-- */
