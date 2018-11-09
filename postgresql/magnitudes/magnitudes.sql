@@ -12,7 +12,7 @@ $BODY$
 declare
   v_function_name text:=format('%4$s %1$s %2$s %3$s', p_type_name_left, p_type_name_right, p_type_name_result, p_operator);
   v_expresion_in  text:=format($$ p_op1.%1$I %4$s p_op2.%2$I $$, p_type_name_left, p_type_name_right, p_type_name_result, p_operator);
-  v_expresion_out text:=case p_type_name_result when 'decimal' then v_expresion_in else format($$ row(%s)::%I; $$, v_expresion_in  , p_type_name_result) end; 
+  v_expresion_out text:=case p_type_name_result when 'float8' then v_expresion_in else format($$ row(%s)::%I; $$, v_expresion_in  , p_type_name_result) end; 
   v_sql text:=format($SENTENCE$
 create function %5$I (p_op1 %1$I, p_op2 %2$I) returns %3$I
   language sql RETURNS NULL ON NULL INPUT as 
@@ -26,7 +26,27 @@ create operator %4$s (
 );
 $SENTENCE$, p_type_name_left, p_type_name_right, p_type_name_result, p_operator, v_function_name, v_expresion_out, ', commutator = '||p_commutator);
 begin
-  execute replace(replace(v_sql,format('.%I','decimal'),''),format('%I','decimal'),'decimal');
+  execute replace(replace(v_sql,format('.%I','float8'),''),format('%I','float8'),'float8');
+end;
+$BODY$;
+
+create function create_magnitude_function(p_type_name_arg text, p_type_name_result text, p_function_name text) returns void
+  language plpgsql
+as
+$BODY$
+declare
+  v_function_name text:=p_function_name;
+  v_expresion_in  text:=format($$ %3$s(p_op1.%1$I) $$, p_type_name_arg, p_type_name_result, p_function_name);
+  v_expresion_out text:=case p_type_name_result when 'float8' then v_expresion_in else format($$ row(%s)::%I; $$, v_expresion_in  , p_type_name_result) end; 
+  v_sql text:=format($SENTENCE$
+create function %4$I (p_op1 %1$I) returns %2$I
+  language sql RETURNS NULL ON NULL INPUT as 
+$SQL$
+  select %5$s;
+$SQL$;
+$SENTENCE$, p_type_name_arg, p_type_name_result, p_function_name, v_function_name, v_expresion_out);
+begin
+  execute replace(replace(v_sql,format('.%I','float8'),''),format('%I','float8'),'float8');
 end;
 $BODY$;
 
@@ -37,11 +57,11 @@ $BODY$
 declare
   v_sql text:=format($SENTENCE$
 create type %1$I as (
-  %1$I decimal
+  %1$I float8
 ); 
 $SENTENCE$, p_type_name);
   v_sql_agg text:=format($SENTENCE$
-create function %1$I(p_escalar decimal) returns %1$I
+create function %1$I(p_escalar float8) returns %1$I
   language sql as $SQL$ select row(p_escalar)::%1$I; $SQL$;
 create aggregate sum(BASETYPE = %1$I, SFUNC = %2$I, STYPE = %1$I);
 $SENTENCE$, p_type_name, format('+ %1$s %1$s %1$s', p_type_name));
@@ -49,9 +69,9 @@ begin
   execute replace(v_sql, 'gramos', p_type_name);
   perform create_magnitude_operator(p_type_name,p_type_name,p_type_name,'+','+' );
   perform create_magnitude_operator(p_type_name,p_type_name,p_type_name,'-',null);
-  perform create_magnitude_operator(p_type_name,'decimal'  ,p_type_name,'*','*' );
-  perform create_magnitude_operator('decimal'  ,p_type_name,p_type_name,'*','*' );
-  perform create_magnitude_operator(p_type_name,'decimal'  ,p_type_name,'/',null);
+  perform create_magnitude_operator(p_type_name,'float8'  ,p_type_name,'*','*' );
+  perform create_magnitude_operator('float8'  ,p_type_name,p_type_name,'*','*' );
+  perform create_magnitude_operator(p_type_name,'float8'  ,p_type_name,'/',null);
   execute replace(v_sql_agg, 'gramos', p_type_name);
 end;
 $BODY$;
@@ -61,10 +81,10 @@ create function declare_inverse_magnitude(p_type_name text, p_reverse text) retu
 as 
 $BODY$
 begin
-  perform create_magnitude_operator('decimal'  , p_type_name, p_reverse  ,'/',null);
-  perform create_magnitude_operator('decimal'  , p_reverse  , p_type_name,'/',null);
-  perform create_magnitude_operator(p_reverse  , p_type_name,'decimal'   ,'*','*' );
-  perform create_magnitude_operator(p_type_name, p_reverse  ,'decimal'   ,'*','*' );
+  perform create_magnitude_operator('float8'  , p_type_name, p_reverse  ,'/',null);
+  perform create_magnitude_operator('float8'  , p_reverse  , p_type_name,'/',null);
+  perform create_magnitude_operator(p_reverse  , p_type_name,'float8'   ,'*','*' );
+  perform create_magnitude_operator(p_type_name, p_reverse  ,'float8'   ,'*','*' );
 end;
 $BODY$;
 
@@ -87,6 +107,8 @@ begin
   end if;
   if p_inverse is not null then
     perform declare_compound_magnitude(p_denominator, p_numerator, p_inverse);
+    -- perform create_magnitude_operator(p_inverse,  p_numerator  ,p_denominator,'/',null);
+    -- perform create_magnitude_operator(p_fractional,  p_numerator  ,p_denominator,'/',null);
   end if;
 end;
 $BODY$;
@@ -107,6 +129,8 @@ begin
   perform declare_inverse_magnitude(p_type_name  , v_reverse_name);
   perform declare_inverse_magnitude(v_square_name, v_reverse_square);
   perform declare_compound_magnitude(v_square_name, p_type_name, p_type_name);
+  perform create_magnitude_function(v_square_name,p_type_name,'sqrt');
+  perform create_magnitude_function(v_reverse_square,v_reverse_name,'sqrt');
 end;
 $BODY$;
 
@@ -136,13 +160,17 @@ select create_magnitude('m/s'     ,'s/m'  );
 select create_magnitude('m/s2'    ,'s2/m' );
 select create_magnitude('gramos'  ,'g-1','g2');
 select create_magnitude('m/g'     ,'g/m','m2/g2'   ,'g2/m2');
--- select create_magnitude('m2/g2'   ,'g2/m2');
+--select create_magnitude('m2/g2'   ,'g2/m2');
 select create_magnitude('N');
 select create_magnitude('N m2/g2');
+select create_magnitude('N m2');
+select create_magnitude('g2/N m2');
 select declare_compound_magnitude('metros','segundos','m/s','s/m');
 select declare_compound_magnitude('m/s','segundos','m/s2');
 select declare_compound_magnitude('m2' ,'g2','m2/g2','g2/m2');
 select declare_compound_magnitude('N m2/g2','N','m2/g2','g2/m2');
+--select declare_compound_magnitude('N m2/g2','N m2','g2','g-2');
+select declare_compound_magnitude('N m2','g2','N m2/g2','g2/N m2');
 
 -- /*
 do language plpgsql 
@@ -175,6 +203,13 @@ select p.*, simbolo||':'||peso_atomico,
   ;
 
 -- /*
-select *, tierra*luna/(distancia*distancia)*G as atraccion
-  from (select "gramos"(5972.37e24) as tierra, "gramos"(7342e22) as luna, "metros"(384400000) as distancia, "N m2/g2" (6.67384e-5) as G) x
+select *, sqrt(distancia*distancia) as  distancia_recalculada
+        , sqrt(G/atraccion*(peso1*peso2)) as distancia_recalculada
+  from (
+    select *, peso1*peso2/(distancia*distancia)*G as atraccion
+      from (
+        select 'tierra luna' as distancia_entre, "gramos"(5972.37e24) as peso1, "gramos"(7342e22) as peso2, "metros"(384e6 ) as distancia union
+        select 'tierra sol'  as distancia_entre, "gramos"(5972.37e24) as peso1, "gramos"(1989e30) as peso2, "metros"(1.5e11) as distancia
+      ) casos, (select "N m2/g2" (6.67384e-17) as G) as constantes
+    ) calculo_atracciones
 -- */
