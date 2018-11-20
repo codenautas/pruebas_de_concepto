@@ -1,1 +1,1 @@
-{"version":3,"file":"encorchetar.js","sourceRoot":"","sources":["../lib/encorchetar.ts"],"names":[],"mappings":";;;;;;;;;;;IAAA,qBAA4B,KAAa;QACrC,MAAM,CAAC,GAAG,GAAC,KAAK,GAAC,GAAG,CAAC;IACzB,CAAC;IAFD,kCAEC"}
+{"version":3,"file":"encorchetar.js","sourceRoot":"","sources":["../lib/encorchetar.ts"],"names":[],"mappings":";;;;;;;;;;;IAAA,SAAgB,WAAW,CAAC,KAAa;QACrC,OAAO,GAAG,GAAC,KAAK,GAAC,GAAG,CAAC;IACzB,CAAC;IAFD,kCAEC"}
