@@ -1,3 +1,8 @@
+var classInspector = require('class-inspector');
+classInspector.getMethodNames=function(o:object):string[]{
+    return Object.keys(classInspector( o.constructor ).instanceMethods);
+}
+
 var tabla_pepe={
     name:'hogares',
     fields:[
@@ -47,25 +52,34 @@ type Encuesta={
 
 var app={
     get(url:string, fun:(req:{query:any}, res:{send:(any)=>void})=>void){
-
+        console.log('SE HIZO UN GET CON',url);
     }
 }
 
 class AppGenerica{
+    instalar(){
+        console.log('instalando')
+        var be=this;
+        var procedure_name:string;
+        classInspector.getMethodNames(be).forEach(function(procedure_name){
+            console.log('intentando',procedure_name)
+            if(procedure_name.startsWith('procedure_')){
+                app.get('/'+procedure_name.replace(/^procedure_/,''), async function(req,res){
+                    // FALTA GENERALIZAR PARAMETROS:
+                    var parametros = [req.query.vivienda, req.query.contenido]
+                    var result = await be[procedure_name].apply(be,parametros)
+                    res.send(result);
+                })
+            }
+        });
+        console.log('fin instalación')
+    }
+    procedure_login(){
+
+    }
 }
 
 class AppEncuestas extends AppGenerica{
-    instalar(){
-        var be=this;
-        app.get('/grabar_encuesta', async function(req,res){
-            var result = await be.procedure_grabar_encuesta(req.query.vivienda, req.query.contenido)
-            res.send(result);
-        })
-        app.get('/traer_encuesta', async function(req,res){
-            var result = await be.procedure_traer_encuesta(req.query.vivienda)
-            res.send(result);
-        })
-    }
 
     procedure_grabar_encuesta(vivienda:number, contenido:object){
 
@@ -77,3 +91,6 @@ class AppEncuestas extends AppGenerica{
 
 var appEncuestas=new AppEncuestas();
 
+appEncuestas.algo='true';
+
+appEncuestas.instalar();
