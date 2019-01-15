@@ -1,6 +1,6 @@
 {
   "name": "helper1",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "para prueba de concepto de libreria TS multi target",
   "main": "index.js",
   "scripts": {
