@@ -7,18 +7,18 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "build:latest-node": "tsc --build ./tsconfig.latest-node.json",
     "build:latest": "tsc --build ./tsconfig.latest.json",
+    "build:older-node": "tsc --build ./tsconfig.older-node.json",
     "build:older": "tsc --build ./tsconfig.older.json",
-    "build:oldest": "tsc --build ./tsconfig.oldest.json",
-    "build": "npm run build:latest-node && build:latest && npm run build:older && npm run build:oldest"
+    "build": "npm run build:latest-node && build:latest && npm run build:older-node && npm run build:older"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/codenautas/helper1.git"
+    "url": "git+https://github.com/codenautas/pruebas_de_concepto/helper1.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/codenautas/helper1/issues"
+    "url": "https://github.com/codenautas/pruebas_de_concepto/helper1/issues"
   },
-  "homepage": "https://github.com/codenautas/helper1#readme"
+  "homepage": "https://github.com/codenautas/pruebas_de_concepto/helper1#readme"
 }

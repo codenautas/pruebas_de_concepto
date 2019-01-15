@@ -36,3 +36,4 @@ npm-debug.*
 
 package-lock.json
 *.js.map
+*.js
