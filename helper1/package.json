@@ -1,0 +1,24 @@
+{
+  "name": "helper1",
+  "version": "1.0.0",
+  "description": "para prueba de concepto de libreria TS multi target",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build:latest-node": "tsc --build ./tsconfig.latest-node.json",
+    "build:latest": "tsc --build ./tsconfig.latest.json",
+    "build:older": "tsc --build ./tsconfig.older.json",
+    "build:oldest": "tsc --build ./tsconfig.oldest.json",
+    "build": "npm run build:latest-node && build:latest && npm run build:older && npm run build:oldest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/codenautas/helper1.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/codenautas/helper1/issues"
+  },
+  "homepage": "https://github.com/codenautas/helper1#readme"
+}
