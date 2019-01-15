@@ -1,12 +1,25 @@
-function decorar(){
-    return (target: any, propertyKey: string, descriptor: PropertyDescriptor): void{
-        console.log(target)
-    }
+function decorarc(constructor: Function):void{
+    console.log(constructor)
 }
 
+function decorarm(target: any, propertyKey: string):void{
+    console.log(target, propertyKey)
+}
+
+function decorar(target: any, propertyKey: string, descriptor: PropertyDescriptor):void{
+    console.log(target, propertyKey, descriptor)
+}
+
+@decorarc
 class Log{
-    @decorar()
+    @decorarm
+    name:string = 'hola'
+    @decorar
     pepe(a:any){
+        console.log(a);
+    }
+    @decorar
+    pepe2(a:any){
         console.log(a);
     }
 }
@@ -22,6 +35,7 @@ var y={b:'bien'}
 
 pepe(y)
 
+/*
 async function query<T extends object>(queryText:string, placeHolder:T[]):Promise<void>{
     placeHolder = placeHolder.slice(1);    
 }
@@ -40,3 +54,4 @@ async function traer1(){
 }
 
 var xs = await query1<typeof x>("mensaje");
+*/

@@ -8,11 +8,19 @@ function coalesce() {
         i++;
     return a1[i];
 }
+console.log(coalesce(undefined, null, 0.12, 1));
 console.log(coalesce("hola", "no"));
 console.log(coalesce(null, "che"));
 console.log(coalesce(undefined, "che"));
-console.log(coalesce(undefined, null, null, "0", "1"));
-console.log(coalesce("2"));
+console.log(coalesce(null, true, false));
 console.log(coalesce());
 console.log(coalesce(undefined, null));
+var que = coalesce(null, true, false);
+var _a = [1, 4, 7, 8, 9, 10], x = _a[0], y = _a[1], arr = _a.slice(2);
+/*
+assign x y + 7
+print u
+text j "in the mornig"
+*/
+var _b = linea.split(' '), sentencia = _b[0], variable = _b[1], expresion = _b[2];
 //# sourceMappingURL=coalesce.js.map

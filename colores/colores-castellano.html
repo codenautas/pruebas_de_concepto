@@ -1,0 +1,27 @@
+﻿<table id=aca></table>
+<script>
+window.addEventListener('load', function(){
+    var colores=
+    /*'amarillo azul rojo violeta naranja verde gris celeste rosa blanco marrón lila colorado salmón dorado plateado marroncito rojito rojo lima turquesa ffa '
+    +'castaña café bronce caoba ocre sepia chapulín fea '
+    +'escarlata grana granate tomate anaranjado ambar ámbar calabaza caqui limón verde_oliva esmeralda menta oliva aguamarina cian magenta azul marino índigo púrpura morado rosado fucsia coral plomo '
+    +*/'color_rojo crema bordó verdecito negro carmesí carmín calabaza '
+    +'dorado_claro lima_claro bronce_claro';
+    colores.split(' ').forEach(function(color){
+        color = color.replace('_', ' ');
+        var tr=aca.insertRow(-1);
+        var div=tr.insertCell(-1);
+        div.style.backgroundColor=color;
+        div.textContent=color;
+        var div=tr.insertCell(-1);
+        div.bgColor=color;
+        div.textContent=color;
+        return;
+        if(!/ claro/.test(color)){
+            div=tr.insertCell(-1);
+            div.bgColor=color+' claro';
+            div.textContent=color;
+        }
+    });
+});
+</script>

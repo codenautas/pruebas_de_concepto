@@ -1,10 +1,10 @@
 export interface TableDef {
     name: string;
 }
-export declare abstract class BaseApp {
+export declare class BaseApp {
     tables: TableDef[];
     constructor();
-    abstract getName(): string;
+    getName(): string;
     getTables(): TableDef[];
     installPart(part: string, content: string): Promise<void>;
     install(): Promise<void>;

@@ -1,0 +1,333 @@
+.my-grid {
+  background: rgba(255,255,255,0.9);
+}
+.my-grid caption {
+  background: rgba(255,255,255,0.9);
+}
+.my-grid {
+  border-bottom: 2px solid #997;
+  border-top: 2px solid #997;
+  border-left: 2px solid #997;
+  margin: 0px;
+  border-spacing: 0px;
+  border-collapse: collapse;
+}
+.my-grid td {
+  padding-left: 2px;
+  padding-right: 3px;
+  border-bottom: 2px solid #997;
+  border-top: 2px solid #997;
+  border-left: 2px solid #997;
+  margin: 0px;
+  border-spacing: 0px;
+  border-collapse: collapse;
+  border-right: 2px solid #997;
+  white-space: pre;
+  max-width: 300px;
+}
+@media print {
+  .my-grid td {
+    white-space: unset;
+  }
+}
+.my-grid td[my-colname] {
+  overflow: hidden;
+}
+/*  
+.my-grid[my-orientation=vertical] td
+  border-table()
+  white-space wrap
+  overflow scroll
+*/
+.my-grid tr td x {
+  border-bottom: 2px solid #666;
+  border-top: 2px solid #ddd;
+}
+.my-grid th {
+  font-size: 90%;
+  border-bottom: 2px solid #997;
+  border-top: 2px solid #997;
+  border-left: 2px solid #997;
+  margin: 0px;
+  border-spacing: 0px;
+  border-collapse: collapse;
+  border-right: 2px solid #997;
+}
+.my-grid tbody th {
+  white-space: pre;
+  max-width: 300px;
+  overflow: hidden;
+}
+@media print {
+  .my-grid tbody th {
+    white-space: unset;
+  }
+}
+.my-grid caption {
+  border-bottom: 2px solid #997;
+  border-top: 2px solid #997;
+  border-left: 2px solid #997;
+  margin: 0px;
+  border-spacing: 0px;
+  border-collapse: collapse;
+  border-right: 2px solid #997;
+}
+.my-grid tfoot {
+  color: #777;
+  font-size: 90%;
+}
+.my-grid thead th {
+  white-space: nowrap;
+}
+.th-name {
+  overflow: hidden;
+}
+.my-grid thead th.th-detail {
+  font-size: 60%;
+  white-space: wrap;
+}
+[io-status=pending] {
+  background-color: #cde;
+}
+[io-status=updating] {
+  background-color: #def;
+}
+[io-status=error] {
+  background-color: #daa;
+}
+[io-status=temporal-ok] {
+  background-color: #ada;
+}
+[io-status=write-read-conflict] {
+  background-color: #dad;
+}
+[io-status=background-change] {
+  background-color: #add;
+}
+.table-button {
+  margin: 0px;
+  border: 0px;
+  padding: 0px;
+}
+.table-button {
+  background-color: rgba(255,255,255,0.9);
+}
+.table-button img {
+  height: 16px;
+}
+[has-filter='1'] [when-filter=no] {
+  display: none;
+}
+[has-filter='1'] [when-filter=yes] {
+  display: inherit;
+}
+[has-filter='0'] [when-filter=yes] {
+  display: none;
+}
+[has-filter='0'] [when-filter=no] {
+  display: inherit;
+}
+.filter-line th {
+  padding: 0px;
+  vertical-align: bottom;
+}
+.filter-line td {
+  padding: 0px;
+  vertical-align: bottom;
+}
+.grid-dummy-cell-ini {
+  height: 1px;
+  width: 1px;
+  transition: height 0.6s ease;
+}
+.grid-dummy-cell-del {
+  transition: height 0.6s ease;
+}
+.empty-right-column {
+  background-color: inherit !important;
+  border: inherit !important;
+  padding: 0 !important;
+}
+.my-grid td.autoFilter {
+  white-space: pre;
+  max-width: 300px;
+  overflow: hidden;
+  white-space: nowrap;
+  padding-left: 16px;
+  background: padding-box #cef no-repeat;
+  background-size: 16px;
+  min-height: 20px;
+  min-width: 20px;
+}
+@media print {
+  .my-grid td.autoFilter {
+    white-space: unset;
+  }
+}
+.number-decimals {
+  font-size: 90%;
+}
+.date-year {
+  font-size: 90%;
+}
+.img-lupa {
+  height: 16px;
+}
+[my-orientation=vertical].my-grid td {
+  max-width: 700px;
+  white-space: inherit;
+  overflow: inherit;
+}
+[my-orientation=vertical].my-grid th {
+  text-align: left;
+  max-width: 700px;
+}
+@-webkit-keyframes rotate {
+  from {
+    -webkit-transform: rotate(0deg);
+  }
+  to {
+    -webkit-transform: rotate(360deg);
+  }
+}
+.dialog-export .img-preparing {
+  height: 64px;
+  width: 64px;
+  margin-bottom: 10px;
+  -webkit-animation-name: rotate;
+  -webkit-animation-duration: 2s;
+  -webkit-animation-iteration-count: infinite;
+  -webkit-animation-timing-function: linear;
+}
+.dialog-export .state-preparing {
+  display: inherit;
+}
+.dialog-export .state-ready {
+  display: none;
+}
+.dialog-export .state-ready-txt {
+  display: none;
+}
+.dialog-export[current-state="ready"] .state-preparing {
+  display: none;
+}
+.dialog-export[current-state="ready"] .state-ready {
+  display: inherit;
+}
+.dialog-export[current-state="ready"] .state-ready-txt {
+  display: inherit;
+}
+.dialog-menu .mini-menu-opt-img {
+  height: 24px;
+  width: 24px;
+  border: 2px;
+  padding: 2px;
+}
+[inherited-pk-column=yes] {
+  display: none;
+  background-color: #ccc;
+}
+[show-inherited-keys=yes] [inherited-pk-column=yes] {
+  display: table-cell;
+}
+.hide-or-menu {
+  min-width: 100px;
+}
+.my-grid tfoot th {
+  text-align: left;
+}
+.head-info {
+  text-align: left;
+  padding: 4px;
+  font-weight: normal;
+  font-size: 90%;
+}
+.sort-img {
+  margin: 0 6px;
+}
+[ordered-direction="1"][ordered-order="1"] {
+  background: url("../img/order-arrow-up-1.png") top no-repeat;
+}
+[ordered-direction="-1"][ordered-order="1"] {
+  background: url("../img/order-arrow-down-1.png") top no-repeat;
+}
+[ordered-direction="1"][ordered-order="2"] {
+  background: url("../img/order-arrow-up-2.png") top no-repeat;
+}
+[ordered-direction="-1"][ordered-order="2"] {
+  background: url("../img/order-arrow-down-2.png") top no-repeat;
+}
+[ordered-direction="1"] {
+  background: url("../img/order-arrow-up-3.png") top no-repeat;
+}
+[ordered-direction="-1"] {
+  background: url("../img/order-arrow-down-3.png") top no-repeat;
+}
+td[my-mandatory]:empty {
+  background: url("../img/mandatory.png") top right no-repeat;
+  background-size: 12px 12px;
+}
+td[my-mandatory=pk]:empty {
+  background: url("../img/mandatory-pk.png") top right no-repeat;
+  background-size: 12px 12px;
+}
+th.th-agg {
+  background-color: #ddd;
+}
+@media print {
+  .grid-th-actions {
+    display: none;
+  }
+  .grid-th-details {
+    display: none;
+  }
+  .my-grid th button {
+    display: none;
+  }
+  table {
+    max-width: 100%;
+    font-size: 80%;
+  }
+  .img-lupa {
+    display: none;
+  }
+  .my-grid th {
+    font-size: 80%;
+  }
+}
+.my-grid td.my-detail-grid {
+  overflow-x: visible;
+  border-right: none;
+}
+@-moz-keyframes animateheight {
+  from {
+    transform: scaleY(0.1);
+  }
+  to {
+    transform: scaleY(1);
+  }
+}
+@-webkit-keyframes animateheight {
+  from {
+    transform: scaleY(0.1);
+  }
+  to {
+    transform: scaleY(1);
+  }
+}
+@-o-keyframes animateheight {
+  from {
+    transform: scaleY(0.1);
+  }
+  to {
+    transform: scaleY(1);
+  }
+}
+@keyframes animateheight {
+  from {
+    transform: scaleY(0.1);
+  }
+  to {
+    transform: scaleY(1);
+  }
+}

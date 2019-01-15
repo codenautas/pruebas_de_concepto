@@ -1,0 +1,5 @@
+{
+    "dependencies": {
+        "class-inspector": "codenautas/class-inspector"
+    }
+}
