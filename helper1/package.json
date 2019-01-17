@@ -1,6 +1,6 @@
 {
   "name": "helper1",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "para prueba de concepto de libreria TS multi target",
   "main": "index.js",
   "scripts": {
@@ -9,7 +9,7 @@
     "build:latest": "tsc --build ./tsconfig.latest.json",
     "build:older-node": "tsc --build ./tsconfig.older-node.json",
     "build:older": "tsc --build ./tsconfig.older.json",
-    "build": "npm run build:latest-node && build:latest && npm run build:older-node && npm run build:older"
+    "build": "(npm run build:latest-node) && (npm run build:latest) && (npm run build:older-node) && (npm run build:older)"
   },
   "repository": {
     "type": "git",
