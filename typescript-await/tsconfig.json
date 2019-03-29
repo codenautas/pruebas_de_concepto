@@ -1,0 +1,8 @@
+{
+  "compilerOptions": {
+    "plugins": [
+      { "name": "typescript-tslint-plugin" }
+    ],
+    "target": "es2018"
+  }
+}
