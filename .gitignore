@@ -37,3 +37,7 @@ npm-debug.*
 package-lock.json
 
 helper1/build
+yarn.lock
+
+typescript-*/out
+typescript-*/built

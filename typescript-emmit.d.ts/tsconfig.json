@@ -1,0 +1,10 @@
+{
+    "compilerOptions": {
+        "declaration": true,
+        "lib":["es2015", "dom"],
+        "target": "es2017",
+        "module": "none",
+        "strict": true, 
+        "outDir": "out"
+    }
+}
