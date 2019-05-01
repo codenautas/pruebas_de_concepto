@@ -1,0 +1,29 @@
+window.addEventListener('load', function(){
+    annio_ant.style.visibility='hidden';
+    edad_sig.style.visibility='hidden';
+    edad_sig.style.color='#AAA'
+    annio_ant.style.color='#AAA'
+    annio.onchange=function(){
+        annio_ant.style.visibility='hidden'
+        edad_sig.style.visibility='visible'
+        edad_sig.value=annio.value-1987+1
+        edad.value=annio.value-1987
+    }
+    edad.onchange=function(){
+        annio_ant.style.visibility='visible'
+        edad_sig.style.visibility='hidden'
+        annio_ant.value=edad.value-1+1987
+        annio.value=edad.value-0+1987
+    }
+    annio_ant.onclick=function(){
+        edad.focus();
+        annio_ant.style.color='black';
+        annio.style.color='#AAA';
+    }
+    annio.onclick=function(){
+        annio.focus();
+        annio_ant.style.color='#AAA';
+        annio.style.color='black';
+    }
+        
+});
