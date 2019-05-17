@@ -1,0 +1,21 @@
+<style>
+#visualizador{
+  height:200px;
+  border: 1px solid gray;
+  width: 400px;
+}
+#editor{
+  width: 400px;
+}
+</style>
+
+Editor
+<br>
+<textarea id=editor rows=10></textarea>
+<hr>
+<div id=visualizador></div>
+<script>
+editor.onkeyup=function(){
+  visualizador.innerHTML=editor.value;
+}
+</script>
