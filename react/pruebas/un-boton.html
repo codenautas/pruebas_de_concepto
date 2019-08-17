@@ -18,9 +18,13 @@
     <!-- Note: when deploying, replace "development.js" with "production.min.js". -->
     <script src="https://unpkg.com/react@16.9.0/umd/react.development.js" crossorigin></script>
     <script src="https://unpkg.com/react-dom@16.9.0/umd/react-dom.development.js" crossorigin></script>
-
+    <script src="../node_modules/require-bro/lib/require-bro.js"></script>
+    <script>
+    var exports={}
+    var reactdom=ReactDOM;
+    </script>
     <!-- Load our React component. -->
-    <script src="like_button.js"></script>
+    <script src="tlike_button.js"></script>
 
   </body>
 </html>
