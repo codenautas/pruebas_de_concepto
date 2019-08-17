@@ -17,9 +17,3 @@ function ponerLabel<T>(o:ConLabel<T>, label:string){
 ponerLabel(dos);
 
 console.log(dos);
-
-0b01011100
-0b01100111
-
-
-64+32=96

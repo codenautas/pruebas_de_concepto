@@ -1,4 +1,5 @@
 function classDecorator<T extends {new(...args:any[]):{}}>(constructor:T) {
+    console.log('constructor',constructor)
     return class extends constructor {
         hello = "override";
         newProperty = "new property"; 
@@ -16,6 +17,11 @@ class Greeter {
         this.other = m;
         console.log(this);
     }
+    doSomething(what:string){
+        console.log('doing',what)
+    }
 }
 
-console.log(new Greeter("world"));
+var g = new Greeter("world");
+console.log(g);
+g.doSomething('wrong');

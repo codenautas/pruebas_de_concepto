@@ -1,3 +1,5 @@
+"use strict";
+
 export class Mister{
     mr(name:string):string{
         return 'Mr. '+name;
@@ -14,4 +16,11 @@ export class Master extends Senior{
     mr(name:string):string{
         return super.mr(name)+' master of the Universe'
     }
+}
+
+export function withOptions<T>(x:T){
+	return x;
+}
+
+withOptions.ignore = function(){
 }

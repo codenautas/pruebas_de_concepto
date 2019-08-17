@@ -1,0 +1,47 @@
+<table>
+<tr><td>v1</td><td><input id=v1></td></tr>
+<tr><td>v2</td><td><input id=v2></td></tr>
+</table>
+<br><input id=b1 type=button value='pone valores'>
+<br><input id=b2 type=button value='erra una clave'>
+<pre id=json>
+
+</pre>
+<script>
+var objeto={}
+var p = new Proxy(objeto,{
+    set: function(target, key, value){
+        var element=document.getElementById(key);
+        if(element){
+            element.value=value;
+            target[key]=value;
+        }else{
+            throw new Error("no se puede");
+        }
+    }
+});
+
+function mostrar(){
+    json.textContent='? '+JSON.stringify(objeto);
+    objeto[this.id] = this.value
+    json.textContent=JSON.stringify(objeto);
+}
+
+window.addEventListener('load',function(){
+    b1.onclick=function(){
+        p.v1='v1';
+        p.v2='valor de v2';
+        json.textContent=JSON.stringify(objeto);
+    }
+    b2.onclick=function(){
+        try{
+            p.no_ex='no existe';
+            b2.value='pude, que mal';
+        }catch(err){
+            b2.value='ERROR, lo esperaba';
+        }
+    }
+    v1.onblur=mostrar;
+    v2.onblur=mostrar;
+})
+</script>
