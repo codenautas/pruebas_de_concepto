@@ -18,10 +18,7 @@ class LikeButton extends Component {
 
 function LikeButtonFun(){
     const [liked, setLiked] = useState(false);
-    if(liked){
-        return <pre>Liked!</pre>;
-    }
-    return <button onClick={() => setLiked(true)}>Like!</button>;
+    return <button onClick={() => setLiked(!liked)}>Like!{liked?<span>+1</span>:''}</button>;
 }
 
 const domContainer = document.querySelector('#like_button_container');

@@ -33,10 +33,9 @@ var LikeButton = /** @class */ (function (_super) {
 }(React_1.Component));
 function LikeButtonFun() {
     var _a = React_1.useState(false), liked = _a[0], setLiked = _a[1];
-    if (liked) {
-        return React.createElement("pre", null, "Liked!");
-    }
-    return React.createElement("button", { onClick: function () { return setLiked(true); } }, "Like!");
+    return React.createElement("button", { onClick: function () { return setLiked(!liked); } },
+        "Like!",
+        liked ? React.createElement("span", null, "+1") : '');
 }
 var domContainer = document.querySelector('#like_button_container');
 ReactDOM.render(React.createElement(LikeButton, null), domContainer);
