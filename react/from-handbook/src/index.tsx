@@ -20,7 +20,9 @@ function ObjectDisplayer(props:{data:any, previous?:any}){
         if(obj instanceof Array){
             if(obj.length && isPlainObject(obj[0])){
                 const [keys, setKeys] = useState(likeAr(obj[0]).map((_v,_k,_o,i)=>i).plain());
-                return (
+                const [keyCount, setKeyCount] = useState(likeAr(keys).keyCount());
+                var newKeyCount = keyCount;
+                var result = (
                     <table>
                         <thead>
                             <tr>{ likeAr(keys).map((_,k:string)=><th key={k}>{k}</th>).array() }</tr>
@@ -29,8 +31,12 @@ function ObjectDisplayer(props:{data:any, previous?:any}){
                             {obj.map((row,i)=>{
                                 var columns:any[] = [];
                                 likeAr(row).forEach((v,k:string)=>{
-                                    if(k in keys){
-                                        columns[keys[k]]=v;
+                                    var i = keys[k];
+                                    if(i == null){
+                                        i = keys[k] = newKeyCount++;
+                                    }
+                                    if(i<keyCount){
+                                        columns[i]=v;
                                     }
                                 });
                                 return (
@@ -44,6 +50,13 @@ function ObjectDisplayer(props:{data:any, previous?:any}){
                         </tbody>
                     </table>
                 );
+                if(newKeyCount!=keyCount){
+                    setTimeout(function(){
+                        setKeyCount(newKeyCount);
+                        setKeys(keys);
+                    },1000)
+                }
+                return result;
             }
             return <div>
                 {obj.map((v:any)=><ObjectDisplayer data={v}></ObjectDisplayer>)}
@@ -52,7 +65,6 @@ function ObjectDisplayer(props:{data:any, previous?:any}){
             return <b>null</b>;
         }else{
             return (
-                <div>
                 <table>
                     <thead>
                         <tr>{likeAr(obj).map((_,k:string)=><th key={k}>{k}</th>).array()}</tr>
@@ -61,7 +73,6 @@ function ObjectDisplayer(props:{data:any, previous?:any}){
                         <tr>{likeAr(obj).map((v,k:string)=><td key={k}><ObjectDisplayer data={v}></ObjectDisplayer></td>).array()}</tr>
                     </tbody>
                 </table>
-                </div>
             )
         }
     }else{
@@ -75,7 +86,9 @@ function RenderDirectJsonApp(){
         {nombre:'Aaron'   , edad:23},
         {nombre:'Abel'    , edad:31},
         {edad:34, nombre:'Aciago'  },
-        {nombre:'Adela'   , edad:38},
+        null,
+        // "this row isn't a row",
+        {nombre:'Adela'   , edad:38, title:'Dr.'},
         {nombre:'AEmilius', edad:50},
     ]};
     var [content, setContent] = useState(JSON.stringify(objetoInicial));
