@@ -2,20 +2,19 @@
   "dependencies": {
     "react": "^16.9.0",
     "react-dom": "^16.9.0",
-    "@material-ui/core": "^4.3.3"
+    "@material-ui/core": "^4.4.0"
   },
   "devDependencies": {
-    "@types/react": "^16.8.24",
-    "@types/react-dom": "^16.0.5",
+    "@types/react": "^16.9.2",
+    "@types/react-dom": "^16.9.0",
     "source-map-loader": "^0.2.4",
     "ts-loader": "^6.0.4",
-    "typescript": "^3.5.3",
-    "webpack": "^4.39.2",
+    "typescript": "^3.6.2",
+    "webpack": "^4.39.3",
     "webpack-cli": "^3.3.7",
-    "server4test": "^0.3.0"
+    "server4test": "^0.4.2"
   },
   "scripts": {
-    "devel": "node ./node_modules/server4test/lib/launch4test",
-    "deve2": "node .\\node_modules\\server4test\\lib\\launch4test.js"
+    "example": "server4test"
   }
 }

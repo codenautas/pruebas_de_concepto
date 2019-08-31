@@ -22,9 +22,10 @@
     "types.d.ts": "0.4.8"
   },
   "dependencies": {
-    "react": "^16.9.0",
-    "react-dom": "^16.9.0",
     "ajax-best-promise": "^0.3.7",
-    "like-ar": "^0.2.15"
+    "best-globals": "^0.10.22",
+    "like-ar": "^0.2.15",
+    "react": "^16.9.0",
+    "react-dom": "^16.9.0"
   }
 }

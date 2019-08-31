@@ -2,44 +2,83 @@ import * as React from "react";
 import {useState} from "react";
 import * as ReactDOM from "react-dom";
 import { Hello, Lista } from "./components/Hello";
-// import * as likeAr from "like-ar";
+import * as likeAr from "like-ar";
+import {isPlainObject} from "best-globals";
 
 function JsonDiplayer(props:{json:string}){
     try{
         var data=JSON.parse(props.json);
-        return <Object data={data}></Object>
+        return <ObjectDisplayer data={data}></ObjectDisplayer>
     }catch(err){
         return <div style={{color:"red"}} >{err.message}</div>
     }
 }
 
-function Object(props:{data:any}){
-        var obj=props.data;
-        if(typeof obj === "object"){
-            if(obj instanceof Array){
-                /*
-                return <div>
-                    {obj.map((v:any)=><Object data={v}></Object>)}
-                </div>;
-                */
-            }if(obj == null){
-                return <b>null</b>;
-            }else{
-                /*
-                return <table>
-                    <tr>{likeAr(obj).map((_v,k)=><th>{k}</th>)}</tr>
-                    <tr>{likeAr(obj).map((v,_k)=><td>{v}</td>)}</tr>
-                </table>
-                */
+function ObjectDisplayer(props:{data:any, previous?:any}){
+    var obj=props.data;
+    if(typeof obj === "object"){
+        if(obj instanceof Array){
+            if(obj.length && isPlainObject(obj[0])){
+                const [keys, setKeys] = useState(likeAr(obj[0]).map((_v,_k,_o,i)=>i).plain());
+                return (
+                    <table>
+                        <thead>
+                            <tr>{ likeAr(keys).map((_,k:string)=><th key={k}>{k}</th>).array() }</tr>
+                        </thead>
+                        <tbody>
+                            {obj.map((row,i)=>{
+                                var columns:any[] = [];
+                                likeAr(row).forEach((v,k:string)=>{
+                                    if(k in keys){
+                                        columns[keys[k]]=v;
+                                    }
+                                });
+                                return (
+                                    <tr key={i}>
+                                        {columns.map((v,i)=>
+                                            <td key={i}><ObjectDisplayer data={v}></ObjectDisplayer></td>
+                                        )}
+                                    </tr>
+                                );
+                            })}
+                        </tbody>
+                    </table>
+                );
             }
+            return <div>
+                {obj.map((v:any)=><ObjectDisplayer data={v}></ObjectDisplayer>)}
+            </div>;
+        }if(obj == null){
+            return <b>null</b>;
         }else{
-            return <span>JSON.stringify(props.data)</span>
+            return (
+                <div>
+                <table>
+                    <thead>
+                        <tr>{likeAr(obj).map((_,k:string)=><th key={k}>{k}</th>).array()}</tr>
+                    </thead>
+                    <tbody>
+                        <tr>{likeAr(obj).map((v,k:string)=><td key={k}><ObjectDisplayer data={v}></ObjectDisplayer></td>).array()}</tr>
+                    </tbody>
+                </table>
+                </div>
+            )
         }
-        return <div> nada </div>
+    }else{
+        return <span>{JSON.stringify(props.data)}</span>
+    }
+    return <div> nada </div>
 }
 
 function RenderDirectJsonApp(){
-    var [content, setContent] = useState(JSON.stringify({este:'objeto'}));
+    var objetoInicial={este:'objeto', aquel:1, lista:[
+        {nombre:'Aaron'   , edad:23},
+        {nombre:'Abel'    , edad:31},
+        {edad:34, nombre:'Aciago'  },
+        {nombre:'Adela'   , edad:38},
+        {nombre:'AEmilius', edad:50},
+    ]};
+    var [content, setContent] = useState(JSON.stringify(objetoInicial));
     return (
         <div>
             <div>Visualizador de Json</div>
