@@ -11,8 +11,9 @@ export const Lista = (props: {nombres: string[]}) => {
     const [nombresOrdenado, setNombresOrdenado] = useState(props.nombres);
     const [orden, setOrden] = useState(null);
     var ordenarLista = ()=>{
-        setOrden(!orden);
-        if(orden){
+        const nuevoOrden=!orden;
+        setOrden(nuevoOrden);
+        if(nuevoOrden){
             setNombresOrdenado(nombresOrdenado.sort());
         }else{
             setNombresOrdenado(nombresOrdenado.sort(<T extends any>(a:T,b:T)=>(a>b?-1:(a<b?1:0))));
