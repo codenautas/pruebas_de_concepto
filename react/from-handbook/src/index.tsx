@@ -16,44 +16,44 @@ function JsonDiplayer(props:{json:string}){
 
 function ObjectDisplayer(props:{data:any, previous?:any}){
     var obj=props.data;
+    const [keys, setKeys] = useState(obj instanceof Array && isPlainObject(obj[0])?Object.keys(obj[0]):null);
     if(typeof obj === "object"){
         if(obj instanceof Array){
             if(obj.length && isPlainObject(obj[0])){
-                const [keys, setKeys] = useState(likeAr(obj[0]).map((_v,_k,_o,i)=>i).plain());
-                const [keyCount, setKeyCount] = useState(likeAr(keys).keyCount());
-                var newKeyCount = keyCount;
+                var keyCount = keys.length;
+                var keyIndex:{[key:string]:number} = likeAr(keys).build((k:string, i:number)=>{return{[k]:i}}).plain();
                 var result = (
                     <table>
                         <thead>
-                            <tr>{ likeAr(keys).map((_,k:string)=><th key={k}>{k}</th>).array() }</tr>
+                            <tr>{ keys.map((k:string)=><th key={k}>{k}</th>) }</tr>
                         </thead>
                         <tbody>
                             {obj.map((row,i)=>{
-                                var columns:any[] = [];
-                                likeAr(row).forEach((v,k:string)=>{
-                                    var i = keys[k];
-                                    if(i == null){
-                                        i = keys[k] = newKeyCount++;
-                                    }
-                                    if(i<keyCount){
-                                        columns[i]=v;
-                                    }
-                                });
-                                return (
-                                    <tr key={i}>
-                                        {columns.map((v,i)=>
-                                            <td key={i}><ObjectDisplayer data={v}></ObjectDisplayer></td>
-                                        )}
-                                    </tr>
-                                );
+                                var content;
+                                if(row && typeof row == "object"){
+                                    content = keys.map((k)=>
+                                        <td key={k}><ObjectDisplayer data={row[k]}></ObjectDisplayer></td>
+                                    );
+                                    likeAr(row).forEach((_,k:string)=>{
+                                        var i = keyIndex[k];
+                                        if(i == null){
+                                            keys.push(k);
+                                            keyIndex[k]=keys.length;
+                                        }
+                                    });
+                                }else{
+                                    content = <td colSpan={keyCount}><ObjectDisplayer data={row}></ObjectDisplayer></td>;
+                                }
+                                return <tr key={i}>
+                                    {content}
+                                </tr>
                             })}
                         </tbody>
                     </table>
                 );
-                if(newKeyCount!=keyCount){
+                if(keys.length != keyCount){
                     setTimeout(function(){
-                        setKeyCount(newKeyCount);
-                        setKeys(keys);
+                        setKeys(keys.slice());
                     },1000)
                 }
                 return result;
@@ -78,7 +78,6 @@ function ObjectDisplayer(props:{data:any, previous?:any}){
     }else{
         return <span>{JSON.stringify(props.data)}</span>
     }
-    return <div> nada </div>
 }
 
 function RenderDirectJsonApp(){
@@ -87,9 +86,10 @@ function RenderDirectJsonApp(){
         {nombre:'Abel'    , edad:31},
         {edad:34, nombre:'Aciago'  },
         null,
-        // "this row isn't a row",
+        "this row isn't a row",
         {nombre:'Adela'   , edad:38, title:'Dr.'},
-        {nombre:'AEmilius', edad:50},
+        {nombre:'AEmilius', edad:50, title:'Mr.'},
+        ["one", "two", "three"],
     ]};
     var [content, setContent] = useState(JSON.stringify(objetoInicial));
     return (
