@@ -10,31 +10,40 @@ function JsonDiplayer(props:{object:any}):JSX.Element;
 function JsonDiplayer(props:{json?:string, object?:any}){
     try{
         var data=props.object||JSON.parse(props.json);
-        return <div className="json-displayer"><ObjectDisplayer data={data}></ObjectDisplayer></div>;
+        return <div className="json-displayer"><ObjectDisplayer data={data} depth={1} opts={{showDepth:2}}></ObjectDisplayer></div>;
     }catch(err){
         return <div style={{color:"red"}} >{err.message}</div>
     }
 }
 
-function ObjectDisplayer(props:{data:any, previous?:any}){
-    var obj=props.data;
-    const [keys, setKeys] = useState(obj instanceof Array && isPlainObject(obj[0])?Object.keys(obj[0]):null);
-    if(obj && typeof obj === "object"){
-        if(obj instanceof Array){
-            if(obj.length && isPlainObject(obj[0])){
+namespace ObjectDisplayer{
+    export type Opts={
+        showDepth: number
+    }
+}
+function ObjectDisplayer(props:{data:any, depth:number, opts:ObjectDisplayer.Opts}){
+    var {data, depth, opts}=props;
+    const [keys, setKeys] = useState(data instanceof Array && isPlainObject(data[0])?Object.keys(data[0]):null);
+    const [visible, setVisible] = useState(depth<=opts.showDepth);
+    if(data && typeof data === "object"){
+        if(data instanceof Array){
+            if(data.length && isPlainObject(data[0])){
                 var keyCount = keys.length;
                 var keyIndex:{[key:string]:number} = likeAr(keys).build((k:string, i:number)=>{return{[k]:i}}).plain();
                 var result = (
                     <table>
                         <thead>
-                            <tr>{ keys.map((k:string)=><th key={k}>{k}</th>) }</tr>
+                            <tr>
+                                <th className="margin" onClick={()=>setVisible(!visible)}>{visible?"⊟":"⊞"}</th>
+                                { visible ? keys.map((k:string)=><th key={k}>{k}</th>) : <td className="table-count">{data.length} <small>(×{keys.length})</small></td> }
+                            </tr>
                         </thead>
                         <tbody>
-                            {obj.map((row,i)=>{
+                            {data.map((row,i)=>{
                                 var content;
                                 if(row && typeof row == "object"){
                                     content = keys.map((k)=>
-                                        <td key={k}><ObjectDisplayer data={row[k]}></ObjectDisplayer></td>
+                                        <td key={k}><ObjectDisplayer data={row[k]} depth={depth+1} opts={opts}></ObjectDisplayer></td>
                                     );
                                     likeAr(row).forEach((_,k:string)=>{
                                         var i = keyIndex[k];
@@ -44,11 +53,12 @@ function ObjectDisplayer(props:{data:any, previous?:any}){
                                         }
                                     });
                                 }else{
-                                    content = <td colSpan={keyCount}><ObjectDisplayer data={row}></ObjectDisplayer></td>;
+                                    content = <td colSpan={keyCount}><ObjectDisplayer data={row} depth={depth+1} opts={opts}></ObjectDisplayer></td>;
                                 }
-                                return <tr key={i}>
+                                return visible?<tr key={i}>
+                                    <td className="margin"></td>
                                     {content}
-                                </tr>
+                                </tr>:null;
                             })}
                         </tbody>
                     </table>
@@ -61,21 +71,21 @@ function ObjectDisplayer(props:{data:any, previous?:any}){
                 return result;
             }
             return <div>
-                {obj.map((v:any)=><ObjectDisplayer data={v}></ObjectDisplayer>)}
+                {data.map((v:any)=><ObjectDisplayer data={v} depth={depth+1} opts={opts}></ObjectDisplayer>)}
             </div>;
-        }else if(obj instanceof RegExp){
-            return <span datatype={obj.constructor.name}>/{obj.source}/{obj.flags}</span>;
-        }else if(obj instanceof Date){
-            return <span datatype={obj.constructor.name}>{obj.toLocaleString()}</span>;
+        }else if(data instanceof RegExp){
+            return <span datatype={data.constructor.name}>/{data.source}/{data.flags}</span>;
+        }else if(data instanceof Date){
+            return <span datatype={data.constructor.name}>{data.toLocaleString()}</span>;
         }else{
             return (
                 <table>
-                    <caption>{obj.constructor.name=='Object'?null:obj.constructor.name||''}</caption>
+                    <caption>{data.constructor.name=='Object'?null:data.constructor.name||''}</caption>
                     <thead>
-                        <tr>{likeAr(obj).map((_,k:string)=><th key={k}>{k}</th>).array()}</tr>
+                        <tr>{likeAr(data).map((_,k:string)=><th key={k}>{k}</th>).array()}</tr>
                     </thead>
                     <tbody>
-                        <tr>{likeAr(obj).map((v,k:string)=><td key={k}><ObjectDisplayer data={v}></ObjectDisplayer></td>).array()}</tr>
+                        <tr>{likeAr(data).map((v,k:string)=><td key={k}><ObjectDisplayer data={v} depth={depth+1} opts={opts}></ObjectDisplayer></td>).array()}</tr>
                     </tbody>
                 </table>
             )
@@ -97,6 +107,11 @@ function RenderDirectJsonApp(){
         {nombre:'Adela'   , edad:38, title:'Dr.'},
         {nombre:'AEmilius', edad:50, title:'Mr.'},
         {nombre:'Afrodita', edad:19, nacimiento:new Date(2001,12,23,10,2,32), ok:true, filtro:/ok(!?)(\/\d+)*/g},
+        {nombre:'Agata'   , edad:55, title:[
+            {title:'Lic.', year:1990},
+            {title:'Mag.', year:1995},
+            {title:'Dr.' , year:1999},
+        ]},
         ["one", "two", "three"],
     ]};
     // var [content, setContent] = useState(JSON.stringify(objetoInicial));

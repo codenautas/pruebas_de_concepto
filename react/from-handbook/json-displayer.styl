@@ -1,6 +1,11 @@
 .json-displayer
   font-family arial
   border 1px solid green
+  table
+    border-collapse collapse
+  td, th
+    border 1px solid gray
+    padding 2px
   td
     vertical-align top
   [datatype]
@@ -9,3 +14,7 @@
     color green
   [datatype="RegExp"]
     color red
+  [datatype="number"]
+    text-align right
+  .margin
+    border 0px solid transparent
