@@ -40,7 +40,7 @@ function ObjectDisplayer(props:{data:any, depth:number, opts:ObjectDisplayer.Opt
                                 { visible ? keys.map((k:string)=><th key={k}>{k}</th>) : <td className="table-count">{data.length} <small>(×{keys.length})</small></td> }
                             </tr>
                         </thead>
-                        <tbody>
+                        <tbody style={{display:visible?'':'none'}}>
                             {data.map((row,i)=>{
                                 var content;
                                 if(row && typeof row == "object"){
@@ -57,10 +57,10 @@ function ObjectDisplayer(props:{data:any, depth:number, opts:ObjectDisplayer.Opt
                                 }else{
                                     content = <td colSpan={keyCount}><ObjectDisplayer data={row} depth={depth+1} opts={opts}></ObjectDisplayer></td>;
                                 }
-                                return visible?<tr key={i}>
+                                return <tr key={i}>
                                     <td className="margin"></td>
                                     {content}
-                                </tr>:null;
+                                </tr>;
                             })}
                         </tbody>
                     </table>
