@@ -26,7 +26,9 @@ function ObjectDisplayer(props:{data:any, depth:number, opts:ObjectDisplayer.Opt
     const [keys, setKeys] = useState(data instanceof Array && isPlainObject(data[0])?Object.keys(data[0]):null);
     const [visible, setVisible] = useState(depth<=opts.showDepth);
     if(data && typeof data === "object"){
-        if(data instanceof Array){
+        if(data.__proto__.toReact){
+            return data.toReact();
+        }else if(data instanceof Array){
             if(data.length && isPlainObject(data[0])){
                 var keyCount = keys.length;
                 var keyIndex:{[key:string]:number} = likeAr(keys).build((k:string, i:number)=>{return{[k]:i}}).plain();
@@ -97,6 +99,57 @@ function ObjectDisplayer(props:{data:any, depth:number, opts:ObjectDisplayer.Opt
     }
 }
 
+class FactoresPrimos{
+    toReact(){
+        return (
+            <span>
+                {likeAr(this).map((exp,div,_,i)=>
+                    <span>{i?<span> × </span>:null}{div}{
+                        // @ts-ignore
+                        exp>1?<sup>{exp}</sup>:null
+                    }</span>
+                ).array()}
+            </span>
+        );
+    }
+}
+
+function listaPrimos(){
+    var lista:{numero:number, primo:boolean, factores_primos:FactoresPrimos}[]=[];
+    var i=0;
+    var sqrt=2;
+    var sqrtSquare=4;
+    while(++i<=1000){
+        var ii=i;
+        var j=1;
+        var primo=i>1;
+        // @ts-ignore
+        var factores_primos:{[key:number]:number}=new FactoresPrimos();
+        while(++j<sqrtSquare && j<i){
+            while(ii%j==0){
+                primo=false;
+                ii=ii/j
+                factores_primos[j]=(factores_primos[j]||0)+1
+            }
+        }
+        if(primo){
+            factores_primos[i]=1;
+        }
+        lista.push({
+            numero:i,
+            primo,
+            // @ts-ignore
+            factores_primos
+        })
+        if(i==sqrtSquare){
+            sqrtSquare+=sqrt;
+            sqrt++;
+            sqrtSquare+=sqrt;
+        }
+    }
+    return lista;
+}
+
 function RenderDirectJsonApp(){
     var objetoInicial={este:'objeto', aquel:1, lista:[
         {nombre:'Aaron'   , edad:23},
@@ -106,11 +159,11 @@ function RenderDirectJsonApp(){
         "this row isn't a row",
         {nombre:'Adela'   , edad:38, title:'Dr.'},
         {nombre:'AEmilius', edad:50, title:'Mr.'},
-        {nombre:'Afrodita', edad:19, nacimiento:new Date(2001,12,23,10,2,32), ok:true, filtro:/ok(!?)(\/\d+)*/g},
+        {nombre:'Afrodita', edad:19, nacimiento:new Date(2001,12,23,10,2,32), ok:true, filtro:/ok(!?)(\/\d+)*$/g},
         {nombre:'Agata'   , edad:55, title:[
             {title:'Lic.', year:1990},
             {title:'Mag.', year:1995},
-            {title:'Dr.' , year:1999},
+            {title:'Dr.' , year:1999, especialidad:listaPrimos()},
         ]},
         ["one", "two", "three"],
     ]};
