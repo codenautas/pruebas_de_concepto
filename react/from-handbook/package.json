@@ -18,8 +18,8 @@
     "typescript": "^3.5.3",
     "webpack": "^4.39.3",
     "webpack-cli": "^3.3.7",
-    "server4test": "^0.4.2",
-    "types.d.ts": "0.4.8"
+    "server4test": "^0.5.1",
+    "types.d.ts": "^0.4.8"
   },
   "dependencies": {
     "ajax-best-promise": "^0.3.7",

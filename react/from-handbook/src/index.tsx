@@ -23,8 +23,9 @@ namespace ObjectDisplayer{
 }
 function ObjectDisplayer(props:{data:any, depth:number, opts:ObjectDisplayer.Opts}){
     var {data, depth, opts}=props;
-    const [keys, setKeys] = useState(data instanceof Array && isPlainObject(data[0])?Object.keys(data[0]):null);
+    const [keys, setKeys] = useState(data instanceof Array && isPlainObject(data[0])?Object.keys(data[0]):[]);
     const [visible, setVisible] = useState(depth<=opts.showDepth);
+    const toggleVisible = ()=>setVisible(!visible);
     if(data && typeof data === "object"){
         if(data.__proto__.toReact){
             return data.toReact();
@@ -36,7 +37,7 @@ function ObjectDisplayer(props:{data:any, depth:number, opts:ObjectDisplayer.Opt
                     <table>
                         <thead>
                             <tr>
-                                <th className="margin" onClick={()=>setVisible(!visible)}>{visible?"⊟":"⊞"}</th>
+                                <th className="margin" onClick={toggleVisible}>{visible?"⊟":"⊞"}</th>
                                 { visible ? keys.map((k:string)=><th key={k}>{k}</th>) : <td className="table-count">{data.length} <small>(×{keys.length})</small></td> }
                             </tr>
                         </thead>
@@ -163,21 +164,19 @@ function RenderDirectJsonApp(){
         {nombre:'Agata'   , edad:55, title:[
             {title:'Lic.', year:1990},
             {title:'Mag.', year:1995},
-            {title:'Dr.' , year:1999, especialidad:listaPrimos()},
+            {title:'Dr.' , year:1999, especialidad:'listaPrimos()'},
         ]},
         ["one", "two", "three"],
     ]};
-    // var [content, setContent] = useState(JSON.stringify(objetoInicial));
-    var content = objetoInicial;
+    var [content, setContent] = useState(JSON.stringify(objetoInicial));
+    // var content = objetoInicial;
     return (
         <div>
             <div>Visualizador de Json</div>
-            {/*
-            <input type='text' value={content} onChange={
+            <input type='text' value={content} style={{width:'600px'}} onChange={
                 (event)=>{ setContent(event.target.value); }
             }/>
-            */}
-            <JsonDiplayer object={content}></JsonDiplayer>
+            <JsonDiplayer json={content}></JsonDiplayer>
         </div>
     );
 }
