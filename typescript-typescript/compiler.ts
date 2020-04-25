@@ -3,6 +3,13 @@ import {readFileSync} from "fs";
 
 console.log('x323',process.cwd())
 
+function equis(error:Error){
+  console.log(error.code);
+  console.log(error.message);
+  console.log(error.message);
+};
+
+
 var options:ts.CompilerOptions={
   noEmitOnError: true,
   noImplicitAny: true,
