@@ -20,35 +20,20 @@ div, iframe{
         <p>ver</p>
         <p><label><input id=tute        type=radio value=tute       name=img>tute      </label></p>
         <p><label><input id=codenautas  type=radio value=codenautas name=img>codenautas</label></p>
-        <p><label><input id=inexistant  type=radio value=inexistant name=img>inexistente</label></p>
         <p>archivo<input id=archivo></p>
     </div>
-    <div id=derecha>
-        <!-- <object id="derObj" type="application/pdf" width="300" height="200">
-            alt : <a id="der"></a>
-        </object> -->
-        <embed id="derEmbed" src="codenautas.pdf" width="600" height="500" alt="pdf" type="application/pdf" pluginspage="http://www.adobe.com/products/acrobat/readstep2.html">
-    </div>
+    <iframe id=derecha>
+    </iframe>
 </div>
 <script>
 function cambiar(){
-    //var d = document.createElement('iframe');
+    var d = document.createElement('iframe');
     var fileName=this.value+'.pdf';
     archivo.value=fileName;
-    //IFRAME
-    // derecha.data=fileName;
- 
-    //OBJECT
-    // derObj.data=fileName;
-    // der.href=fileName;
-    // der.innerHTML=fileName;
-
-    //EMBED
-    derEmbed.src=fileName
+    derecha.src=fileName;
 }
 window.addEventListener('load',function(){
     tute.onclick=cambiar;
     codenautas.onclick=cambiar;
-    inexistant.onclick=cambiar;
 })
 </script>
