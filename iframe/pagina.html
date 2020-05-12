@@ -1,0 +1,39 @@
+<style>
+body{
+    font-family: Arial;
+}
+.total{
+    display:flex;
+    flex: auto auto;
+    height: 100%;
+}
+div, iframe{
+    border:1px solid red;
+    margin:6px;
+}
+.izquierda, #derecha{
+    flex: auto;
+}
+</style>
+<div class=total>
+    <div class=izquierda>
+        <p>ver</p>
+        <p><label><input id=tute        type=radio value=tute       name=img>tute      </label></p>
+        <p><label><input id=codenautas  type=radio value=codenautas name=img>codenautas</label></p>
+        <p>archivo<input id=archivo></p>
+    </div>
+    <iframe id=derecha>
+    </iframe>
+</div>
+<script>
+function cambiar(){
+    var d = document.createElement('iframe');
+    var fileName=this.value+'.pdf';
+    archivo.value=fileName;
+    derecha.src=fileName;
+}
+window.addEventListener('load',function(){
+    tute.onclick=cambiar;
+    codenautas.onclick=cambiar;
+})
+</script>

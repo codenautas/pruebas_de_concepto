@@ -1,0 +1,9 @@
+{
+  "name": "iframe-poc",
+  "devDependencies": {
+    "server4test": "^0.5.3"
+  },
+  "scripts": {
+    "start": "server4test"
+  }
+}
