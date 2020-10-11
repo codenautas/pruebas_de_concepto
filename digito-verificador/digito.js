@@ -11,11 +11,14 @@
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.DigitoVerificador = void 0;
     const fs_1 = require("fs");
+    // mi issue: https://github.com/microsoft/TypeScript/issues/39569
+    // continúa en: https://github.com/microsoft/TypeScript/issues/27808
     class DigitoVerificador {
-        constructor(cast, multiplicadores, divisor) {
+        constructor(cast, multiplicadores, divisor, desplazamiento) {
             this.cast = cast;
             this.multiplicadores = multiplicadores;
             this.divisor = divisor;
+            this.desplazamiento = desplazamiento;
         }
         obtenerDigito(numero) {
             var digitos = numero.toString().split('');
@@ -29,6 +32,10 @@
                 // @ts-expect-error No debería ser error. https://github.com/microsoft/TypeScript/issues/39569
                 sumador = sumador + producto;
                 i++;
+            }
+            if (this.desplazamiento) {
+                // @ts-expect-error No debería ser error. https://github.com/microsoft/TypeScript/issues/39569
+                sumador = sumador + this.desplazamiento;
             }
             // @ts-expect-error No debería ser error. https://github.com/microsoft/TypeScript/issues/39569
             var verificador = sumador % this.divisor;
@@ -67,13 +74,13 @@
     medir(BigInt);
     //@ts-expect-error
     medir(String);
-    var v1 = new DigitoVerificador(Number, [2, 3, 4, 5], 11);
-    var v2 = new DigitoVerificador(Number, [3, 4, 5, 7], 11);
+    var v1 = new DigitoVerificador(Number, [2, 3, 4, 5], 11, 1);
+    var v2 = new DigitoVerificador(Number, [3, 4, 5, 9], 11, 0);
     var cant = 0;
     var i = 1000;
     var a = [];
     var o = {};
-    while (cant <= 4000) {
+    while (i <= 9999) {
         var d1 = v1.obtenerDigito(i);
         var d2 = v2.obtenerDigito(i);
         // if(d1!=null){
