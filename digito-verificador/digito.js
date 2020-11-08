@@ -74,8 +74,8 @@
     medir(BigInt);
     //@ts-expect-error
     medir(String);
-    var v1 = new DigitoVerificador(Number, [2, 3, 4, 5], 11, 1);
-    var v2 = new DigitoVerificador(Number, [3, 4, 5, 9], 11, 0);
+    var v1 = new DigitoVerificador(Number, [2, 3, 4, 5], 11, 2);
+    var v2 = new DigitoVerificador(Number, [3, 4, 5, 13], 11, 0);
     var cant = 0;
     var i = 1000;
     var a = [];
