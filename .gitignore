@@ -41,3 +41,5 @@ yarn.lock
 
 typescript-*/out
 typescript-*/built
+
+dist
