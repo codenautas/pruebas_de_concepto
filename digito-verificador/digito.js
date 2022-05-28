@@ -51,6 +51,23 @@
     var cuitN = new DigitoVerificador(Number, [2, 3, 4, 5, 6, 7, 2, 3, 4, 5], 11);
     //var cuitN = new DigitoVerificador(Number, [2,3,4,5,6,7,1,2,3,4,5], 11);
     var cuitB = new DigitoVerificador(BigInt, [2n, 3n, 4n, 5n, 6n, 7n, 2n, 3n, 4n, 5n], 11n);
+    var cbu = '2850590940090418135201';
+    var vCBU1 = new DigitoVerificador(Number, [3, 1, 7, 9, 3, 1, 7], 10, 0);
+    var vCBU2 = new DigitoVerificador(Number, [3, 1, 7, 9, 3, 1, 7, 9, 3, 1, 7, 9, 3], 10, 0);
+    var vCBU3 = new DigitoVerificador(Number, [7, 9, 3, 1, 7, 9, 3, 1, 7, 9, 3, 1, 7, 9, 3, 1, 7, 9, 3, 1, 7], 10, 0);
+    console.log('CBU', cbu.substr(0, 7), vCBU1.obtenerDigito(cbu.substr(0, 7)), cbu[7]);
+    console.log('CBU', cbu.substr(8, 13), vCBU2.obtenerDigito(cbu.substr(8, 13)), cbu[21]);
+    function validarCBU(cbu) {
+        return cbu.length == 22 &&
+            vCBU1.obtenerDigito(cbu.substr(0, 7)) == Number(cbu[7]) &&
+            vCBU2.obtenerDigito(cbu.substr(8, 13)) == Number(cbu[21]);
+    }
+    console.log('CBU val', cbu, validarCBU(cbu));
+    console.log('CBU val', '0290002510000002472839', validarCBU('0290002510000002472839'));
+    console.log('no CBU val', '290002510000002472839', validarCBU('290002510000002472839'));
+    console.log('no CBU val', '1290002510000002472839', validarCBU('1290002510000002472839'));
+    if (Math.random() < 0.9999999999999)
+        process.exit(0);
     function medir(cast) {
         var j = cast('2320729336');
         var cuit = new DigitoVerificador(cast, [2, 3, 4, 5, 6, 7, 2, 3, 4, 5].map(cast), cast(11));
