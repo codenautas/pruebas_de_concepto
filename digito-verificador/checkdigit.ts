@@ -1,4 +1,4 @@
-function checkdigit<Num extends bigint|number>(number:any, cast:(numbreString:string|number)=>Num, multipliers:Num[], divider:Num, shift?:Num, turn?:boolean):Num|null{
+export function checkdigit<Num extends bigint|number>(number:any, cast:(numbreString:string|number)=>Num, multipliers:Num[], divider:Num, shift?:Num, turn?:boolean):Num|null{
     var digitos=number.toString().split('');
     var i=0;
     var sumador:Num = cast(0);
