@@ -13,16 +13,17 @@
     const digito_verificador_1 = require("./digito_verificador");
     var parametros = {
         fuentes: [
-            '/temp/emilio_tem_ggs2022_dominio3.txt',
-            '/temp/emilio_tem_ggs2022_dominio5.txt',
+            // '/temp/emilio_tem_ggs2022_dominio3.txt',
+            // '/temp/emilio_tem_ggs2022_dominio5.txt',
+            '/temp/ggs2022_encuestas_para_ids.txt'
         ],
         separador: '|',
         saltearPrimerasLineas: 1,
-        columna: 1,
+        columna: 0,
         agregados: 4,
         prefijo: '54',
-        archivoSalida: '/temp/cond_digito_verificador.txt',
-        todo: false // true = encuesta, hogar, codigo, false = codigo
+        archivoSalida: '/temp/cond_digito_verificador_yp.txt',
+        todo: true // true = encuesta, hogar, codigo, false = codigo
     };
     var dv = new digito_verificador_1.DigitoVerificador(Number, [3, 1, 7, 9, 3, 1, 7, 9], 10, 0);
     async function procesar(params) {

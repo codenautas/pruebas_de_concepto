@@ -3,16 +3,17 @@ import { DigitoVerificador } from "./digito_verificador";
 
 var parametros = {
     fuentes: [
-        '/temp/emilio_tem_ggs2022_dominio3.txt',
-        '/temp/emilio_tem_ggs2022_dominio5.txt',
+        // '/temp/emilio_tem_ggs2022_dominio3.txt',
+        // '/temp/emilio_tem_ggs2022_dominio5.txt',
+        '/temp/ggs2022_encuestas_para_ids.txt'
     ],
     separador: '|', 
     saltearPrimerasLineas:1,
-    columna: 1, // cuenta desde 0
+    columna: 0, // cuenta desde 0
     agregados: 4, 
     prefijo: '54', // puede ser '',
-    archivoSalida: '/temp/cond_digito_verificador.txt',
-    todo: false // true = encuesta, hogar, codigo, false = codigo
+    archivoSalida: '/temp/cond_digito_verificador_yp.txt',
+    todo: true // true = encuesta, hogar, codigo, false = codigo
 };
 
 var dv = new DigitoVerificador(Number, [3,1,7,9,3,1,7,9],10,0);
