@@ -1,0 +1,21 @@
+{
+  "name": "poc-esm-react",
+  "private": true,
+  "dependencies": {
+    "@mui/material": "^6.2.0",
+    "require-bro": "^0.3.1",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.2",
+    "@types/react": "^19.0.1",
+    "@types/react-dom": "^19.0.2",    
+    "server4test": "^0.8.7",
+    "types.d.ts": "^0.6.22",
+    "typescript": "^5.7.2"
+  },
+  "scripts": {
+    "start": "tsc -p src && server4test --super-insecure"
+  }
+}

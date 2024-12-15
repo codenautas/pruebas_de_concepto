@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+    <body>
+        <h1>canvan example react</h1>
+        <div id="main">
+
+        </div>
+        <script src="./node_modules/best-globals/best-globals.js"></script>
+        <script src="./node_modules/require-bro/lib/require-bro.js"></script>
+        <script type="importmap">
+            {
+                "imports": {
+                    "react": "https://esm.sh/react@19/?dev",
+                    "xreact/": "https://esm.sh/x/",
+                    "react-dom/": "https://esm.sh/react-dom@19/"
+                }
+            }
+        </script>        
+        <script src="./dist/esm-bro.js"></script>
+        <script src="./dist/index.js" type="module"></script>
+    </body>
+</html>
