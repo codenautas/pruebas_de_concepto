@@ -1,0 +1,8 @@
+{
+    "name": "con-require-bro",
+    "private": true,
+    "dependencies": {
+        "best-globals": "^1.1.6",
+        "require-bro": "^0.3.1"
+    }
+}
