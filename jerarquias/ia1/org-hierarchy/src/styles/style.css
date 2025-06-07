@@ -1,74 +1,77 @@
 body {
     font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
     margin: 0;
-    padding: 20px;
-}
-
-h1 {
-    text-align: center;
-    color: #333;
-}
-
-.hierarchy {
+    padding: 0;
     display: flex;
-    flex-direction: column;
+    justify-content: center;
     align-items: center;
+    min-height: 100vh;
+    background-color: #f4f4f4;
+}
+
+#hierarchy-container {
+    text-align: center;
 }
 
 .node {
-    background-color: #fff;
+    display: inline-block;
+    width: 200px;
+    height: 100px;
     border: 1px solid #ccc;
     border-radius: 5px;
-    padding: 10px;
+    background-color: #fff;
     margin: 10px;
-    width: 250px;
+    padding: 10px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     position: relative;
 }
 
-.node h2 {
-    font-size: 18px;
-    margin: 0;
+.level-0 .node {
+    margin: 0 auto;
 }
 
-.node p {
-    font-size: 14px;
-    color: #666;
-}
-
-.subordinates {
+.level-1, .level-2 {
     display: flex;
     justify-content: center;
-    flex-wrap: wrap;
+    position: relative;
 }
 
-.line {
-    position: absolute;
-    width: 2px;
-    background-color: #ccc;
+.level-1 .node, .level-2 .node {
+    margin: 0 20px;
 }
 
-.line::before {
+.node::before, .node::after {
     content: '';
     position: absolute;
-    top: -10px;
+    width: 2px;
+    height: 20px;
+    background-color: #000;
+    top: -20px;
     left: 50%;
-    width: 10px;
-    height: 10px;
-    background-color: #fff;
-    border: 1px solid #ccc;
-    border-radius: 50%;
     transform: translateX(-50%);
 }
 
-.line::after {
+.node:first-child::before {
+    display: none;
+}
+
+.level-1::before, .level-2::before {
     content: '';
     position: absolute;
-    bottom: 100%;
-    left: 50%;
+    height: 2px;
+    width: 100%;
+    background-color: #000;
+    top: -20px;
+    left: 0;
+}
+
+.level-1 .node::after, .level-2 .node::after {
+    content: '';
+    position: absolute;
     width: 2px;
-    height: 10px;
-    background-color: #ccc;
+    height: 20px;
+    background-color: #000;
+    top: -20px;
+    left: 50%;
     transform: translateX(-50%);
 }
