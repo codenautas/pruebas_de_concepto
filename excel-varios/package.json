@@ -4,7 +4,7 @@
     "libxl": "0.2.20",
     "node-xlrd": "0.2.4",
     "parse-xl": "1.0.1",
-    "xlsx": "0.8.0",
+    "xlsx": "0.18.5",
     "xl-json": "3.3.2",
     
     "best-promise": "~0.2.4"
