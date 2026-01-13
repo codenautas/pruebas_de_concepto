@@ -14,7 +14,7 @@
   ],
   "dependencies": {
     "colors": "1.1.2",
-    "express": "4.13.3",
+    "express": "4.19.2",
 
     "promise-plus": "0.0.6"
   },
